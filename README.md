@@ -15,6 +15,7 @@ Dalam repositori ini terdapat Final Project Studi Kasus Agen Tour yang diberi na
 - [ ] Logika Login/Daftar
 - [ ] Landing Dashboard Admin
 - [ ] Landing Dashboard User
+- [ ] Landing Pilih Paket
 - [ ] Landing Detail Paket
 - [ ] Landing Checkout
 - [ ] Logika Pembayaran
