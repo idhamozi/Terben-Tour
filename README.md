@@ -19,5 +19,7 @@ Dalam repositori ini terdapat Final Project Studi Kasus Agen Tour yang diberi na
 - [ ] Landing Detail Paket
 - [ ] Landing Checkout
 - [ ] Logika Pembayaran
+- [ ] Konfirmasi Pembayaran 
+- [ ] Notifikasi Email E-Tiket
 - [ ] Landing Testimoni
 - [ ] Logika Testimoni
