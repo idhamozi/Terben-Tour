@@ -1,0 +1,136 @@
+body {
+    background-color: #fff;
+    font-family: 'Assistant', sans-serif;
+    color: #302A36;
+}
+
+//navbar
+.navbar-brand {
+    img {
+        max-height: 40px;
+        ;
+    }
+}
+
+.navbar-light {
+    .navbar-nav {
+        .nav-link {
+            color: #023642;
+
+            &.active {
+                font-weight: bold;
+                color: #302A36 !important;
+            }
+        }
+    }
+}
+
+.btn-navbar-right {
+    margin-top: -10px !important;
+    margin-bottom: -10px !important;
+    margin-right: -18px !important;
+
+    height: 70px;
+    border-radius: 0%
+}
+
+.btn-login {
+    background-color: #007BA2;
+    color: white;
+    height: 67px !important;
+
+    &:hover {
+        background-color: #005874;
+        color: white;
+    }
+}
+
+//header
+header {
+    padding: 180px 0px 165px;
+    margin-top: -70px;
+    ;
+    background-image: url('../images/banner.png');
+    background-size: cover;
+
+    h1,
+    p {
+        color: #fff;
+    }
+
+    h1 {
+        font-family: 'Playfair Display', serif;
+        font-weight: bold;
+        font-size: 50px;
+    }
+
+    p {
+        font-size: 22px;
+        font-weight: bold;
+    }
+}
+
+.section-text{
+    h3, h4, h5{
+        font-weight: bold;
+        color: #023642;
+    }
+    h2{
+        color: #023642;
+    }
+    p{
+        color: #023642;
+        font-size: 19px;
+    }
+}
+
+.section-paket{
+    margin-top: 150px;
+    margin-bottom: 150px;
+    .btn-check{
+        height: 50px;
+        width: 120px;
+        margin-right: 310px;
+        background-color: #023642;
+        color: white;
+        &:hover {
+            background-color: #00262E;
+            color: white;
+        }
+    }
+        .img-pict-trip{
+            height: 450px;
+            width: 400px;
+             
+    }
+ }
+
+.section-testimonial-header{
+    min-height: 310px; 
+    background: linear-gradient(rgba(255, 255, 255, 0.5) 20%, rgba(194, 194, 194, 0.5) 100%);
+    margin-top: -70px;
+}
+
+.section-testimonial{
+    img{
+        height: 450px;
+        width: 360px;
+        margin-bottom: 100px
+    }
+}
+
+.section-footer{
+    text-align: center;
+    img{
+        height: 50px;
+        width: 50px;
+        border-radius: 100%;
+        margin-bottom: 30px;
+    }
+    .section-footer-img{
+        min-height: 100px;
+        margin-bottom: 20px;
+    }
+    
+}
+
