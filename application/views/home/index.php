@@ -44,14 +44,14 @@
                 </ul>
                 <!-- Mobile Button -->
                 <form class="from-inline d-sm-block d-md-none">
-                    <button class="btn btn-login my-2 my-sm-0">
+                    <button class="btn btn-login my-2 my-sm-0" onclick="location.href='<?= base_url('Login'); ?>'" type="button">
                         Masuk
                     </button>
                 </form>
                 <!-- end -->
                 <!-- Desktop Button -->
                 <form class="from-inline my-2 my-lg-0 d-none d-md-block">
-                    <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4">
+                    <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4" onclick="location.href='<?= base_url('Login'); ?>'" type="button">
                         Masuk
                     </button>
                 </form>
