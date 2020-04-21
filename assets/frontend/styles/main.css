@@ -17,6 +17,11 @@ body {
   color: #302A36 !important;
 }
 
+.navbar-light .navbar-nav .nav-link:hover {
+  font-weight: bold;
+  color: #00759E !important;
+}
+
 .btn-navbar-right {
   margin-top: -10px !important;
   margin-bottom: -10px !important;
@@ -73,9 +78,9 @@ header p {
   font-size: 19px;
 }
 
-.section-paket {
-  margin-top: 150px;
-  margin-bottom: 150px;
+.section-paket-header {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, rgba(255, 255, 255, 0.5)), to(rgba(194, 194, 194, 0.5)));
+  background: linear-gradient(rgba(255, 255, 255, 0.5) 20%, rgba(194, 194, 194, 0.5) 100%);
 }
 
 .section-paket .btn-check {
@@ -94,13 +99,13 @@ header p {
 .section-paket .img-pict-trip {
   height: 450px;
   width: 400px;
+  margin-bottom: 50px;
 }
 
 .section-testimonial-header {
   min-height: 310px;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, rgba(255, 255, 255, 0.5)), to(rgba(194, 194, 194, 0.5)));
   background: linear-gradient(rgba(255, 255, 255, 0.5) 20%, rgba(194, 194, 194, 0.5) 100%);
-  margin-top: -70px;
 }
 
 .section-testimonial img {
@@ -123,5 +128,145 @@ header p {
 .section-footer .section-footer-img {
   min-height: 100px;
   margin-bottom: 20px;
+}
+
+.section-bg-login {
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+}
+
+.section-sign_in {
+  margin-top: -50%;
+}
+
+.section-sign_in .card-form {
+  padding: 30px;
+  margin-top: 30%;
+  margin-bottom: 30%;
+  height: 60vh;
+  background-color: #F3F3F3;
+  border-radius: 10px;
+}
+
+.section-sign_in .login-form {
+  padding-top: 20px;
+}
+
+.section-sign_in .login-form .form-group label {
+  display: block;
+}
+
+.section-sign_in .login-form .form-check .check-forget {
+  color: #3C4244;
+  font-family: 'Assistant', sans-serif;
+}
+
+.section-sign_in .login-form .btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none;
+}
+
+.section-sign_in .login-form .fb {
+  background-color: #3157A4;
+  color: white;
+}
+
+.section-sign_in .login-form .fb:hover {
+  background-color: #1B469E;
+  color: white;
+}
+
+.section-sign_in .login-form .sign_in {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.section-sign_in .login-form .sign_in:hover {
+  background-color: #45a049;
+  color: white;
+}
+
+.section-bg-sign_up {
+  width: 100%;
+  height: 50%;
+  max-height: 99.8vh;
+}
+
+.section-sign_up .content-text {
+  margin-top: -680px;
+}
+
+.section-sign_up .content-text .text-header {
+  font-family: 'Playfair Display', serif;
+  color: white;
+  font-weight: bold;
+  padding-bottom: 50px;
+}
+
+.section-sign_up .content-text .text-header .text-welcome {
+  font-size: 71px;
+  padding-bottom: 10px;
+}
+
+.section-sign_up .content-text .text-header .text-travel {
+  font-size: 50px;
+  padding-bottom: 10px;
+}
+
+.section-sign_up .content-text .text-banner {
+  font-family: 'Assistant', sans-serif;
+  color: white;
+  padding-bottom: 50px;
+}
+
+.section-sign_up .content-text .text-banner h2 {
+  font-weight: bold;
+  font-size: 34px;
+  padding-bottom: 10px;
+}
+
+.section-sign_up .content-text .text-banner p {
+  font-weight: normal;
+  font-size: 25px;
+  padding-bottom: 10px;
+}
+
+.section-sign_up .card-sign_up {
+  margin-top: -790px;
+  max-width: 100vh;
+  background-color: #EEEEEE;
+  border-radius: 10px;
+}
+
+.section-sign_up .card-sign_up .sign_up-form .btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none;
+}
+
+.section-sign_up .card-sign_up .sign_up-form .sign_up {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.section-sign_up .card-sign_up .sign_up-form .sign_up:hover {
+  background-color: #45a049;
+  color: white;
 }
 /*# sourceMappingURL=main.css.map */

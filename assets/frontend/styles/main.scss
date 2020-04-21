@@ -16,10 +16,13 @@ body {
     .navbar-nav {
         .nav-link {
             color: #023642;
-
             &.active {
                 font-weight: bold;
                 color: #302A36 !important;
+            }
+            &:hover {
+                font-weight: bold;
+                color: #00759E !important;
             }
         }
     }
@@ -84,9 +87,11 @@ header {
     }
 }
 
+.section-paket-header{
+    background: linear-gradient(rgba(255, 255, 255, 0.5) 20%, rgba(194, 194, 194, 0.5) 100%);
+}
+
 .section-paket{
-    margin-top: 150px;
-    margin-bottom: 150px;
     .btn-check{
         height: 50px;
         width: 120px;
@@ -101,14 +106,13 @@ header {
         .img-pict-trip{
             height: 450px;
             width: 400px;
-             
+            margin-bottom: 50px;
     }
  }
 
 .section-testimonial-header{
     min-height: 310px; 
     background: linear-gradient(rgba(255, 255, 255, 0.5) 20%, rgba(194, 194, 194, 0.5) 100%);
-    margin-top: -70px;
 }
 
 .section-testimonial{
@@ -131,6 +135,133 @@ header {
         min-height: 100px;
         margin-bottom: 20px;
     }
-    
 }
 
+.section-bg-login
+{
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+}
+.section-sign_in
+{  
+    margin-top: -50%;
+    .card-form{
+        padding: 30px;
+        margin-top: 30%;
+        margin-bottom: 30%;
+        height:60vh ;
+        background-color: #F3F3F3;
+        border-radius: 10px;
+    }
+    .login-form{
+        padding-top: 20px;
+        .form-group {
+            label {
+                display: block;
+            }
+        }
+        .form-check{
+            .check-forget{
+                color: #3C4244;
+                font-family: 'Assistant', sans-serif;
+            }
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            margin: 5px 0;
+            opacity: 0.85;
+            display: inline-block;
+            font-size: 17px;
+            line-height: 20px;
+            text-decoration: none; 
+        }
+        .fb {
+            background-color: #3157A4;
+            color: white;
+            &:hover{ 
+                background-color: #1B469E;
+                color: white;
+            }
+        }
+        .sign_in{
+            background-color: #4CAF50;
+            color: white;
+            &:hover{ 
+                background-color: #45a049;
+                color: white;
+            }
+        }  
+    }
+}
+
+.section-bg-sign_up{
+    width: 100%;
+    height: 50%;
+    max-height: 99.8vh;
+}
+.section-sign_up{
+   .content-text{
+       margin-top: -680px;
+       .text-header{
+            font-family: 'Playfair Display', serif;
+            color: white;
+            font-weight: bold;
+            padding-bottom: 50px;
+           .text-welcome{
+               font-size: 71px;
+               padding-bottom: 10px;
+           }
+           .text-travel{
+               font-size: 50px;
+               padding-bottom: 10px;
+           }
+       }
+       .text-banner{
+            font-family: 'Assistant', sans-serif;
+            color: white;
+            padding-bottom: 50px;
+            h2{
+                font-weight: bold;
+                font-size: 34px;
+                padding-bottom: 10px;
+            }
+            p{
+                font-weight:normal;
+                font-size: 25px;
+                padding-bottom: 10px;
+            }
+       }
+   }
+   .card-sign_up{
+        margin-top: -790px;
+        max-width: 100vh;
+        background-color: #EEEEEE;
+        border-radius: 10px;
+        .sign_up-form{
+            .btn{
+                width: 100%;
+                padding: 12px;
+                border: none;
+                border-radius: 4px;
+                margin: 5px 0;
+                opacity: 0.85;
+                display: inline-block;
+                font-size: 17px;
+                line-height: 20px;
+                text-decoration: none; 
+            }
+            .sign_up{
+                background-color: #4CAF50;
+                color: white;
+                &:hover{ 
+                    background-color: #45a049;
+                    color: white;
+                }
+            }  
+        }
+   }
+}
