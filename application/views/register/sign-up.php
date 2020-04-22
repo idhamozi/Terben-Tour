@@ -101,15 +101,38 @@ echo form_open(base_url('login/register'));
                 </div>
             </div>
     </Section>
-</body>
+    <?php
+    // Form close
+    echo form_close();
+    ?>
 
-<?php
-// Form close
-echo form_close();
-?>
+    <!-- SWEETALERT -->
+    <?php if($this->session->flashdata('sukses')) { ?>
+    <script>
+      swal("Berhasil", "<?php echo $this->session->flashdata('sukses'); ?>","success")
+    </script>
+    <?php } ?>
+
+    <?php if($this->session->flashdata('warning')) { ?>
+    <script>
+      swal("Oops...", "<?php echo $this->session->flashdata('warning'); ?>","warning")
+    </script>
+    <?php } ?>
+</body>
 
 <script src="<?= base_url('assets\frontend\libraries\jquery\jquery-3.4.1.min.js')  ?>"></script>
 <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap.js')  ?>"></script>
 <script src="<?= base_url('assets\frontend\libraries\retina\retina.min.js')  ?>"></script>
+<!-- iCheck -->
+<script src="<?php echo base_url('assets\frontend\plugin\iCheck\icheck.min.js') ?>"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass   : 'iradio_square-blue',
+      increaseArea : '20%' // optional
+    })
+  })
+</script>
 
 </html>
