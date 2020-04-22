@@ -10,9 +10,12 @@ Dalam repositori ini terdapat Final Project Studi Kasus Agen Tour yang diberi na
 
 ### To Do List
 
-- [ ] Landing Home Page
-- [ ] Landing Login/Daftar
-- [ ] Logika Login/Daftar
+- [x] Landing Home Page
+- [x] Landing Login User 
+- [x] Logika Login User via Register
+- [x] Logika Login User via Google
+- [x] Landing Register User
+- [x] Logika Register User
 - [ ] Landing Dashboard Admin
 - [ ] Landing Dashboard User
 - [ ] Landing Pilih Paket
