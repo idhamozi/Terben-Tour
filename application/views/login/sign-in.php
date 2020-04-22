@@ -50,10 +50,7 @@
                                         <a href="
                                         <?php
                                         if (!isset($login_button)) {
-                                          echo "berhasil login google";
                                           $user_data = $this->session->userdata('user_data');
-                                          echo '<h3><b>Name : </b>'.$user_data["first_name"].' '.$user_data['last_name']. '</h3>';
-                                          echo '<h3><b>Email :</b> '.$user_data['email_address'].'</h3>';
                                         } else {
                                           echo $login_button;
                                         } ?>

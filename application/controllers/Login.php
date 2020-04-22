@@ -44,7 +44,7 @@ class Login extends CI_Controller
             'last_name'  => $data['family_name'],
             'email'      => $data['email'],
             'img_profile'=> $data['picture'],
-            'update_at'  => $current_datetime);
+            'updated_at'  => $current_datetime);
 
             $this->M_GoogleLogin->Update_user_data($user_data, $data['id']);
         }
@@ -61,7 +61,8 @@ class Login extends CI_Controller
             $this->M_GoogleLogin->Insert_user_data($user_data);
         }
 
-        $this->session->userdata('user_data', $user_data);
+        $this->session->set_userdata('user_data', $user_data);
+        redirect(base_url(''));
 
       }
     }
@@ -87,7 +88,7 @@ class Login extends CI_Controller
 
     $this->session->unset_userdata('user_data');
 
-    redirect(base_url('Login'));
+    redirect(base_url(''));
   }
 }
 

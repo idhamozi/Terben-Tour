@@ -51,9 +51,17 @@
                 <!-- end -->
                 <!-- Desktop Button -->
                 <form class="from-inline my-2 my-lg-0 d-none d-md-block">
+                  <?php
+                  $user_data = $this->session->userdata('user_data');
+                  if (null !== $user_data) { ?>
+                    <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4" onclick="location.href='<?= base_url('Login/logout'); ?>'" type="button">
+                        <?php echo $user_data['first_name'] ?>
+                    </button>
+                  <?php } else { ?>
                     <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4" onclick="location.href='<?= base_url('Login'); ?>'" type="button">
                         Masuk
                     </button>
+                  <?php } ?>
                 </form>
                 <!-- end -->
             </div>
