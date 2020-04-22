@@ -137,20 +137,20 @@ header p {
 }
 
 .section-sign_in {
-  margin-top: -50%;
+  margin-top: -59%;
 }
 
 .section-sign_in .card-form {
   padding: 30px;
   margin-top: 30%;
-  margin-bottom: 30%;
-  height: 60vh;
+  margin-bottom: 5%;
+  height: 75%;
   background-color: #F3F3F3;
   border-radius: 10px;
 }
 
 .section-sign_in .login-form {
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .section-sign_in .login-form .form-group label {
@@ -214,6 +214,7 @@ header p {
 
 .section-sign_up .content-text .text-header .text-welcome {
   font-size: 71px;
+  margin-top: 30%;
   padding-bottom: 10px;
 }
 
@@ -241,7 +242,7 @@ header p {
 }
 
 .section-sign_up .card-sign_up {
-  margin-top: -790px;
+  margin-top: -115%;
   max-width: 100vh;
   background-color: #EEEEEE;
   border-radius: 10px;

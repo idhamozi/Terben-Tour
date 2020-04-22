@@ -15,6 +15,13 @@
 </head>
 
 <body>
+  <?php
+  // Notifikasi error
+  echo validation_errors('<p class="alert alert-warning">','</p>');
+
+  // Form open
+  echo form_open(base_url('login/LoginCommon'));
+  ?>
     <section class="">
         <img src="<?= base_url('assets/frontend/images/bg-sign_in.png')  ?>" class="img-fluid section-bg-login" alt="">
     </section>
@@ -29,12 +36,12 @@
                         <div class="login-form">
                             <form action="" method="post">
                                 <div class="form-group">
-                                    <label>Email address</label>
-                                    <input type="email" class="form-control" placeholder="Email">
+                                    <label>Username</label>
+                                    <input type="username" name="username" class="form-control" placeholder="Username">
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="Password">
+                                    <input type="password" name="password" class="form-control" placeholder="Password">
                                 </div>
 
                                 <div class="form-group form-check">
@@ -64,7 +71,7 @@
                                     <div class="col-auto text-gray-500-font-weight-light">
                                         <p>
                                             Don't you have account?
-                                            <a href="#">Sign Up Here</a>
+                                            <a href="<?= base_url('login/register')  ?>">Sign Up Here</a>
                                         </p>
                                     </div>
                                 </div>
@@ -78,6 +85,11 @@
     </section>
 
 </body>
+
+<?php
+// Form close
+echo form_close();
+?>
 
 <script src="<?= base_url('assets\frontend\libraries\jquery\jquery-3.4.1.min.js')  ?>"></script>
 <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap.js')  ?>"></script>

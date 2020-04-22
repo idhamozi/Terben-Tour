@@ -33,7 +33,7 @@
             <div class="collapse navbar-collapse" id="navM">
                 <ul class="navbar-nav ml-auto mr-3">
                     <li class="nav-item mx-md-2">
-                        <a href="#" class="nav-link active">Home</a>
+                        <a href="<?= base_url('')  ?>" class="nav-link active">Home</a>
                     </li>
                     <li class="nav-item mx-md-2">
                         <a href="#" class="nav-link">Paket Travel</a>
@@ -44,9 +44,17 @@
                 </ul>
                 <!-- Mobile Button -->
                 <form class="from-inline d-sm-block d-md-none">
+                  <?php
+                  $user_data = $this->session->userdata('user_data');
+                  if ($user_data !== null) { ?>
+                    <button class="btn btn-login my-2 my-sm-0" onclick="location.href='<?= base_url('Login/logout'); ?>'" type="button">
+                        <?php echo $user_data['first_name'] ?>
+                    </button>
+                  <?php } else { ?>
                     <button class="btn btn-login my-2 my-sm-0" onclick="location.href='<?= base_url('Login'); ?>'" type="button">
                         Masuk
                     </button>
+                  <?php } ?>
                 </form>
                 <!-- end -->
                 <!-- Desktop Button -->
@@ -280,7 +288,7 @@
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-12 col-lg-4 align-items-center">
-                                    <img src="<?= base_url('frontend\images\phone.png')  ?>" alt="">
+                                    <img src="<?= base_url('assets\frontend\images\phone.png')  ?>" alt="">
                                     <h4>Call Us For Information</h4>
                                     <span>0812145252200</span>
                                 </div>

@@ -11,6 +11,7 @@ class Login extends CI_Controller
   {
     parent::__construct();
     $this->load->model('M_GoogleLogin');
+    $this->load->model('M_Login');
   }
 
   function index()
@@ -62,6 +63,7 @@ class Login extends CI_Controller
         }
 
         $this->session->set_userdata('user_data', $user_data);
+
         redirect(base_url(''));
 
       }
@@ -76,10 +78,98 @@ class Login extends CI_Controller
     $this->load->view('login/sign-in', $data);
   }
 
-  function Commonlogin()
+  function Register()
   {
 
+  // Validasi
+  $validasi 	= $this->form_validation;
 
+  $validasi->set_rules('first_name','First Name','required',
+    array(	'required'		=> '%s harus diisi'));
+
+  $validasi->set_rules('last_name','Last Name','required',
+    array(	'required'		=> '%s harus diisi'));
+
+  $validasi->set_rules('username','Username','required|is_unique[users.username]',
+    array(	'required'		=> '%s harus diisi',
+        'is_unique'		=> '%s sudah ada. Buat username yang lain'));
+
+  $validasi->set_rules('password','Password','required',
+    array(	'required'		=> '%s harus diisi'));
+
+  if($validasi->run()===FALSE) {
+  // End validasi
+
+  $this->load->view('register/sign-up', FALSE);
+  // Masuk ke database
+  }else{
+
+    $input = $this->input;
+    $bcrypt = password_hash($input->post('password'), PASSWORD_BCRYPT);
+
+    $data = array(	'first_name'		=> $input->post('first_name'),
+            'last_name'			=> $input->post('last_name'),
+            'username'		=> $input->post('username'),
+            'email'		=> $input->post('email'),
+            'password'		=> $bcrypt,
+            'password_hint'	=> $input->post('password')
+          );
+
+    $this->M_Login->register($data);
+    $this->session->set_flashdata('sukses', 'Anda Berhasil Mendaftar');
+    redirect(base_url(''),'refresh');
+  }
+
+  }
+
+  function LoginCommon()
+  {
+    // Validasi input
+    $this->form_validation->set_rules('username','Username','required',
+      array(	'required'	=> '%s harus diisi'));
+
+    $this->form_validation->set_rules('password','Password','required',
+      array(	'required'	=> '%s harus diisi'));
+
+    if($this->form_validation->run() === TRUE) {
+      $username 	= htmlspecialchars($this->input->post('username'),ENT_QUOTES);
+      $password 	= htmlspecialchars($this->input->post('password'),ENT_QUOTES);
+
+      $ambildata = $this->M_Login->login($username)->num_rows();
+      $user = $this->M_Login->login($username)->row();
+
+      if ($ambildata == 0 || $ambildata > 1 ) {
+        // Kalau ga ada user yg cocok, suruh login lagi
+        $this->session->set_flashdata('warning', 'Data Tidak Ada');
+        redirect(base_url('Login'),'refresh');
+
+      } else {
+        if (password_verify($password, $user->password)) {
+          $user_data = array(
+            'user_id' => $user->user_id,
+            'first_name' => $user->first_name,
+            'last_name' => $user->last_name,
+            'username' => $username,
+            'email' => $user->email);
+
+          // Create session utk login
+          $this->session->set_userdata('user_data', $user_data);
+
+          // Lalu redirect masuk ke halaman dashboard
+          $this->session->set_flashdata('sukses', 'Anda berhasil login');
+
+            // Jika ga ada, default masuk ke halaman dasbor
+            redirect(base_url(''),'refresh');
+        } else {
+          // Kalau ga ada user yg cocok, suruh login lagi
+          $this->session->set_flashdata('warning', 'Username/password salah');
+          redirect(base_url('Login'),'refresh');
+        }
+      }
+    }
+    // End validasi
+
+    $this->load->view('login/sign-in', FALSE);
   }
 
   function logout()

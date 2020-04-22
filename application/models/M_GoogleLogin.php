@@ -5,6 +5,13 @@
 class M_GoogleLogin extends CI_Model
 {
 
+  // load database
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->database();
+	}
+
   function Is_already_register($id)
   {
     $this->db->where('login_oauth_uid', $id);
