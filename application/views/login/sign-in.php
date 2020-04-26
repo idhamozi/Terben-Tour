@@ -50,41 +50,6 @@
                                     <label class=" mb-2">
                                         <a href="#" class="check-forget" data-toggle="modal"
                                                 data-target="#LupaPassword">Lupa Password ?</a>
-                                                <!-- Modal - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
-                                                <div class="modal fade" id="LupaPassword" tabindex="-1" role="dialog"
-                                                    aria-labelledby="LupaPasswordLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="LupaPasswordLabel">Lupa Password
-                                                                </h5>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <Form>
-                                                                    <form action="" method="post">
-                                                                        <div class="form-group">
-                                                                            <label>Email address</label>
-                                                                            <input type="email" class="form-control" placeholder="Email">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label>Password Baru</label>
-                                                                            <input type="password" class="form-control" placeholder="Password">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label>Konfirmasi Password</label>
-                                                                            <input type="password" class="form-control" placeholder="Password">
-                                                                        </div>
-                                                                </Form>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Cancel</button>
-                                                                <button type="button" class="btn btn-primary"> Save </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-<!-- end modal - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
                                     </label>
                                 </div>
                                 <button class="btn sign_in" type="submit">Sign In</button>
@@ -123,6 +88,42 @@
     // Form close
     echo form_close();
     ?>
+
+<!-- Modal - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <div class="modal fade" id="LupaPassword" tabindex="-1" role="dialog"
+        aria-labelledby="LupaPasswordLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="LupaPasswordLabel">Lupa Password
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <Form>
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <label>Email address</label>
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label>Password Baru</label>
+                                <input type="password" class="form-control" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label>Konfirmasi Password</label>
+                                <input type="password" class="form-control" placeholder="Password">
+                            </div>
+                    </Form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary"> Save </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- end modal - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
 
     <!-- SWEETALERT -->
     <?php if($this->session->flashdata('sukses')) { ?>
