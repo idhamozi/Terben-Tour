@@ -130,27 +130,25 @@ header p {
   margin-bottom: 20px;
 }
 
-.section-bg-login {
+.section-header-sign_in {
+  background-image: url("../images/bg-sign_in.png");
+  min-height: 100vh;
   width: 100%;
-  height: 100%;
-  max-height: 100vh;
-}
-
-.section-sign_in {
-  margin-top: -59%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .section-sign_in .card-form {
   padding: 30px;
   margin-top: 30%;
-  margin-bottom: 5%;
-  height: 75%;
+  margin-bottom: 30%;
   background-color: #F3F3F3;
   border-radius: 10px;
 }
 
 .section-sign_in .login-form {
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 .section-sign_in .login-form .form-group label {
@@ -175,13 +173,13 @@ header p {
   text-decoration: none;
 }
 
-.section-sign_in .login-form .fb {
-  background-color: #DB4437;
+.section-sign_in .login-form .google {
+  background-color: #dd4b39;
   color: white;
 }
 
-.section-sign_in .login-form .fb:hover {
-  background-color: #AF362C;
+.section-sign_in .login-form .google:hover {
+  background-color: #c74533;
   color: white;
 }
 
@@ -195,14 +193,17 @@ header p {
   color: white;
 }
 
-.section-bg-sign_up {
+.section-header-sign_up {
+  background-image: url("../images/bg-sign_up.png");
+  min-height: 100vh;
   width: 100%;
-  height: 50%;
-  max-height: 99.8vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .section-sign_up .content-text {
-  margin-top: -680px;
+  margin-top: 230px;
 }
 
 .section-sign_up .content-text .text-header {
@@ -214,7 +215,6 @@ header p {
 
 .section-sign_up .content-text .text-header .text-welcome {
   font-size: 71px;
-  margin-top: 30%;
   padding-bottom: 10px;
 }
 
@@ -242,8 +242,7 @@ header p {
 }
 
 .section-sign_up .card-sign_up {
-  margin-top: -115%;
-  max-width: 100vh;
+  margin-top: 150px;
   background-color: #EEEEEE;
   border-radius: 10px;
 }
