@@ -94,6 +94,10 @@ class Login extends CI_Controller
     array(	'required'		=> '%s harus diisi',
         'is_unique'		=> '%s sudah ada. Buat username yang lain'));
 
+  $validasi->set_rules('email','Email','required|is_unique[users.email]',
+    array(	'required'		=> '%s harus diisi',
+        'is_unique'		=> '%s sudah ada. Gunakan email yang lain'));
+
   $validasi->set_rules('password','Password','required',
     array(	'required'		=> '%s harus diisi'));
 
