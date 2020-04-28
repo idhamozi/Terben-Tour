@@ -13,6 +13,10 @@
     <link href="<?= base_url('assets\frontend\libraries\font-awesome-5\css\fontawesome-all.min.css')?>" rel="stylesheet" media="all">
     <link rel="stylesheet" href="<?= base_url('assets\frontend\styles\main.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets\frontend\libraries\gjigo\css\gijgo.min.css')?>">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="<?php echo base_url('assets\frontend\plugin\iCheck\square\blue.css') ?>">
+    <!-- SWEETALERT -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>Beranda</title>
 </head>
 

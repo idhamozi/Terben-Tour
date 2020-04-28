@@ -10,12 +10,14 @@
 	<link href="<?= base_url('assets\frontend\libraries\font-awesome-5\css\fontawesome-all.min.css')  ?>" rel="stylesheet" media="all">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?= base_url('assets\frontend\styles\main.css')  ?>">
+	<!-- iCheck -->
+	<link rel="stylesheet" href="<?php echo base_url('assets\frontend\plugin\iCheck\square\blue.css') ?>">
+	<!-- SWEETALERT -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
 	<?php
-	// Notifikasi error
-	echo validation_errors('<p class="alert alert-warning">', '</p>');
 
 	// Form open
 	echo form_open(base_url('login/LoginCommon'));
@@ -32,10 +34,12 @@
 							<div class="login-form">
 								<form action="" method="post">
 									<div class="form-group">
+										<?= form_error('username');  ?>
 										<label>Username</label>
 										<input type="username" name="username" class="form-control" placeholder="Username">
 									</div>
 									<div class="form-group">
+										<?= form_error('password'); ?>
 										<label>Password</label>
 										<input type="password" name="password" class="form-control" placeholder="Password">
 									</div>
@@ -51,7 +55,7 @@
 									<div class="social-login-content mb-2">
 										<div class="social-button">
 											<a href="
-                                        <?php
+                    <?php
 										if (!isset($login_button)) {
 											$user_data = $this->session->userdata('user_data');
 										} else {

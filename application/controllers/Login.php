@@ -64,6 +64,9 @@ class Login extends CI_Controller
 
         $this->session->set_userdata('user_data', $user_data);
 
+        // Lalu set flashdata Berhasil Login
+        $this->session->set_flashdata('sukses', 'Anda berhasil login');
+
         redirect(base_url(''));
 
       }
@@ -129,11 +132,13 @@ class Login extends CI_Controller
   function LoginCommon()
   {
     // Validasi input
-    $this->form_validation->set_rules('username','Username','required',
-      array(	'required'	=> '%s harus diisi'));
+    $this->form_validation->set_rules('username','Username','required');
 
-    $this->form_validation->set_rules('password','Password','required',
-      array(	'required'	=> '%s harus diisi'));
+    $this->form_validation->set_rules('password','Password','required');
+
+      //set message form validation
+    $this->form_validation->set_message('required', '<div class="alert alert-danger" style="margin-top: 3px">
+    <div class="header"><b><i class="fa fa-exclamation-circle"></i> {field}</b> harus diisi</div></div>');
 
     if($this->form_validation->run() === TRUE) {
       $username 	= htmlspecialchars($this->input->post('username'),ENT_QUOTES);
@@ -144,8 +149,8 @@ class Login extends CI_Controller
 
       if ($ambildata == 0 || $ambildata > 1 ) {
         // Kalau ga ada user yg cocok, suruh login lagi
-        $this->session->set_flashdata('warning', 'Data Tidak Ada');
-        redirect(base_url('Login'),'refresh');
+        $this->session->set_flashdata('warning', 'Username/Password salah');
+        redirect(base_url('login'),'refresh');
 
       } else {
         if (password_verify($password, $user->password)) {
@@ -159,15 +164,15 @@ class Login extends CI_Controller
           // Create session utk login
           $this->session->set_userdata('user_data', $user_data);
 
-          // Lalu redirect masuk ke halaman dashboard
+          // Lalu set flashdata Berhasil Login
           $this->session->set_flashdata('sukses', 'Anda berhasil login');
 
-            // Jika ga ada, default masuk ke halaman dasbor
-            redirect(base_url(''),'refresh');
+          // Jika ga ada, default masuk ke halaman dasbor
+          redirect(base_url(''),'refresh');
         } else {
           // Kalau ga ada user yg cocok, suruh login lagi
-          $this->session->set_flashdata('warning', 'Username/password salah');
-          redirect(base_url('Login'),'refresh');
+          $this->session->set_flashdata('warning', 'Username/Password salah');
+          redirect(base_url('login'),'refresh');
         }
       }
     }
@@ -178,6 +183,9 @@ class Login extends CI_Controller
 
   function logout()
   {
+    // Lalu set flashdata Berhasil Login
+    $this->session->set_flashdata('sukses', 'Anda berhasil log out');
+
     $this->session->unset_userdata('access_token');
 
     $this->session->unset_userdata('user_data');
