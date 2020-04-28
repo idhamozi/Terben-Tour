@@ -18,9 +18,6 @@
 
 <?php
 
-// Notifikasi error
-echo validation_errors('<p class="alert alert-warning">', '</p>');
-
 // Form open
 echo form_open(base_url('login/register'));
 
@@ -69,14 +66,17 @@ echo form_open(base_url('login/register'));
 										</div>
 									</div>
 									<div class="form-group mb-3">
+										<?= form_error('username');  ?>
 										<label>Username</label>
 										<input type="username" name="username" value="<?php echo set_value('username'); ?>" class="form-control" placeholder="Username">
 									</div>
 									<div class="form-group mb-3">
+										<?= form_error('email');  ?>
 										<label>Email address</label>
 										<input type="email" name="email" value="<?php echo set_value('email'); ?>" class="form-control" placeholder="Email">
 									</div>
 									<div class="form-group mb-3">
+										<?= form_error('password');  ?>
 										<label>Password</label>
 										<input type="password" name="password" value="<?php echo set_value('password'); ?>" class="form-control" placeholder="Password">
 									</div>

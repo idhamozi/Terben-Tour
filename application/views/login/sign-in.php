@@ -45,8 +45,9 @@
 									</div>
 
 									<div class="form-group form-check">
-										<input type="checkbox" class="form-check-input">
-										<label class="form-check-label mb-2">Remember Me</label>
+										<label class="form-check-label mb-2">
+										<input type="checkbox" class="form-check-input"> Remember Me
+										</label>
 										<label class=" mb-2">
 											<a href="#" class="check-forget" data-toggle="modal" data-target="#LupaPassword">Lupa Password ?</a>
 										</label>

@@ -19,6 +19,40 @@
   		$this->db->insert('users', $data);
   	}
 
+    public function token($users_token)
+    {
+      $this->db->insert('users_token', $users_token);
+    }
+
+    public function user_target($email)
+    {
+      return $this->db->get_where('users', ['email' => $email]);
+    }
+
+    public function user_token($token)
+    {
+      return $this->db->get_where('users_token', ['token' => $token]);
+    }
+
+    public function verify($email)
+    {
+      $this->db->set('is_active', 1);
+      $this->db->where('email', $email);
+      $this->db->update('users');
+
+      $this->db->where('email', $email);
+      $this->db->delete('users_token');
+    }
+
+    public function verify_expired($email)
+    {
+      $this->db->where('email', $email);
+      $this->db->delete('users');
+
+      $this->db->where('email', $email);
+      $this->db->delete('users_token');
+    }
+
     // Login
     public function login($username)
     {

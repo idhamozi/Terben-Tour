@@ -84,49 +84,144 @@ class Login extends CI_Controller
   function Register()
   {
 
-  // Validasi
-  $validasi 	= $this->form_validation;
+    // Validasi
+    $validasi 	= $this->form_validation;
 
-  $validasi->set_rules('first_name','First Name','required',
-    array(	'required'		=> '%s harus diisi'));
+    $validasi->set_rules('first_name','First Name','required');
 
-  $validasi->set_rules('last_name','Last Name','required',
-    array(	'required'		=> '%s harus diisi'));
+    $validasi->set_rules('last_name','Last Name','required');
 
-  $validasi->set_rules('username','Username','required|is_unique[users.username]',
-    array(	'required'		=> '%s harus diisi',
-        'is_unique'		=> '%s sudah ada. Buat username yang lain'));
+    $validasi->set_rules('username','Username','required|is_unique[users.username]');
 
-  $validasi->set_rules('email','Email','required|is_unique[users.email]',
-    array(	'required'		=> '%s harus diisi',
-        'is_unique'		=> '%s sudah ada. Gunakan email yang lain'));
+    $validasi->set_rules('email','Email','required|is_unique[users.email]');
 
-  $validasi->set_rules('password','Password','required',
-    array(	'required'		=> '%s harus diisi'));
+    $validasi->set_rules('password','Password','required');
 
-  if($validasi->run()===FALSE) {
-  // End validasi
+      //set message form validation
+    $this->form_validation->set_message('required', '<div class="alert alert-danger" style="margin-top: 3px">
+    <div class="header"><b><i class="fa fa-exclamation-circle"></i> {field}</b> harus diisi !!!</div></div>');
+    $this->form_validation->set_message('is_unique', '<div class="alert alert-danger" style="margin-top: 3px">
+    <div class="header"><b><i class="fa fa-exclamation-circle"></i> {field}</b> sudah ada, Gunakan <b>{field}</b> yang lain !!!</div></div>');
 
-  $this->load->view('register/sign-up', FALSE);
-  // Masuk ke database
-  }else{
+    if($validasi->run()===FALSE) {
+    // End validasi
 
-    $input = $this->input;
-    $bcrypt = password_hash($input->post('password'), PASSWORD_BCRYPT);
+    $this->load->view('register/sign-up', FALSE);
+    // Masuk ke database
+    }else{
 
-    $data = array(	'first_name'		=> $input->post('first_name'),
-            'last_name'			=> $input->post('last_name'),
-            'username'		=> $input->post('username'),
-            'email'		=> $input->post('email'),
-            'password'		=> $bcrypt,
-            'password_hint'	=> $input->post('password')
-          );
+      $input = $this->input;
+      $current_datetime = date('Y-m-d H:i:s');
+      $bcrypt = password_hash($input->post('password'), PASSWORD_BCRYPT);
 
-    $this->M_Login->register($data);
-    $this->session->set_flashdata('sukses', 'Anda Berhasil Mendaftar');
-    redirect(base_url(''),'refresh');
+      $data = array(	'first_name'		=> $input->post('first_name'),
+              'last_name'			=> $input->post('last_name'),
+              'username'		=> $input->post('username'),
+              'email'		=> $input->post('email'),
+              'password'		=> $bcrypt,
+              'password_hint'	=> $input->post('password'),
+              'image_profile' => 'default.jpg',
+              'date_created' => $current_datetime
+            );
+
+      // token aktivasi
+      $token = base64_encode(openssl_random_pseudo_bytes(32));
+      $email = $this->input->post('email', true);
+
+      $users_token = [
+          'email' => $email,
+          'token' => $token,
+          'date_created' => time()
+      ];
+
+      $this->M_Login->register($data);
+
+      $this->M_Login->token($users_token);
+
+      $this->_sendEmail($token, 'verify');
+
+      $this->session->set_flashdata('sukses', 'Akun telah terdaftar, cek email untuk aktivasi');
+
+      redirect(base_url('Login'),'refresh');
+    }
   }
 
+    function _sendEmail($token, $type)
+  {
+      $config = [
+          'protocol'  => 'smtp',
+          'smtp_host' => 'ssl://terben-tour.pmh.web.id',
+          'smtp_user' => 'admin@terben-tour.pmh.web.id',
+          'smtp_pass' => 'terbentour12345',
+          'smtp_port' => 465,
+          'mailtype'  => 'html',
+          'charset'   => 'utf-8',
+          'newline'   => "\r\n"
+      ];
+
+      $this->email->initialize($config);
+
+      $this->email->from('admin@terben-tour.pmh.web.id', 'ADMIN Terben Tour');
+
+      $this->email->to($this->input->post('email'));
+
+      if ($type == 'verify') {
+
+          $this->email->subject('Account Verification');
+          $this->email->message('Click this link to verify you account : <a href="' . base_url() . 'login/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Activate</a>');
+
+      } else if ($type == 'forgot') {
+
+          $this->email->subject('Reset Password');
+          $this->email->message('Click this link to reset your password : <a href="' . base_url() . 'login/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
+      }
+
+      if ($this->email->send()) {
+          return true;
+      } else {
+          echo $this->email->print_debugger();
+          die;
+      }
+  }
+
+  function verify()
+  {
+      $email = $this->input->get('email');
+      $token = $this->input->get('token');
+
+      $user = $this->M_Login->user_target($email)->row_array();
+
+      if ($user) {
+
+          $user_token = $this->M_Login->user_token($token)->row_array();
+
+          if ($user_token) {
+              if (time() - $user_token['date_created'] < (60 * 60 * 24)) {
+
+                  $this->M_Login->verify($email);
+
+                  $this->session->set_flashdata('sukses', 'Akun dengan ' . $email . ' telah aktif !!!');
+                  redirect('Login');
+              } else {
+
+                  $this->M_Login->verify_expired($email);
+
+                  $this->session->set_flashdata('warning', 'Akun Gagal aktif, token expired !!!');
+
+                  redirect('Login');
+              }
+          } else {
+
+              $this->session->set_flashdata('warning', 'Akun Gagal aktif, token salah !!!');
+
+              redirect('Login');
+          }
+      } else {
+
+          $this->session->set_flashdata('warning', 'Akun Gagal aktif, Email salah !!!');
+
+          redirect('Login');
+      }
   }
 
   function LoginCommon()
@@ -154,21 +249,34 @@ class Login extends CI_Controller
 
       } else {
         if (password_verify($password, $user->password)) {
-          $user_data = array(
-            'user_id' => $user->user_id,
-            'first_name' => $user->first_name,
-            'last_name' => $user->last_name,
-            'username' => $username,
-            'email' => $user->email);
 
-          // Create session utk login
-          $this->session->set_userdata('user_data', $user_data);
+        $user_active = $this->M_Login->login($username)->row_array();
 
-          // Lalu set flashdata Berhasil Login
-          $this->session->set_flashdata('sukses', 'Anda berhasil login');
+            if ($user_active['is_active'] == 1) {
+              $user_data = array(
+                'user_id' => $user->user_id,
+                'first_name' => $user->first_name,
+                'last_name' => $user->last_name,
+                'username' => $username,
+                'email' => $user->email
+              );
 
-          // Jika ga ada, default masuk ke halaman dasbor
-          redirect(base_url(''),'refresh');
+              // Create session utk login
+              $this->session->set_userdata('user_data', $user_data);
+
+              // Lalu set flashdata Berhasil Login
+              $this->session->set_flashdata('sukses', 'Anda berhasil login');
+
+              // Jika ga ada, default masuk ke halaman dasbor
+              redirect(base_url(''),'refresh');
+            } else {
+              // Lalu set flashdata Berhasil Login
+              $this->session->set_flashdata('warning', 'Akun anda belum aktif, lakukan verifikasi terlebih dahulu !!!');
+
+              // Jika ga ada, default masuk ke halaman dasbor
+              redirect(base_url('login'),'refresh');
+            }
+
         } else {
           // Kalau ga ada user yg cocok, suruh login lagi
           $this->session->set_flashdata('warning', 'Username/Password salah');
