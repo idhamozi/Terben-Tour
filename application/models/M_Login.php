@@ -53,6 +53,14 @@
       $this->db->delete('users_token');
     }
 
+    public function change_password($where,$data,$table){
+      $this->db->where($where);
+      $this->db->update($table,$data);
+
+      $this->db->where($where);
+      $this->db->delete('users_token');
+    }
+
     // Login
     public function login($username)
     {
