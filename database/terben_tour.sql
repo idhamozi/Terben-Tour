@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 22 Apr 2020 pada 13.29
+-- Generation Time: 28 Apr 2020 pada 17.35
 -- Versi Server: 10.1.16-MariaDB
 -- PHP Version: 5.5.38
 
@@ -47,15 +47,38 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `password_hint` varchar(255) NOT NULL,
-  `image_profile` varchar(255) DEFAULT NULL
+  `image_profile` varchar(255) DEFAULT NULL,
+  `is_active` int(1) NOT NULL,
+  `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `username`, `email`, `password`, `password_hint`, `image_profile`) VALUES
-(1, 'as', 'ds', 'idham', '', '$2y$10$Fq4aqWJDzei8ugTKdi3ZgO/tT4Q5jmtbloQ6djJ9r8DeAcNG9Lh3q', '1234', NULL);
+INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `username`, `email`, `password`, `password_hint`, `image_profile`, `is_active`, `date_created`) VALUES
+(13, 'Mohammad', 'Idham', 'idhamozi', 'muh_idham85@yahoo.com', '$2y$10$nVnjedU0QsHhzToZ/Ndiv.GN7T8oz9xR/sfj8fz.tT9Dqp7Lmnpwe', '123123', 'default.jpg', 1, 0),
+(14, 'Mohammad', 'Idham', 'idham', 'king.idham@gmail.com', '$2y$10$RImR2NoN9kV49FpBkyGGYOruTYWZ7jxAPMvPlt0y59gWICEA/lcDm', '54321', 'default.jpg', 0, 2020);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users_token`
+--
+
+CREATE TABLE `users_token` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `date_created` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `users_token`
+--
+
+INSERT INTO `users_token` (`id`, `email`, `token`, `date_created`) VALUES
+(7, 'king.idham@gmail.com', 'Of/7XF1sImHyjX9ZLjdQVuniEgrjmkar9sJEdfFKrBM=', 1588063504);
 
 -- --------------------------------------------------------
 
@@ -98,6 +121,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
 
 --
+-- Indexes for table `users_token`
+--
+ALTER TABLE `users_token`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user_google`
 --
 ALTER TABLE `user_google`
@@ -116,7 +145,12 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `users_token`
+--
+ALTER TABLE `users_token`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `user_google`
 --

@@ -151,8 +151,8 @@ class Login extends CI_Controller
       $config = [
           'protocol'  => 'smtp',
           'smtp_host' => 'ssl://terben-tour.pmh.web.id',
-          'smtp_user' => 'admin@terben-tour.pmh.web.id',
-          'smtp_pass' => 'Terbentour12345!',
+          'smtp_user' => 'info@terben-tour.pmh.web.id',
+          'smtp_pass' => 'terbentour12345',
           'smtp_port' => 465,
           'mailtype'  => 'html',
           'charset'   => 'utf-8',
@@ -161,7 +161,7 @@ class Login extends CI_Controller
 
       $this->email->initialize($config);
 
-      $this->email->from('admin@terben-tour.pmh.web.id', 'ADMIN Terben Tour');
+      $this->email->from('info@terben-tour.pmh.web.id', 'Terben Tour & Travel');
 
       $this->email->to($this->input->post('email'));
 
