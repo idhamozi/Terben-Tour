@@ -102,8 +102,6 @@ header {
         }
     }
         .img-pict-trip{
-            height: 450px;
-            width: 400px;
             margin-bottom: 50px;
     }
  }
@@ -113,26 +111,29 @@ header {
     background: linear-gradient(rgba(255, 255, 255, 0.5) 20%, rgba(194, 194, 194, 0.5) 100%);
 }
 
-.section-testimonial{
-    img{
-        height: 450px;
-        width: 360px;
-        margin-bottom: 100px
-    }
-}
-
 .section-footer{
-    text-align: center;
-    img{
-        height: 50px;
-        width: 50px;
-        border-radius: 100%;
-        margin-bottom: 30px;
-    }
-    .section-footer-img{
-        min-height: 100px;
-        margin-bottom: 20px;
-    }
+	.logo-right{
+		img{
+			margin-top: -20px;
+			height: 100px;
+			width: 140px;
+			margin-bottom: 6px;
+		}
+		p{
+			color: grey;
+		}
+	}
+	.head-span{
+		color: #023642;
+		font-weight: 650;
+	}
+	
+	.link-footer{
+		color: #404040;
+		&:hover{ 
+			color: #202426;
+		}
+	}
 }
 
 .section-header-sign_in
