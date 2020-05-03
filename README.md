@@ -13,11 +13,15 @@ Dalam repositori ini terdapat Final Project Studi Kasus Agen Tour yang diberi na
 - [x] Landing Home Page
 - [x] Landing Register User
 - [x] Logika Register User
+- [x] Verfikasi Akun User  
 - [x] Landing Login User 
 - [x] Logika Login User via Register
 - [x] Logika Login User via Google
-- [ ] Landing Lupa Password User
-- [ ] Logika Lupa Password
+- [x] Landing Lupa Password User
+- [x] Logika Lupa Password
+- [x] Verifikasi Lupa Password User
+- [x] Landing Ubah Password
+- [x] Logika Ubah Password
 - [ ] Landing Dashboard Admin
 - [ ] Landing Dashboard User
 - [ ] Landing Pilih Paket

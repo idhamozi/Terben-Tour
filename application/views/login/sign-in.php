@@ -48,9 +48,7 @@
 										<label class="form-check-label mb-2">
 										<input type="checkbox" class="form-check-input"> Remember Me
 										</label>
-										<label class=" mb-2">
-											<a href="#" class="check-forget" data-toggle="modal" data-target="#LupaPassword">Lupa Password ?</a>
-										</label>
+
 									</div>
 									<button class="btn sign_in" type="submit">Sign In</button>
 									<div class="social-login-content mb-2">
@@ -62,18 +60,56 @@
 										} else {
 											echo $login_button;
 										} ?>
-                                        " class="google btn"><i class="fa fa-google fa-fw"></i> Login with Google
+                      " class="google btn"><i class="fa fa-google fa-fw"></i> Login with Google
 											</a>
 										</div>
 									</div>
 								</form>
+								<?php
+								// Form close
+								echo form_close();
+								?>
 								<div class="container-fluid">
 									<div class="row border-top justify-content-center align-items-center pt-3">
 										<div class="col-auto text-gray-500-font-weight-light">
 											<p>
-												Don't you have account?
-												<a href="<?= base_url('login/register')  ?>">Sign Up Here</a>
+												Don't you have account ?
+												<a href="<?= base_url('login/register')  ?>">Sign Up Now !</a>
 											</p>
+											<p>
+												Forgot Password ?
+											<a href="#" type="submit" class="check-forget" data-toggle="modal" data-target="#LupaPassword">Click Here !</a>
+											</p>
+										<!-- Modal - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+										<div class="modal fade" id="LupaPassword" tabindex="-1" role="dialog" aria-labelledby="LupaPasswordLabel" aria-hidden="true">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="LupaPasswordLabel">Lupa Password
+														</h5>
+													</div>
+													<?php
+														echo form_open(base_url('login/forgotPassword'));
+													 ?>
+													<div class="modal-body">
+																<div class="form-group">
+																	<?= form_error('email');  ?>
+																	<label>Email address</label>
+																	<input type="email" name="email" id="email" value="<?php echo set_value('email'); ?>" class="form-control" placeholder="Email">
+																</div>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+														<input class="btn btn-primary" type="submit" value="Save">
+													</div>
+													<?php
+													// Form close
+													echo form_close();
+													?>
+												</div>
+											</div>
+										</div>
+										<!-- end modal - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
 										</div>
 									</div>
 								</div>
@@ -85,44 +121,7 @@
 			</div>
 		</section>
 	</section>
-	<?php
-	// Form close
-	echo form_close();
-	?>
 
-	<!-- Modal - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
-	<div class="modal fade" id="LupaPassword" tabindex="-1" role="dialog" aria-labelledby="LupaPasswordLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="LupaPasswordLabel">Lupa Password
-					</h5>
-				</div>
-				<div class="modal-body">
-					<Form>
-						<form action="" method="post">
-							<div class="form-group">
-								<label>Email address</label>
-								<input type="email" class="form-control" placeholder="Email">
-							</div>
-							<div class="form-group">
-								<label>Password Baru</label>
-								<input type="password" class="form-control" placeholder="Password">
-							</div>
-							<div class="form-group">
-								<label>Konfirmasi Password</label>
-								<input type="password" class="form-control" placeholder="Password">
-							</div>
-						</Form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-					<button type="button" class="btn btn-primary"> Save </button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end modal - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
 
 	<!-- SWEETALERT -->
 	<?php if ($this->session->flashdata('sukses')) { ?>

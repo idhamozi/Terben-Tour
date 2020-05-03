@@ -151,7 +151,7 @@ class Login extends CI_Controller
       $config = [
           'protocol'  => 'smtp',
           'smtp_host' => 'ssl://terben-tour.pmh.web.id',
-          'smtp_user' => 'admin@terben-tour.pmh.web.id',
+          'smtp_user' => 'info@terben-tour.pmh.web.id',
           'smtp_pass' => 'terbentour12345',
           'smtp_port' => 465,
           'mailtype'  => 'html',
@@ -161,7 +161,7 @@ class Login extends CI_Controller
 
       $this->email->initialize($config);
 
-      $this->email->from('admin@terben-tour.pmh.web.id', 'ADMIN Terben Tour');
+      $this->email->from('info@terben-tour.pmh.web.id', 'Terben Tour & Travel');
 
       $this->email->to($this->input->post('email'));
 
@@ -221,6 +221,109 @@ class Login extends CI_Controller
           $this->session->set_flashdata('warning', 'Akun Gagal aktif, Email salah !!!');
 
           redirect('Login');
+      }
+  }
+
+  public function forgotPassword()
+{
+    $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+
+    //set message form validation
+    $this->form_validation->set_message('required', '<div class="alert alert-danger" style="margin-top: 3px">
+    <div class="header"><b><i class="fa fa-exclamation-circle"></i> {field}</b> harus diisi !!!</div></div>');
+
+    if ($this->form_validation->run() === FALSE) {
+
+        $this->load->view('login/sign-in', FALSE);
+
+    } else {
+        $email = $this->input->post('email');
+        $user = $this->M_Login->user_target($email)->row_array();
+
+        if ($user) {
+            // token aktivasi
+            $token = base64_encode(openssl_random_pseudo_bytes(32));
+            $users_token = [
+                'email' => $email,
+                'token' => $token,
+                'date_created' => time()
+            ];
+
+            $this->M_Login->token($users_token);
+
+            $this->_sendEmail($token, 'forgot');
+
+            $this->session->set_flashdata('sukses', 'Silahkan cek email anda !!!');
+            redirect('login');
+        } else {
+
+            $this->session->set_flashdata('warning', 'Email tidak terdaftar !!!');
+            redirect('login');
+        }
+    }
+  }
+
+  public function resetPassword()
+  {
+      $email = $this->input->get('email');
+      $token = $this->input->get('token');
+
+      $user = $this->M_Login->user_target($email)->row_array();
+
+      if ($user) {
+          $user_token = $this->M_Login->user_token($token)->row_array();
+
+          if ($user_token) {
+              $this->session->set_userdata('reset_email', $email);
+
+              $this->changePassword();
+          } else {
+
+              $this->session->set_flashdata('warning', 'Akun Gagal aktif, Token salah !!!');
+
+              redirect('login');
+          }
+      } else {
+
+          $this->session->set_flashdata('warning', 'Akun Gagal aktif, Email salah !!!');
+
+          redirect('login');
+      }
+  }
+
+
+  public function changePassword()
+  {
+      if (!$this->session->userdata('reset_email')) {
+          redirect('login');
+      }
+
+      $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[3]|matches[password_hint]');
+      $this->form_validation->set_rules('password_hint', 'Repeat Password', 'trim|required|min_length[3]|matches[password]');
+
+      if ($this->form_validation->run() === FALSE) {
+
+          $this->load->view('login/change-password', FALSE);
+
+      } else {
+
+          $bcrypt = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
+
+          $email = $this->session->userdata('reset_email');
+          $password_hint = $this->input->post('password_hint');
+
+          $data = array('password' => $bcrpyt,
+                        'password_hint' => $password_hint);
+
+          $where = array('email' => $email );
+
+          $this->M_Login->change_password($where, $data, 'users');
+
+          $this->session->unset_userdata('reset_email');
+
+          $this->session->set_flashdata('sukses', 'Password berhasil diperbarui !!!');
+
+          redirect('login');
       }
   }
 
