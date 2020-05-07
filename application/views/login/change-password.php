@@ -64,7 +64,7 @@ echo form_open(base_url('login/changePassword'));
 									</div>
 									<div class="form-group mb-3">
 										<?= form_error('password_hint');  ?>
-										<label>Password</label>
+										<label>Repeat Password</label>
 										<input type="password" name="password_hint" value="<?php echo set_value('password_hint'); ?>" class="form-control" placeholder="Repeat Password">
 									</div>
 									<button class="btn sign_up" type="submit">Change Password</button>

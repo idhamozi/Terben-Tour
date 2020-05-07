@@ -100,7 +100,7 @@
 													</div>
 													<div class="modal-footer">
 														<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-														<input class="btn btn-primary" type="submit" value="Save">
+														<input class="btn btn-primary" type="submit" value="Send Email">
 													</div>
 													<?php
 													// Form close

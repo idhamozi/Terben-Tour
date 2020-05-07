@@ -150,8 +150,8 @@ class Login extends CI_Controller
   {
       $config = [
           'protocol'  => 'smtp',
-          'smtp_host' => 'ssl://terben-tour.pmh.web.id',
-          'smtp_user' => 'info@terben-tour.pmh.web.id',
+          'smtp_host' => 'ssl://smtp.googlemail.com',
+          'smtp_user' => 'info.terbentour@gmail.com',
           'smtp_pass' => 'terbentour12345',
           'smtp_port' => 465,
           'mailtype'  => 'html',
@@ -161,7 +161,7 @@ class Login extends CI_Controller
 
       $this->email->initialize($config);
 
-      $this->email->from('info@terben-tour.pmh.web.id', 'Terben Tour & Travel');
+      $this->email->from('info.terbentour@gmail.com', 'Terben Tour & Travel');
 
       $this->email->to($this->input->post('email'));
 
@@ -307,13 +307,12 @@ class Login extends CI_Controller
 
       } else {
 
-          $bcrypt = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
 
           $email = $this->session->userdata('reset_email');
-          $password_hint = $this->input->post('password_hint');
+          $bcrypt = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
 
-          $data = array('password' => $bcrpyt,
-                        'password_hint' => $password_hint);
+          $data = array('password' => $bcrypt,
+                        'password_hint' => $this->input->post('password'));
 
           $where = array('email' => $email );
 
@@ -323,7 +322,7 @@ class Login extends CI_Controller
 
           $this->session->set_flashdata('sukses', 'Password berhasil diperbarui !!!');
 
-          redirect('login');
+          // redirect('login');
       }
   }
 
