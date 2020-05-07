@@ -307,13 +307,12 @@ class Login extends CI_Controller
 
       } else {
 
-          $bcrypt = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
 
           $email = $this->session->userdata('reset_email');
-          $password_hint = $this->input->post('password_hint');
+          $bcrypt = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
 
-          $data = array('password' => $bcrpyt,
-                        'password_hint' => $password_hint);
+          $data = array('password' => $bcrypt,
+                        'password_hint' => $this->input->post('password'));
 
           $where = array('email' => $email );
 
@@ -323,7 +322,7 @@ class Login extends CI_Controller
 
           $this->session->set_flashdata('sukses', 'Password berhasil diperbarui !!!');
 
-          redirect('login');
+          // redirect('login');
       }
   }
 
