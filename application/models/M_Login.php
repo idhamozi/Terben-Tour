@@ -73,6 +73,18 @@
 
     }
 
+    // Login
+    public function login_admin($username)
+    {
+
+    $this->db->select('*')
+             ->from('admin')
+             // where
+             ->where('username', $username);
+    return $this->db->get();
+
+    }
+
   }
 
 

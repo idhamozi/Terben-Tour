@@ -310,9 +310,11 @@ class Login extends CI_Controller
 
           $email = $this->session->userdata('reset_email');
           $bcrypt = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
+          $current_datetime = date('Y-m-d H:i:s');
 
           $data = array('password' => $bcrypt,
-                        'password_hint' => $this->input->post('password'));
+                        'password_hint' => $this->input->post('password'),
+                        'date_created' => $current_datetime);
 
           $where = array('email' => $email );
 
@@ -357,9 +359,9 @@ class Login extends CI_Controller
             if ($user_active['is_active'] == 1) {
               $user_data = array(
                 'user_id' => $user->user_id,
+                'username' => $username,
                 'first_name' => $user->first_name,
                 'last_name' => $user->last_name,
-                'username' => $username,
                 'email' => $user->email
               );
 

@@ -19,6 +19,8 @@
 </head>
 
 <body>
+  <?php $user_data = $this->session->userdata('user_data');  ?>
+
     <!-- navbar -->
     <div class="container">
         <nav class="row navbar navbar-expand-lg navbar-light bg-white">
@@ -45,11 +47,10 @@
                 <!-- Mobile Button -->
                 <form class="from-inline d-sm-block d-md-none">
                     <?php
-                    $user_data = $this->session->userdata('user_data');
                     if ($user_data !== null) { ?>
                         <div class="dropdown">
                             <button class="btn btn-login my-2 my-sm-0" type="button" data-toggle="dropdown">
-                                <?php echo $user_data['first_name'] ?>
+                                <?= $user_data['username']; ?>
                                 <i class="fa fa-angle-down ml-2 opacity-8"></i>
                             </button>
                             <div class="dropdown-menu">
@@ -70,11 +71,10 @@
                 <!-- Desktop Button -->
                 <form class="from-inline my-2 my-lg-0 d-none d-md-block">
                     <?php
-                    $user_data = $this->session->userdata('user_data');
                     if (null !== $user_data) { ?>
                         <div class="dropdown">
                             <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4"  type="button" data-toggle="dropdown">
-                                <?php echo $user_data['first_name'] ?>
+                                <?php echo $user_data['username'] ?>
                                 <i class="fa fa-angle-down ml-2 opacity-8"></i>
                             </button>
                             <div class="dropdown-menu">
@@ -147,7 +147,7 @@
                                         </form>
                                     </div>
                                     <div class="col-lg-5 mt-5">
-                                        <img class="img-pict-trip rounded bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5" width="500" height="500"" src="<?= base_url('assets\frontend\images\pict-trip.png')  ?>" alt="gambar1" >
+                                        <img class="img-pict-trip rounded bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5" width="500" height="500" src="<?= base_url('assets\frontend\images\pict-trip.png')  ?>" alt="gambar1" >
                                     </div>
                                 </div>
                             </div>
@@ -175,7 +175,7 @@
                                         </form>
                                     </div>
                                     <div class="col-lg-5 mt-5">
-                                        <img class="img-pict-trip rounded bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5" width="500" height="500"" src="<?= base_url('assets\frontend\images\pict-trip.png')  ?>" alt="gambar1" >
+                                        <img class="img-pict-trip rounded bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5" width="500" height="500" src="<?= base_url('assets\frontend\images\pict-trip.png')  ?>" alt="gambar1" >
                                     </div>
                                 </div>
                             </div>
@@ -276,7 +276,7 @@
             </div>
         </section>
 	</main>
-	
+
 	<footer class="section-footer mt-5 mb-4 border-top">
         <div class="container pt-5 pb-5">
             <div class="row justify-content-center">
@@ -338,7 +338,7 @@
             swal("Oops...", "<?php echo $this->session->flashdata('warning'); ?>", "warning")
         </script>
 	<?php } ?>
-	
+
 </body>
 
 <script src="<?= base_url('assets\frontend\libraries\jquery\jquery-3.4.1.min.js')  ?>"></script>
