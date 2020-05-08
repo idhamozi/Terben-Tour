@@ -445,13 +445,17 @@
                                 </li>
                                 <li class="app-sidebar__heading">SETTING ADMIN</li>
                                 <li>
-                                    <a href="<?= base_url('Administrator/Dashboard') ?>">
+                                    <a href="<?= base_url('Administrator/Add_admin') ?>">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         Tambah Admin
                                     </a>
-                                    <a href="<?= base_url('Administrator/Dashboard') ?>">
+                                    <a href="<?= base_url('Administrator/List_admin') ?>">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         List Admin
+                                    </a>
+                                    <a href="<?= base_url('Administrator/logout') ?>">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        Logout
                                     </a>
                                 </li>
                             </ul>

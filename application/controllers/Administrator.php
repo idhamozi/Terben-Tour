@@ -10,6 +10,8 @@ class Administrator extends CI_Controller
   {
     parent::__construct();
     $this->load->model('M_Login');
+    $this->load->model('M_Admin');
+
   }
 
   function index()
@@ -68,24 +70,44 @@ class Administrator extends CI_Controller
 
   function Dashboard()
   {
+    if (!$this->session->userdata('admin_data')) {
+        $this->session->set_flashdata('warning', 'Anda belum login !!!');
+        redirect('Administrator');
+    }
     $this->load->view('admin/dashboard');
   }
 
   function Add_admin()
   {
+    if (!$this->session->userdata('admin_data')) {
+        $this->session->set_flashdata('warning', 'Anda belum login !!!');
+        redirect('Administrator');
+    }
     // Validasi
-    $validasi 	= $this->form_validation;
-    $validasi->set_rules('username','Username','required|is_unique[users.username]');
-    $validasi->set_rules('password','Password','required');
+    $validasi = $this->form_validation;
+    $validasi->set_rules('username','Username','required|is_unique[admin.username]');
+    $validasi->set_rules('email','Email','required|is_unique[admin.email]');
+    $validasi->set_rules('nama_admin','Nama admin','required');
+    $validasi->set_rules('password','Password', 'trim|required|min_length[3]|matches[password_hint]');
+    $validasi->set_rules('password_hint','Password Hint', 'trim|required|min_length[3]|matches[password]');
 
     //set message form validation
   $this->form_validation->set_message('required', '<div class="alert alert-danger" style="margin-top: 3px">
   <div class="header"><b><i class="fa fa-exclamation-circle"></i> {field}</b> harus diisi !!!</div></div>');
 
+  $this->form_validation->set_message('matches', '<div class="alert alert-danger" style="margin-top: 3px">
+  <div class="header"><b><i class="fa fa-exclamation-circle"></i> {field} tidak sama !!!</b></div></div>');
+
+  $this->form_validation->set_message('min_length', '<div class="alert alert-danger" style="margin-top: 3px">
+  <div class="header"><b><i class="fa fa-exclamation-circle"></i> Password terlalu pendek !!!</b></div></div>');
+
+  $this->form_validation->set_message('is_unique', '<div class="alert alert-danger" style="margin-top: 3px">
+  <div class="header"><b><i class="fa fa-exclamation-circle"></i> {field}</b> sudah ada !!!</div></div>');
+
   if($validasi->run()===FALSE) {
   // End validasi
 
-  $this->load->view('admin/admin', FALSE);
+  $this->load->view('admin/setting/add_admin', FALSE);
   // Masuk ke database
   }else{
 
@@ -94,17 +116,26 @@ class Administrator extends CI_Controller
 
       $data = array(
               'username'		=> $input->post('username'),
+              'email'		=> $input->post('email'),
               'nama_admin' => $input->post('nama_admin'),
               'password'		=> $bcrypt,
-              'password_hint'	=> $input->post('password'),
+              'password_hint'	=> $input->post('password_hint'),
             );
 
       $this->M_Admin->register_admin($data);
 
       $this->session->set_flashdata('sukses', 'Admin berhasil didaftarkan');
 
-      redirect(base_url('Administrator'),'refresh');
+      redirect(base_url('Administrator/Dashboard'),'refresh');
 
+    }
+  }
+
+  function List_admin()
+  {
+    if (!$this->session->userdata('admin_data')) {
+        $this->session->set_flashdata('warning', 'Anda belum login !!!');
+        redirect('Administrator');
     }
   }
 

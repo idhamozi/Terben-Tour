@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Dashboard - Admin</title>
+    <title>Dashboard - Add Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
@@ -445,13 +445,17 @@
                                 </li>
                                 <li class="app-sidebar__heading">SETTING ADMIN</li>
                                 <li>
-                                    <a href="<?= base_url('Administrator/Dashboard') ?>" class="mm-active">
+                                    <a href="<?= base_url('Administrator/Add_admin') ?>" class="mm-active">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         Tambah Admin
                                     </a>
-                                    <a href="<?= base_url('Administrator/Dashboard') ?>">
+                                    <a href="<?= base_url('Administrator/List_admin') ?>">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         List Admin
+                                    </a>
+                                    <a href="<?= base_url('Administrator/logout') ?>">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        Logout
                                     </a>
                                 </li>
                             </ul>
@@ -461,14 +465,43 @@
                 <div class="app-main__outer">
                     <div class="app-main__inner">
                         <div class="row">
-                            <div class="col-md-6 col-xl-4">
-
-                            </div>
-                            <div class="col-md-6 col-xl-4">
-
-                            </div>
-                            <div class="col-md-6 col-xl-4">
-
+                            <div class="col-md-12">
+                              <?php // Form open
+                              echo form_open(base_url('Administrator/add_admin'));
+                               ?>
+                              <form>
+                                <div class="form-group">
+                                  <?= form_error('username');  ?>
+                                  <label for="username">Username</label>
+                                  <input type="text" class="form-control" value="<?= set_value('username');  ?>" name="username" aria-describedby="emailHelp" placeholder="Username">
+                                  <small id="emailHelp" class="form-text text-muted">Username Admin to Login</small>
+                                </div>
+                                <div class="form-group">
+                                  <?= form_error('email');  ?>
+                                  <label for="email">Alamat Email</label>
+                                  <input type="email" class="form-control" value="<?= set_value('email');  ?>" name="email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                  <?= form_error('nama_admin');  ?>
+                                  <label for="nama_admin">Nama</label>
+                                  <input type="text" class="form-control" value="<?= set_value('nama_admin');  ?>" name="nama_admin" placeholder="Nama Lengkap">
+                                </div>
+                                <div class="form-group">
+                                  <?= form_error('password');  ?>
+                                  <label for="password">Password</label>
+                                  <input type="password" class="form-control" value="<?= set_value('password');  ?>" name="password" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                  <?= form_error('password_hint');  ?>
+                                  <label for="password">Repeat Password</label>
+                                  <input type="password" class="form-control" value="<?= set_value('password_hint');  ?>" name="password_hint" placeholder="Repeat Password">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add Admin</button>
+                              </form>
+                              <?php
+                              // Form close
+                              echo form_close();
+                              ?>
                             </div>
                             <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
 
