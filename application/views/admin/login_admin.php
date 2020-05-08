@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Administrator Login</title>
+	<title>Admin Sign In</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -37,7 +37,7 @@ echo form_open(base_url('Administrator'));
 		<div class="container-login100" style="background-image: url('<?= base_url('assets/frontend/images/banner.png') ?>');">
 			<div class="wrap-login100 p-t-30 p-b-50">
 				<span class="login100-form-title p-b-41">
-					Administrator Login
+					Administrator
 				</span>
 				<form class="login100-form validate-form p-b-33 p-t-5">
 					<?= form_error('username');  ?>
