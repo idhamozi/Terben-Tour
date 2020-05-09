@@ -22,8 +22,8 @@ Dalam repositori ini terdapat Final Project Studi Kasus Agen Tour yang diberi na
 - [x] Verifikasi Lupa Password User
 - [x] Landing Ubah Password
 - [x] Logika Ubah Password
-- [ ] Landing Dashboard Admin
-- [ ] Landing Dashboard User
+- [x] Landing Dashboard Admin
+- [x] Landing Dashboard User
 - [ ] Landing Pilih Paket
 - [ ] Landing Detail Paket
 - [ ] Landing Checkout
@@ -35,5 +35,5 @@ Dalam repositori ini terdapat Final Project Studi Kasus Agen Tour yang diberi na
 
 ### Demo Website
 
-[Go Now](terben-tour.pmh.web.id)
+[Go Now](http://terben-tour.pmh.web.id/)
 

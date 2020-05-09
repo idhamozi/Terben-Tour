@@ -50,7 +50,7 @@
                     if ($user_data !== null) { ?>
                         <div class="dropdown">
                             <button class="btn btn-login my-2 my-sm-0" type="button" data-toggle="dropdown">
-                                <?= $user_data['username']; ?>
+                                <?= $user_data['email']; ?>
                                 <i class="fa fa-angle-down ml-2 opacity-8"></i>
                             </button>
                             <div class="dropdown-menu">
@@ -74,7 +74,7 @@
                     if (null !== $user_data) { ?>
                         <div class="dropdown">
                             <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4"  type="button" data-toggle="dropdown">
-                                <?php echo $user_data['username'] ?>
+                                <?php echo $user_data['email'] ?>
                                 <i class="fa fa-angle-down ml-2 opacity-8"></i>
                             </button>
                             <div class="dropdown-menu">
@@ -152,7 +152,7 @@
                                 </div>
                             </div>
                             <div class="carousel-item">
-								<div class="row featurette section-text">
+								                <div class="row featurette section-text">
                                     <div class="col-lg-7 mt-5">
                                         <h3 class="mt-1">Exclusive Trips</h3>
                                         <h2 class="mt-5">Nikmati Paket Liburan akhir Tahun 2020 di Raja Ampat </h2>
@@ -180,7 +180,7 @@
                                 </div>
                             </div>
                             <div class="carousel-item">
-								<div class="row featurette section-text">
+								                <div class="row featurette section-text">
                                     <div class="col-lg-7 mt-5">
                                         <h3 class="mt-1">Exclusive Trips</h3>
                                         <h2 class="mt-5">Nikmati Paket Liburan akhir Tahun 2020 di Raja Ampat </h2>
@@ -290,7 +290,7 @@
                         <div class="col-12 col-lg-2">
                             <h5 class="head-span"> Pemula</h5>
                             <ul class="list-unstyled text-gray-500-font-weight-light">
-                                <li><a class="link-footer" href="#">New Account</a></li>
+                                <li><a class="link-footer" href="<?= base_url('Login/Register')  ?>">New Account</a></li>
                                 <li><a class="link-footer" href="#">Use Payment</a></li>
                                 <li><a class="link-footer" href="#">Start Trips</a></li>
                             </ul>
@@ -299,8 +299,8 @@
                         <div class=" col-12 col-lg-2">
                             <h5 class="head-span">Lainnya</h5>
                             <ul class="list-unstyled text-gray-500-font-weight-light">
-								<li><a class="link-footer" href="#">Syarat & Ketentuan</a></li>
-								<li><a class="link-footer" href="#">Kebijakan & Privasi</a></li>
+					                      <li><a class="link-footer" href="#">Syarat & Ketentuan</a></li>
+	                              <li><a class="link-footer" href="#">Kebijakan & Privasi</a></li>
                                 <li><a class="link-footer" href="#">Media</a></li>
                             </ul>
                         </div>
@@ -320,7 +320,7 @@
         <div class="container-fluid">
             <div class="row border-top justify-content-center align-items-center pt-4">
                 <div class="col-auto text-gray-500-font-weight-light">
-					2020.Copyright.Terben.Tour
+					             <p>&copy; <?php echo date('Y') ?>. Copyright By <a href="http://terben-tour.pmh.web.id" title="Terben Tour and Travel">Terben Tour and Travel IT Team</a></p>
                 </div>
             </div>
         </div>

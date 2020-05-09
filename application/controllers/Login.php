@@ -324,7 +324,7 @@ class Login extends CI_Controller
 
           $this->session->set_flashdata('sukses', 'Password berhasil diperbarui !!!');
 
-          // redirect('login');
+          redirect('Login');
       }
   }
 

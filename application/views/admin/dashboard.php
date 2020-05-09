@@ -68,7 +68,7 @@
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                            <button type="button" tabindex="0" class="dropdown-item" onclick="location.href='<?= base_url('Administrator/logout'); ?>'">Logout</button>
+                                          <a href="#" onclick="logout_admin<?= $admin_data['username'] ?>()" class="dropdown-item">Logout</a>
                                         </div>
                                     </div>
                                 </div>
@@ -423,39 +423,39 @@
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
                                     <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon"></i>
-                                                    Expensive Travel
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon"></i>
-                                                    Medium Travel
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon"></i>
-                                                    Ekonomi Travel
-                                            </a>
-                                        </li>
+                                      <li>
+                                          <a href="#">
+                                              <i class="metismenu-icon"></i>
+                                                  Exclusive Travel
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="#">
+                                              <i class="metismenu-icon"></i>
+                                                  Business Travel
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="#">
+                                              <i class="metismenu-icon"></i>
+                                                  Economic Travel
+                                          </a>
+                                      </li>
                                     </ul>
                                 </li>
                                 <li class="app-sidebar__heading">SETTING ADMIN</li>
                                 <li>
                                     <a href="<?= base_url('Administrator/Add_admin') ?>">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        <i class="metismenu-icon pe-7s-add-user"></i>
                                         Tambah Admin
                                     </a>
                                     <a href="<?= base_url('Administrator/List_admin') ?>">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        <i class="metismenu-icon pe-7s-users"></i>
                                         List Admin
                                     </a>
-                                    <a href="<?= base_url('Administrator/logout') ?>">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                        Logout
+                                    <a href="#" onclick="logout_admin<?= $admin_data['username'] ?>()" class="dropdown-item">
+                                      <i class="metismenu-icon pe-7s-power"></i>
+                                      Logout
                                     </a>
                                 </li>
                             </ul>
@@ -481,6 +481,14 @@
                     </div>
         </div>
     </div>
+<script>
+  function logout_admin<?= $admin_data['username'] ?>() {
+    var txt;
+    if (confirm("Anda yakin ingin Logout ?")) {
+      window.location = "<?= base_url() . 'Administrator/logout/' . $admin_data['username'] ?>";
+    }
+  }
+</script>
 <script type="text/javascript" src="<?= base_url('assets\backend\script\main.js')?>"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- SWEETALERT -->

@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
-
-	<link href="<?= base_url('assets\backend\style\main.css')?>" rel="stylesheet">
+    <link href="<?= base_url('assets\frontend\libraries\font-awesome-5\css\fontawesome-all.min.css') ?>" rel="stylesheet" media="all">
+	  <link href="<?= base_url('assets\backend\style\main.css')?>" rel="stylesheet">
 </head>
 <body>
   <?php $admin_data = $this->session->userdata('admin_data');  ?>
@@ -68,7 +68,7 @@
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                            <button type="button" tabindex="0" class="dropdown-item" onclick="location.href='<?= base_url('Administrator/logout'); ?>'">Logout</button>
+                                          <a href="#" onclick="logout_admin<?= $admin_data['username'] ?>()" class="dropdown-item">Logout</a>
                                         </div>
                                     </div>
                                 </div>
@@ -423,39 +423,39 @@
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
                                     <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon"></i>
-                                                    Expensive Travel
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon"></i>
-                                                    Medium Travel
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon"></i>
-                                                    Ekonomi Travel
-                                            </a>
-                                        </li>
+                                      <li>
+                                          <a href="#">
+                                              <i class="metismenu-icon"></i>
+                                                  Exclusive Travel
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="#">
+                                              <i class="metismenu-icon"></i>
+                                                  Business Travel
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="#">
+                                              <i class="metismenu-icon"></i>
+                                                  Economic Travel
+                                          </a>
+                                      </li>
                                     </ul>
                                 </li>
                                 <li class="app-sidebar__heading">SETTING ADMIN</li>
                                 <li>
                                     <a href="<?= base_url('Administrator/Add_admin') ?>" class="mm-active">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        <i class="metismenu-icon pe-7s-add-user"></i>
                                         Tambah Admin
                                     </a>
                                     <a href="<?= base_url('Administrator/List_admin') ?>">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        <i class="metismenu-icon pe-7s-users"></i>
                                         List Admin
                                     </a>
-                                    <a href="<?= base_url('Administrator/logout') ?>">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                        Logout
+                                    <a href="#" onclick="logout_admin<?= $admin_data['username'] ?>()" class="dropdown-item">
+                                      <i class="metismenu-icon pe-7s-power"></i>
+                                      Logout
                                     </a>
                                 </li>
                             </ul>
@@ -466,6 +466,9 @@
                     <div class="app-main__inner">
                         <div class="row">
                             <div class="col-md-12">
+                              <h3><b><center>TAMBAH ADMIN</center></b></h3>
+
+                              <div class="card-body">
                               <?php // Form open
                               echo form_open(base_url('Administrator/add_admin'));
                                ?>
@@ -496,12 +499,14 @@
                                   <label for="password">Repeat Password</label>
                                   <input type="password" class="form-control" value="<?= set_value('password_hint');  ?>" name="password_hint" placeholder="Repeat Password">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Add Admin</button>
+                                <button type="button" class="btn btn-warning btn-lg" onclick="location.href='<?= base_url('Administrator/Dashboard'); ?>'">Back</button>
+                                <button type="submit" class="btn btn-success btn-lg">Save</button>
                               </form>
                               <?php
                               // Form close
                               echo form_close();
                               ?>
+                              </div>
                             </div>
                             <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
 
@@ -510,6 +515,14 @@
                     </div>
         </div>
     </div>
+<script>
+  function logout_admin<?= $admin_data['username'] ?>() {
+    var txt;
+    if (confirm("Anda yakin ingin Logout ?")) {
+      window.location = "<?= base_url() . 'Administrator/logout/' . $admin_data['username'] ?>";
+    }
+  }
+</script>
 <script type="text/javascript" src="<?= base_url('assets\backend\script\main.js')?>"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- SWEETALERT -->

@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Dashboard - Admin</title>
+    <title>Dashboard - List Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
-
-	<link href="<?= base_url('assets\backend\style\main.css')?>" rel="stylesheet">
+    <link href="<?= base_url('assets\frontend\libraries\font-awesome-5\css\fontawesome-all.min.css') ?>" rel="stylesheet" media="all">
+    <link href="<?= base_url('assets\backend\style\main.css')?>" rel="stylesheet">
 </head>
 <body>
   <?php $admin_data = $this->session->userdata('admin_data');  ?>
@@ -68,13 +68,13 @@
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                            <button type="button" tabindex="0" class="dropdown-item" onclick="location.href='<?= base_url('Administrator/logout'); ?>'">Logout</button>
+                                            <a href="#" onclick="logout_admin<?= $admin_data['username'] ?>()" class="dropdown-item">Logout</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="widget-content-left  ml-3 header-user-info">
                                     <div class="widget-heading">
-                                        <?= $admin_data['nama_admin'];  ?>
+                                      <?= $admin_data['nama_admin'];  ?>
                                     </div>
                                     <div class="widget-subheading">
                                       <?= $admin_data['username'];  ?>
@@ -426,19 +426,19 @@
                                         <li>
                                             <a href="#">
                                                 <i class="metismenu-icon"></i>
-                                                    Expensive Travel
+                                                    Exclusive Travel
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="metismenu-icon"></i>
-                                                    Medium Travel
+                                                    Business Travel
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="metismenu-icon"></i>
-                                                    Ekonomi Travel
+                                                    Economic Travel
                                             </a>
                                         </li>
                                     </ul>
@@ -446,16 +446,16 @@
                                 <li class="app-sidebar__heading">SETTING ADMIN</li>
                                 <li>
                                     <a href="<?= base_url('Administrator/Add_admin') ?>">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        <i class="metismenu-icon pe-7s-add-user"></i>
                                         Tambah Admin
                                     </a>
                                     <a href="<?= base_url('Administrator/List_admin') ?>" class="mm-active">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        <i class="metismenu-icon pe-7s-users"></i>
                                         List Admin
                                     </a>
-                                    <a href="<?= base_url('Administrator/logout') ?>">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                        Logout
+                                    <a href="#" onclick="logout_admin<?= $admin_data['username'] ?>()" class="dropdown-item">
+                                      <i class="metismenu-icon pe-7s-power"></i>
+                                      Logout
                                     </a>
                                 </li>
                             </ul>
@@ -465,14 +465,53 @@
                 <div class="app-main__outer">
                     <div class="app-main__inner">
                         <div class="row">
-                            <div class="col-md-6 col-xl-4">
+                            <div class="col-md-12">
+                              <h3><b><center>LIST ADMIN</center></b></h3>
+                              <div class="card-body">
+                                <div class="table-resposive">
+                                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                      <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Username</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <?php foreach ($All_admin->result_array() as $row) {  ?>
+                                        <tr>
+                                          <td><?= $row['nama_admin']; ?></td>
+                                          <td><?= $row['email']; ?></td>
+                                          <td><?= $row['username']; ?></td>
+                                          <td>
+                                            <?php if ($row['is_active'] == 1) { ?>
+                                            <i class="metismenu-icon pe-7s-check"></i>
+                                            <?php echo "Online";
+                                          }  else if ($row['is_active'] == 0) { ?>
+                                            <i class="metismenu-icon pe-7s-close-circle"></i>
+                                              <?php echo "Offline"; } ?>
+                                          </td>
+                                          <td>
 
-                            </div>
-                            <div class="col-md-6 col-xl-4">
+                                            <a href="#" onclick="delete_admin<?= $row['admin_id'] ?>()" class="btn btn-danger badge">Delete</a>
+                                            <script>
+                                              function delete_admin<?= $row['admin_id'] ?>() {
+                                                var txt;
+                                                if (confirm("Anda yakin ingin mendelete data ini?")) {
+                                                  window.location = "<?= base_url() . 'Administrator/hapus_admin/' . $row['admin_id'] ?>";
+                                                }
+                                              }
+                                            </script>
+                                          </td>
+                                        </tr>
+                                      <?php } ?>
+                                    </tbody>
+                                  </table>
 
-                            </div>
-                            <div class="col-md-6 col-xl-4">
-
+                                </div>
+                              </div>
                             </div>
                             <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
 
@@ -481,6 +520,14 @@
                     </div>
         </div>
     </div>
+<script>
+  function logout_admin<?= $admin_data['username'] ?>() {
+    var txt;
+    if (confirm("Anda yakin ingin Logout ?")) {
+      window.location = "<?= base_url() . 'Administrator/logout/' . $admin_data['username'] ?>";
+    }
+  }
+</script>
 <script type="text/javascript" src="<?= base_url('assets\backend\script\main.js')?>"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- SWEETALERT -->

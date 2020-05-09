@@ -77,12 +77,23 @@
     public function login_admin($username)
     {
 
+    $this->db->set('is_active', 1);
+    $this->db->where('username', $username);
+    $this->db->update('admin');
+
     $this->db->select('*')
              ->from('admin')
              // where
              ->where('username', $username);
     return $this->db->get();
 
+    }
+
+    public function logout_admin($username)
+    {
+      $this->db->set('is_active', 0);
+      $this->db->where('username', $username);
+      $this->db->update('admin');
     }
 
   }

@@ -137,14 +137,40 @@ class Administrator extends CI_Controller
         $this->session->set_flashdata('warning', 'Anda belum login !!!');
         redirect('Administrator');
     }
+
+    $data['All_admin'] = $this->M_Admin->getAllAdmin();
+
+    $this->load->view('admin/setting/list_admin', $data);
+
   }
 
-  function logout()
+  function hapus_admin($admin_id)
   {
+    $this->M_Admin->delete_admin($admin_id);
+
+    $this->session->set_flashdata('sukses', 'Data berhasil dihapus !!!');
+
+    redirect(base_url('Administrator/List_admin'),'refresh');
+
+  }
+
+  function logout($username)
+  {
+
+    $admin = $this->M_Login->login_admin($username)->row();
+
+    $this->M_Login->logout_admin($username);
+
     // Lalu set flashdata Berhasil Login
     $this->session->set_flashdata('sukses', 'Anda berhasil log out');
 
-    $this->session->unset_userdata('admin_data');
+    $admin_data = array(
+      'admin_id' => $admin->admin_id,
+      'nama_admin' => $admin->nama_admin,
+      'username' => $username
+    );
+
+    $this->session->unset_userdata('admin_data', $admin_data);
 
     redirect(base_url('Administrator'));
   }
