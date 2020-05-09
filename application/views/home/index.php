@@ -55,7 +55,7 @@
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">User Account</a>
-                                <a class="dropdown-item" href="#">Setting</a>
+                                <a class="dropdown-item" href="<?= base_url('User/editProfile');  ?>">Setting</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" onclick="location.href='<?= base_url('Login/logout'); ?>'" type="button">Logout</a>
                             </div>
@@ -74,12 +74,12 @@
                     if (null !== $user_data) { ?>
                         <div class="dropdown">
                             <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4"  type="button" data-toggle="dropdown">
-                                <?php echo $user_data['email'] ?>
+                                <?= $user_data['email'] ?>
                                 <i class="fa fa-angle-down ml-2 opacity-8"></i>
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">User Account</a>
-                                <a class="dropdown-item" href="#">Setting</a>
+                                <a class="dropdown-item" href="<?= base_url('User/editProfile');  ?>">Setting</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" onclick="location.href='<?= base_url('Login/logout'); ?>'" type="button">Logout</a>
                             </div>

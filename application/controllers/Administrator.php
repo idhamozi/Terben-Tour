@@ -72,7 +72,7 @@ class Administrator extends CI_Controller
   {
     if (!$this->session->userdata('admin_data')) {
         $this->session->set_flashdata('warning', 'Anda belum login !!!');
-        redirect('Administrator');
+        redirect(base_url('Administrator'),'refresh');
     }
     $this->load->view('admin/dashboard');
   }
@@ -81,7 +81,7 @@ class Administrator extends CI_Controller
   {
     if (!$this->session->userdata('admin_data')) {
         $this->session->set_flashdata('warning', 'Anda belum login !!!');
-        redirect('Administrator');
+        redirect(base_url('Administrator'),'refresh');
     }
     // Validasi
     $validasi = $this->form_validation;
@@ -135,7 +135,7 @@ class Administrator extends CI_Controller
   {
     if (!$this->session->userdata('admin_data')) {
         $this->session->set_flashdata('warning', 'Anda belum login !!!');
-        redirect('Administrator');
+        redirect(base_url('Administrator'),'refresh');
     }
 
     $data['All_admin'] = $this->M_Admin->getAllAdmin();
@@ -172,7 +172,7 @@ class Administrator extends CI_Controller
 
     $this->session->unset_userdata('admin_data', $admin_data);
 
-    redirect(base_url('Administrator'));
+    redirect(base_url('Administrator'),'refresh');
   }
 
 }

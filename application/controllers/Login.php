@@ -120,7 +120,7 @@ class Login extends CI_Controller
               'email'		=> $input->post('email'),
               'password'		=> $bcrypt,
               'password_hint'	=> $input->post('password'),
-              'image_profile' => 'default.jpg',
+              'img_profile' => 'assets/frontend/images/users/profile/default.jpg',
               'date_created' => $current_datetime
             );
 
@@ -362,7 +362,8 @@ class Login extends CI_Controller
                 'username' => $username,
                 'first_name' => $user->first_name,
                 'last_name' => $user->last_name,
-                'email' => $user->email
+                'email' => $user->email,
+                'img_profile' => $user->img_profile
               );
 
               // Create session utk login

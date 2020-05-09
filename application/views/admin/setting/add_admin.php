@@ -12,6 +12,8 @@
     <meta name="msapplication-tap-highlight" content="no">
     <link href="<?= base_url('assets\frontend\libraries\font-awesome-5\css\fontawesome-all.min.css') ?>" rel="stylesheet" media="all">
 	  <link href="<?= base_url('assets\backend\style\main.css')?>" rel="stylesheet">
+    <!-- SWEETALERT -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
   <?php $admin_data = $this->session->userdata('admin_data');  ?>
@@ -524,7 +526,6 @@
   }
 </script>
 <script type="text/javascript" src="<?= base_url('assets\backend\script\main.js')?>"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- SWEETALERT -->
 <?php if ($this->session->flashdata('sukses')) { ?>
   <script>
