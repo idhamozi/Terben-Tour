@@ -40,18 +40,18 @@ class Login extends CI_Controller
         if ($this->M_GoogleLogin->Is_already_register($data['id']))
         {
           // update data
-          $user_data = array(
+          $login_data = array(
             'first_name' => $data['given_name'],
             'last_name'  => $data['family_name'],
             'email'      => $data['email'],
             'img_profile'=> $data['picture'],
             'updated_at'  => $current_datetime);
 
-            $this->M_GoogleLogin->Update_user_data($user_data, $data['id']);
+            $this->M_GoogleLogin->Update_user_data($login_data, $data['id']);
         }
         else {
           // insert data
-          $user_data = array(
+          $login_data = array(
             'login_oauth_uid' => $data['id'],
             'first_name'      => $data['given_name'],
             'last_name'       => $data['family_name'],
@@ -59,8 +59,20 @@ class Login extends CI_Controller
             'img_profile'     => $data['picture'],
             'created_at'       => $current_datetime);
 
-            $this->M_GoogleLogin->Insert_user_data($user_data);
+            $this->M_GoogleLogin->Insert_user_data($login_data);
         }
+
+        $email = $data['email'];
+
+        $user = $this->M_GoogleLogin->cek_google($email)->row();
+
+        $user_data = array(
+          'login_oauth_uid' => $data['id'],
+          'first_name'      => $data['given_name'],
+          'last_name'       => $data['family_name'],
+          'email'           => $data['email'],
+          'img_profile'     => $data['picture'],
+          'created_at'       => $user->created_at);
 
         $this->session->set_userdata('user_data', $user_data);
 

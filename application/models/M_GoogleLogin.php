@@ -35,6 +35,17 @@ class M_GoogleLogin extends CI_Model
   {
     $this->db->insert('user_google', $data);
   }
+
+	public function cek_google($email)
+	{
+
+	$this->db->select('*')
+					 ->from('user_google')
+					 // where
+					 ->where('email', $email);
+	return $this->db->get();
+
+	}
 }
 
  ?>

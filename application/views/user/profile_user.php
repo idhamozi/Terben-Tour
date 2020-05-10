@@ -212,28 +212,18 @@
 										<nav class="sidebar mb-3 ml-3 mt-3 mr-3 ">
 											<ul class="nav flex-column">
 												<div class="sidebar-header">
-													<img src="
-													<?php echo $user_data['img_profile']; ?>" alt="..." class="img-thumbnail float-left mr-3">
+													<label for="img_profile">
+													<img id="uploadProfile" src="
+													<?php echo $user_data['img_profile']; ?>" alt="<?= $user_data['email']  ?>" class="img-thumbnail float-left mr-3">
+													</label>
 													<h5><center><?= $user_data['first_name'].' '.$user_data['last_name']?></center></h5>
 													<span><center><?= $user_data['email'];  ?></center></span>
 												</div>
-												<li class="nav-item">
-													<a href="#" class="nav-link active">
-														<i class="fas fa-list-alt mr-3"></i>
-														<span>Daftar Riwayat</span>
-													</a>
-												</li>
-												<li class="nav-item">
-													<a href="#" class="nav-link active">
-														<i class="fas fa-envelope mr-3"></i>
-														<span>Info Promo</span>
-													</a>
-												</li>
 												<hr>
 												<li class="nav-item">
-													<a href="#" class="nav-link active">
+													<a href="<?= base_url('User\editProfile')  ?>" class="nav-link active">
 														<i class="fas fa-user mr-3"></i>
-														<span>Akun Saya</span>
+														<span>Setting Akun</span>
 													</a>
 												</li>
 												<li class="nav-item">
@@ -250,111 +240,30 @@
 									<div class="content-bar">
 										<div class="card card-profil-bar mb-4">
 											<div class="profil-name mx-4 mt-4">
-												<h5><i class="far fa-user float-left mr-2"></i>Pengaturan Akun <?= $user_data['first_name'].' '.$user_data['last_name']?></h5>
+												<h5><i class="far fa-user float-left mr-2"></i>Profile User</h5>
 												<hr class="border-1">
-												<form>
-													<div class="form-group">
-														<label for="InputPassword">Password baru</label>
-														<input type="password" class="form-control" readonly placeholder="Tidak bisa mengubah Password">
-													</div>
-													<div class="form-group">
-														<label for="InputPassword">Konfirmasi password baru</label>
-														<input type="password" class="form-control" readonly placeholder="Tidak bisa mengubah Password">
-														<span>Karena menggunakan fitur Login with Gmail</span>
-													</div>
-													<div class="action-button float-right mb-4">
-														<button type="reset" class="btn bg-light mr-2">Batal</button>
-														<button type="submit" class="btn btn-primary">Simpan</button>
-													</div>
-												</form>
-											</div>
-										</div>
-
-										<div class="card card-phone-bar mb-4">
-											<div class="phone mx-4 mt-4">
 												<div class="d-flex align-center justify-content-between">
-													<h5><i class="fas fa-mobile-alt mr-3"></i>No. Handphone</h5>
-													<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#NoHandphone"><i class="fas fa-plus-circle mr-2"></i>
-														No. Handphone
-													</button>
+													<h5><i class="float-left mr-2"></i>First Name</h5>
+													<span><?= $user_data['first_name']?></span>
 												</div>
-												<span>No. Handphone untuk melengkapi profil</span>
-
 												<hr class="border-1">
-												<!-- Button trigger modal -->
-
-												<!-- Modal -->
-												<div class="modal fade" id="NoHandphone" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="NoHandphoneTitle" aria-hidden="true">
-													<div class="modal-dialog modal-dialog-centered" role="document">
-														<div class="modal-content">
-															<div class="modal-header">
-																<h5 class="modal-title" id="NoHandphoneTitle">No. Handphone
-																</h5>
-																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																	<span aria-hidden="true">&times;</span>
-																</button>
-															</div>
-															<div class="modal-body">
-																<form>
-																	<span>Masukkan No. Handphone yang masih aktif</span>
-																	<div class="form-group">
-																		<input type="text" class="form-control">
-																	</div>
-																</form>
-															</div>
-															<div class="modal-footer">
-																<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-																<button type="button" class="btn btn-primary">Save Changes</button>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="card card-email-bar mb-4">
-											<div class="email mx-4 mt-4">
 												<div class="d-flex align-center justify-content-between">
-													<h5><i class="fas fa-envelope mr-3"></i></i><?= $user_data['email'];  ?></h5>
-													<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AlamatEmail"><i class="fas fa-plus-circle mr-2"></i>
-														Alamat Email
-													</button>
+													<h5><i class="float-left mr-2"></i>Last Name</h5>
+													<span><?= $user_data['last_name']?></span>
 												</div>
-												<span>Alamat Email untuk melengkapi profil</span>
-											</div>
-
-											<hr class="border-1">
-											<!-- Button trigger modal -->
-
-											<!-- Modal -->
-											<div class="modal fade" id="AlamatEmail" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="AlamatEmailTitle" aria-hidden="true">
-												<div class="modal-dialog modal-dialog-centered" role="document">
-													<div class="modal-content">
-														<div class="modal-header">
-															<h5 class="modal-title" id="AlamatEmailTitle">Alamat Email
-															</h5>
-															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-														</div>
-														<div class="modal-body">
-															<span>Masukkan alamat email yang valid</span>
-															<form>
-																<div class="form-group">
-																	<input type="text" class="form-control">
-																</div>
-															</form>
-														</div>
-														<div class="modal-footer">
-															<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-															<button type="button" class="btn btn-primary">Simpan</button>
-														</div>
-													</div>
+												<hr class="border-1">
+												<div class="d-flex align-center justify-content-between">
+													<h5><i class="fas fa-envelope mr-3"></i></i>Email</h5>
+													<span><?= $user_data['email'];  ?></span>
 												</div>
+												<hr class="border-1">
+												<div class="d-flex align-center justify-content-between">
+													<h5><i class="fas fa-calendar mr-3"></i></i>Member Since</h5>
+													<span><?= $user_data['created_at']; ?></span>
+												</div>
+												<hr class="border-1">
 											</div>
 										</div>
-									</div>
-								</div>
 							<?php } ?>
 
 						</div>
