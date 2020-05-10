@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Setting</title>
+	<title>Profile User</title>
 	<link rel="stylesheet" href="<?= base_url('assets\frontend\libraries\bootstrap\css\bootstrap.css')  ?>">
 	<link rel="stylesheet" href="<?= base_url('assets\frontend\libraries\star_rating\star-rating.css')  ?>">
 	<link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600,700,800|Playfair+Display:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
@@ -58,7 +58,7 @@
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">User Account</a>
-                                <a class="dropdown-item" href="#">Setting</a>
+                                <a class="dropdown-item" href="<?= base_url('User/editProfile');  ?>">Setting</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" onclick="location.href='<?= base_url('Login/logout'); ?>'" type="button">Logout</a>
                             </div>
@@ -81,7 +81,7 @@
                                 <i class="fa fa-angle-down ml-2 opacity-8"></i>
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="<?= base_url('User/Profile');  ?>">User Account</a>
+                                <a class="dropdown-item" href="#">User Account</a>
                                 <a class="dropdown-item" href="<?= base_url('User/editProfile');  ?>">Setting</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" onclick="location.href='<?= base_url('Login/logout'); ?>'" type="button">Logout</a>
@@ -111,7 +111,6 @@
 										<!-- start sidebar -->
 										<nav class="sidebar mb-3 ml-3 mt-3 mr-3 ">
 											<ul class="nav flex-column">
-												<form method="post" enctype="multipart/form-data" action="<?= base_url('User/upload') ?>" id="editprofile">
 												<div class="sidebar-header">
 													<label for="img_profile">
 													<img id="uploadProfile" src="
@@ -121,28 +120,14 @@
 														echo base_url('assets/frontend/images/users/profile/default.jpg');
 													}  ?>" alt="<?= $user_data['username']  ?>" class="img-thumbnail float-left mr-3">
 													</label>
-													<input type="file" name="img_profile" id="img_profile" hidden>
 													<h5><center><?= $user_data['first_name'].' '.$user_data['last_name']?></center></h5>
 													<span><center><?= $user_data['email'];  ?></center></span>
 												</div>
-												<li class="nav-item">
-													<a href="javascript:;" class="nav-link active" onclick="document.getElementById('editprofile').submit()">
-														<i class="fas fa-list-alt mr-3"></i>
-														<span>Change Image</span>
-													</a>
-												</li>
-												</form>
-												<li class="nav-item">
-													<a href="#" class="nav-link active">
-														<i class="fas fa-envelope mr-3"></i>
-														<span>Info Promo</span>
-													</a>
-												</li>
 												<hr>
 												<li class="nav-item">
-													<a href="<?= base_url('User/Profile');  ?>" class="nav-link active">
+													<a href="<?= base_url('User/editProfile')  ?>" class="nav-link active">
 														<i class="fas fa-user mr-3"></i>
-														<span>Akun Saya</span>
+														<span>Setting Akun</span>
 													</a>
 												</li>
 												<li class="nav-item">
@@ -159,61 +144,64 @@
 									<div class="content-bar">
 										<div class="card card-profil-bar mb-4">
 											<div class="profil-name mx-4 mt-4">
-												<h5><i class="fas fa-cog float-left mr-2"></i>Password Setting</h5>
+												<h5><i class="far fa-user float-left mr-2"></i>Profile User</h5>
 												<hr class="border-1">
-												<?php // Form open
-												echo form_open(base_url('User/Change_Password'));
-												 ?>
-												<form>
-													<div class="form-group">
-														<label for="InputPassword">New Password</label>
-														<input type="password" class="form-control" value="<?= set_value('password');  ?>" name="password">
-													</div>
-													<div class="form-group">
-														<label for="InputPassword">Repeat Password</label>
-														<input type="password" class="form-control" value="<?= set_value('password_hint');  ?>" name="password_hint">
-														<span>*Note : Gunakan Password yang belum anda pakai</span>
-													</div>
-													<div class="action-button float-right mb-4">
-														<button type="reset" class="btn bg-light mr-2">Batal</button>
-														<button type="submit" class="btn btn-primary">Save</button>
-													</div>
-												</form>
-												<?php
-												// Form close
-												echo form_close();
-												?>
+                        <div class="d-flex align-center justify-content-between">
+                          <h5><i class="float-left mr-2"></i>First Name</h5>
+                          <span><?= $user_data['first_name']?></span>
+                        </div>
+                        <hr class="border-1">
+                        <div class="d-flex align-center justify-content-between">
+                          <h5><i class="float-left mr-2"></i>Last Name</h5>
+                          <span><?= $user_data['last_name']?></span>
+                        </div>
+                        <hr class="border-1">
+                        <div class="d-flex align-center justify-content-between">
+                          <h5><i class="fas fa-user mr-3"></i></i>Username</h5>
+                          <span><?= $user_data['username'];  ?></span>
+                        </div>
+                        <hr class="border-1">
+                        <div class="d-flex align-center justify-content-between">
+                          <h5><i class="fas fa-envelope mr-3"></i></i>Email</h5>
+                          <span><?= $user_data['email'];  ?></span>
+                        </div>
+                        <hr class="border-1">
+                        <div class="d-flex align-center justify-content-between">
+                          <h5><i class="fas fa-calendar mr-3"></i></i>Member Since</h5>
+                          <span><?= $user_data['date_created'];  ?></span>
+                        </div>
+												<hr class="border-1">
+											</div>
+										</div>
+
+										<div class="card card-phone-bar mb-4">
+											<div class="phone mx-4 mt-4">
+												<div class="d-flex align-center justify-content-between">
+													<h5><i class="fas fa-cog mr-3"></i>Change Password</h5>
+													<button type="button" class="btn btn-primary" onclick="location.href='<?= base_url('User/editProfile'); ?>'"><i class="fas fa-plus-circle mr-2"></i>
+														Change Password
+													</button>
+												</div>
+												<span>Anda ingin mengganti Password ?</span>
+
+												<hr class="border-1">
+												<!-- Button trigger modal -->
 											</div>
 										</div>
 
 										<div class="card card-email-bar mb-4">
 											<div class="email mx-4 mt-4">
 												<div class="d-flex align-center justify-content-between">
-													<h5><i class="fas fa-envelope mr-3"></i></i>Email Setting</h5>
+													<h5><i class="fas fa-envelope mr-3"></i></i>Change Email</h5>
+													<button type="button" class="btn btn-primary" onclick="location.href='<?= base_url('User/editProfile'); ?>'"><i class="fas fa-plus-circle mr-2"></i>
+														Change Email
+													</button>
 												</div>
-												<hr class="border-1">
-												<?php // Form open
-												echo form_open(base_url('User/Change_email'));
-												 ?>
-												<form>
-													<div class="form-group">
-														<label for="InputPassword">New Email</label>
-														<input type="email" class="form-control" value="<?= set_value('email');  ?>" name="email">
-														<span>*Note : Gunakan Email yang belum anda pakai</span>
-													</div>
-													<div class="action-button float-right mb-4">
-														<button type="reset" class="btn bg-light mr-2">Batal</button>
-														<button type="submit" type="button" class="btn btn-primary">
-															Save
-														</button>
-													</div>
-												</form>
-												<?php
-												// Form close
-												echo form_close();
-												?>
+												<span>Anda ingin mengganti Email ?</span>
 											</div>
+
 											<hr class="border-1">
+
 										</div>
 									</div>
 								</div>
@@ -262,7 +250,7 @@
 									<div class="content-bar">
 										<div class="card card-profil-bar mb-4">
 											<div class="profil-name mx-4 mt-4">
-												<h5><i class="fas fa-cog float-left mr-2"></i>Pengaturan Akun <?= $user_data['first_name'].' '.$user_data['last_name']?></h5>
+												<h5><i class="far fa-user float-left mr-2"></i>Pengaturan Akun <?= $user_data['first_name'].' '.$user_data['last_name']?></h5>
 												<hr class="border-1">
 												<form>
 													<div class="form-group">
@@ -423,23 +411,6 @@
 			</div>
 		</div>
 	</footer>
-
-	<script type="text/javascript">
-		function display(input){
-			if (input.files && input.files[0]) {
-				var reader = new FileReader();
-				reader.onload = function(e){
-					$('#uploadProfile').attr('src',e.target.result);
-				}
-				reader.readAsDataURL(input.files[0]);
-			}
-		}
-
-		$('#img_profile').change(function(){
-			display(this);
-		});
-
-	</script>
 
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<!-- SWEETALERT -->

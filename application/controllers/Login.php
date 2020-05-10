@@ -363,7 +363,9 @@ class Login extends CI_Controller
                 'first_name' => $user->first_name,
                 'last_name' => $user->last_name,
                 'email' => $user->email,
-                'img_profile' => $user->img_profile
+                'img_profile' => $user->img_profile,
+                'date_created' => $user->date_created,
+
               );
 
               // Create session utk login

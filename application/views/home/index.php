@@ -54,7 +54,7 @@
                                 <i class="fa fa-angle-down ml-2 opacity-8"></i>
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">User Account</a>
+                                <a class="dropdown-item" href="<?= base_url('User/Profile');  ?>">User Account</a>
                                 <a class="dropdown-item" href="<?= base_url('User/editProfile');  ?>">Setting</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" onclick="location.href='<?= base_url('Login/logout'); ?>'" type="button">Logout</a>
@@ -78,7 +78,7 @@
                                 <i class="fa fa-angle-down ml-2 opacity-8"></i>
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">User Account</a>
+                                <a class="dropdown-item" href="<?= base_url('User/Profile');  ?>">User Account</a>
                                 <a class="dropdown-item" href="<?= base_url('User/editProfile');  ?>">Setting</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" onclick="location.href='<?= base_url('Login/logout'); ?>'" type="button">Logout</a>

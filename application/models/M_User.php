@@ -17,7 +17,7 @@ class M_User extends CI_Model
     return $this->db->get_where('users', ['email' => $email]);
   }
 
-  public function change_password($where,$data,$table){
+  public function update($where,$data,$table){
     $this->db->where($where);
     $this->db->update($table,$data);
   }
