@@ -114,7 +114,12 @@
 												<form method="post" enctype="multipart/form-data" action="<?= base_url('User/upload') ?>" id="editprofile">
 												<div class="sidebar-header">
 													<label for="img_profile">
-													<img id="uploadProfile" src="<?= base_url('assets/frontend/images/users/profile/') . $user_data['img_profile']; ?>" alt="<?= $user_data['username']  ?>" class="img-thumbnail float-left mr-3">
+													<img id="uploadProfile" src="
+													<?php if (base_url('assets/frontend/images/users/profile/') . $user_data['img_profile'] !== NULL) {
+														echo base_url('assets/frontend/images/users/profile/') . $user_data['img_profile'];
+													} else {
+														echo base_url('assets/frontend/images/users/profile/default.jpg');
+													}  ?>" alt="<?= $user_data['username']  ?>" class="img-thumbnail float-left mr-3">
 													</label>
 													<input type="file" name="img_profile" id="img_profile" hidden>
 													<h5><center><?= $user_data['first_name'].' '.$user_data['last_name']?></center></h5>
@@ -274,11 +279,7 @@
 											<ul class="nav flex-column">
 												<div class="sidebar-header">
 													<img src="
-													<?php if ($user_data['img_profile'] == null) {
-														echo base_url('assets\frontend\images\users\profile\default.jpg');
-													} else {
-														echo $user_data['img_profile'];
-													} ?>" alt="..." class="img-thumbnail float-left mr-3">
+													<?php echo $user_data['img_profile']; ?>" alt="..." class="img-thumbnail float-left mr-3">
 													<h5><center><?= $user_data['first_name'].' '.$user_data['last_name']?></center></h5>
 													<span><center><?= $user_data['email'];  ?></center></span>
 												</div>
