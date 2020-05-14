@@ -12,26 +12,24 @@
 						<h5 class="head-span"> Pemula</h5>
 						<ul class="list-unstyled text-gray-500-font-weight-light">
 							<li><a class="link-footer" href="<?= base_url('Login/Register')  ?>">New Account</a></li>
-							<li><a class="link-footer" href="#">Use Payment</a></li>
-							<li><a class="link-footer" href="#">Start Trips</a></li>
+							<li><a class="link-footer" href="<?= base_url('Login')  ?>">Start Trips</a></li>
 						</ul>
 					</div>
 
 					<div class=" col-12 col-lg-2">
 						<h5 class="head-span">Lainnya</h5>
 						<ul class="list-unstyled text-gray-500-font-weight-light">
-										<li><a class="link-footer" href="#">Syarat & Ketentuan</a></li>
-								<li><a class="link-footer" href="#">Kebijakan & Privasi</a></li>
-							<li><a class="link-footer" href="#">Media</a></li>
+							<li><a class="link-footer" href="<?= base_url('Login/privacypolicy')  ?>">Syarat & Ketentuan</a></li>
+							<li><a class="link-footer" href="<?= base_url('Login/privacypolicy')  ?>">Kebijakan & Privasi</a></li>
 						</ul>
 					</div>
 
 					<div class="col-12 col-lg-2">
 						<h5 class="head-span">Kontak Kami</h5>
 						<ul class="list-unstyled text-gray-500-font-weight-light">
-							<li><a class="link-footer" href="#">Surabaya Timur</a></li>
-							<li><a class="link-footer" href="#">0821-213-1234</a></li>
-							<li><a class="link-footer" href="#">support.Terben.Tour</a></li>
+							<li><a class="link-footer" href="<?= base_url('Login/support')  ?>">Surabaya Timur</a></li>
+							<li><a class="link-footer" href="<?= base_url('Login/support')  ?>">0821-213-1234</a></li>
+							<li><a class="link-footer" href="<?= base_url('Login/support')  ?>">support.Terben.Tour</a></li>
 						</ul>
 					</div>
 				</div>

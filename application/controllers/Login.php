@@ -408,6 +408,16 @@ class Login extends CI_Controller
     $this->load->view('login/sign-in', FALSE);
   }
 
+  function privacypolicy()
+  {
+    $this->load->view('home/privacypolicy');
+  }
+
+  function support()
+  {
+    $this->load->view('home/support');
+  }
+
   function logout()
   {
     // Lalu set flashdata Berhasil Login

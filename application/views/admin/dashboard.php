@@ -18,7 +18,7 @@
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
 
 	<?php require_once APPPATH."views\admin\layout\layout.navbar.php" ?>
-	
+
         <div class="app-main">
                 <div class="app-sidebar sidebar-shadow">
                     <div class="app-header__logo">
@@ -70,13 +70,13 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <a href="<?= base_url('Administrator/MostTrips')  ?>">
                                                 <i class="metismenu-icon"></i>
                                                     Most Trip
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="<?= base_url('Administrator/Testimonial')  ?>">
                                                 <i class="metismenu-icon"></i>
                                                     Testimonials
                                             </a>

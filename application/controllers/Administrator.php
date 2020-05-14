@@ -77,6 +77,24 @@ class Administrator extends CI_Controller
     $this->load->view('admin/dashboard');
   }
 
+  function MostTrips()
+  {
+    if (!$this->session->userdata('admin_data')) {
+        $this->session->set_flashdata('warning', 'Anda belum login !!!');
+        redirect(base_url('Administrator'),'refresh');
+    }
+    $this->load->view('admin/homepage/mosttrip');
+  }
+
+  function Testimonial()
+  {
+    if (!$this->session->userdata('admin_data')) {
+        $this->session->set_flashdata('warning', 'Anda belum login !!!');
+        redirect(base_url('Administrator'),'refresh');
+    }
+    $this->load->view('admin/homepage/testimonial');
+  }
+
   function Add_admin()
   {
     if (!$this->session->userdata('admin_data')) {

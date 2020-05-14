@@ -71,13 +71,13 @@
 								</a>
 								<ul>
 									<li>
-										<a href="#" class="">
+										<a href="<?= base_url('Administrator/MostTrips')  ?>" class="">
 											<i class="metismenu-icon"></i>
 											Most Trip
 										</a>
 									</li>
 									<li>
-										<a href="#" class="mm-active">
+										<a href="<?= base_url('Administrator/Testimonial')  ?>" class="mm-active">
 											<i class="metismenu-icon"></i>
 											Testimonials
 										</a>

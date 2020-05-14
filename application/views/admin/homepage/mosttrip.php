@@ -68,13 +68,13 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="#" class="mm-active"
+                                        <a href="<?= base_url('Administrator/MostTrips')  ?>" class="mm-active"
                                             <i class="metismenu-icon"></i>
                                                 Most Trip
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="<?= base_url('Administrator/Testimonial')  ?>">
                                             <i class="metismenu-icon"></i>
                                                 Testimonials
                                         </a>
@@ -139,7 +139,7 @@
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="fas fa-suitcase-rolling"></i>
+                                    <i class="fas fa-suitcase"></i>
                                 </div>
                                 <div>Add Vacation Packages for Travelers
                                     <div class="page-title-subheading">Add vacation packages start from executive,
@@ -433,7 +433,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 <script>

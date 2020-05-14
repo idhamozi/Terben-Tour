@@ -16,9 +16,9 @@
 <body>
   <?php $admin_data = $this->session->userdata('admin_data');  ?>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-	
+
 	<?php require_once APPPATH."views\admin\layout\layout.navbar.php" ?>
-		
+
 		<div class="app-main">
                 <div class="app-sidebar sidebar-shadow">
                     <div class="app-header__logo">
@@ -69,18 +69,18 @@
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
                                     <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon"></i>
-                                                    Most Trip
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon"></i>
-                                                    Testimonials
-                                            </a>
-                                        </li>
+                                      <li>
+                                          <a href="<?= base_url('Administrator/MostTrips')  ?>" 
+                                              <i class="metismenu-icon"></i>
+                                                  Most Trip
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a href="<?= base_url('Administrator/Testimonial')  ?>">
+                                              <i class="metismenu-icon"></i>
+                                                  Testimonials
+                                          </a>
+                                      </li>
                                         <li>
                                             <a href="#">
                                                 <i class="metismenu-icon"></i>
