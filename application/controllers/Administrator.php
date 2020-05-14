@@ -11,6 +11,7 @@ class Administrator extends CI_Controller
     parent::__construct();
     $this->load->model('M_Login');
     $this->load->model('M_Admin');
+    $this->load->model('M_Kategori');
 
   }
 
@@ -83,7 +84,8 @@ class Administrator extends CI_Controller
         $this->session->set_flashdata('warning', 'Anda belum login !!!');
         redirect(base_url('Administrator'),'refresh');
     }
-    $this->load->view('admin/homepage/mosttrip');
+    $data['kategori'] = $this->M_Kategori->getKategori();
+    $this->load->view('admin/homepage/mosttrip', $data);
   }
 
   function Testimonial()
@@ -94,6 +96,37 @@ class Administrator extends CI_Controller
     }
     $this->load->view('admin/homepage/testimonial');
   }
+
+  function Add_Paket()
+  {
+    $user_data = $this->session->userdata('admin_data');
+    $username = $user_data['username'];
+
+    $data = array();
+    $storyUUID = uniqid();
+    $config['upload_path'] = "./assets/image/cover/";
+    $config['allowed_types'] ='gif|jpg|jpeg|png|PNG';
+    $config['file_name'] = $username."_".$storyUUID;
+    $config['overwrite'] = true;
+
+    $this->load->library('upload',$config);
+
+    $title = $this->input->post('Judul');
+    $deskripsi = $this->input->post('Deskripsi');
+    $kategori = $this->input->post('Kategori');
+
+    $imageupload = $this->upload->do_upload('image');
+    $image = ($imageupload)? $this->upload->data('file_name'):NULL;
+
+    $result = $this->storyModel->insertStory($storyUUID, $title, $deskripsi, $image, $kategori);
+
+    if($result){
+      redirect(base_url('Administrator/Dashboard'));
+    }else{
+      //if insertStory Failed
+      echo "insert Gagal";
+    }
+    }
 
   function Add_admin()
   {

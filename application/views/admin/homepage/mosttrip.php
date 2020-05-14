@@ -157,126 +157,37 @@
 
                                     <hr>
 
+                                    <label for="img">
                                     <img src="" class="img-thumbnail mb-2" alt="...">
+                                    </label>
                                     <div class="add-package-thumbnail">
-                                        <span style="font-weight: bold;" class="mt-1 mb-3">For Executive</span>
+                                        <span style="font-weight: bold;" class="mt-1 mb-3">Add Packages</span>
                                         <form class="was-validated">
                                             <div class="form-row">
                                                 <div class="col mb-3">
                                                     <label for="validationCustom02">Tipe Paket</label>
-                                                    <input type="text" class="form-control is-invalid"
-                                                        placeholder="Required Tipe Paket" required>
-                                                    <div class="invalid-feedback"> Please enter a Tipe Paket </div>
+                                                    <select class="selectpicker form-control form-control" data-live-search="true" name="Kategori" id="Kategori">
+                                                      <?php foreach ($kategori as $key => $value) { ?>
+                                                        <option value="<?= $value->kategori_id ?>"
+                                                        <?=(@$kategori[$key]->nama_kategori == $value->nama_kategori)?"selected":""?> >
+                                                          <?= $value->nama_kategori ?>
+                                                        </option>
+                                                      <?php } ?>
+                                                    </select>
                                                 </div>
                                                 <div class="col mb-3">
                                                     <label for="validationCustom02">Judul</label>
-                                                    <input type="text" class="form-control is-invalid"
-                                                        placeholder="Required Judul" required>
+                                                    <input type="text" name="Judul" id="Judul" class="form-control is-invalid"
+                                                        placeholder="Required Judul"  required>
                                                     <div class="invalid-feedback"> Please enter a Judul </div>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="validationCustom02">Deskripsi</label>
-                                                <textarea class="form-control is-invalid"
+                                                <textarea name="deskripsi" id="deskripsi" rows="10" aria-describedby="deskripsi-help" class="form-control is-invalid"
                                                     placeholder="Required deskripsi" required></textarea>
-                                                <div class="invalid-feedback"> Please enter a deskripsi </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Day</label>
-                                                    <input type="text" class="form-control is-invalid"
-                                                        placeholder="Required Day" required>
-                                                    <div class="invalid-feedback"> Please enter a Day </div>
-                                                </div>
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Price</label>
-                                                    <input type="text" class="form-control is-invalid"
-                                                        placeholder="Required Price" required>
-                                                    <div class="invalid-feedback"> Please enter a Price </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleFormControlFile1">Img file input</label>
-                                                <input type="file" class="form-control-file"
-                                                    id="exampleFormControlFile1">
-                                            </div>
-                                            <button type="submit" class="btn btn-primary mt-3">Submit</button>
-                                        </form>
-                                    </div>
+                                                    <small id="deskripsi-help" class="form-text text-muted">*Max 500 character</small>
 
-                                    <hr>
-
-                                    <img src="" class="img-thumbnail mb-2" alt="...">
-                                    <div class="add-package-thumbnail">
-                                        <span style="font-weight: bold;" class="mt-1 mb-3">For Business</span>
-                                        <form class="was-validated">
-                                            <div class="form-row">
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Tipe Paket</label>
-                                                    <input type="text" class="form-control is-invalid"
-                                                        placeholder="Required Tipe Paket" required>
-                                                    <div class="invalid-feedback"> Please enter a Tipe Paket </div>
-                                                </div>
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Judul</label>
-                                                    <input type="text" class="form-control is-invalid"
-                                                        placeholder="Required Judul" required>
-                                                    <div class="invalid-feedback"> Please enter a Judul </div>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="validationCustom02">Deskripsi</label>
-                                                <textarea class="form-control is-invalid"
-                                                    placeholder="Required deskripsi" required></textarea>
-                                                <div class="invalid-feedback"> Please enter a deskripsi </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Day</label>
-                                                    <input type="text" class="form-control is-invalid"
-                                                        placeholder="Required Day" required>
-                                                    <div class="invalid-feedback"> Please enter a Day </div>
-                                                </div>
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Price</label>
-                                                    <input type="text" class="form-control is-invalid"
-                                                        placeholder="Required Price" required>
-                                                    <div class="invalid-feedback"> Please enter a Price </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleFormControlFile1">Img file input</label>
-                                                <input type="file" class="form-control-file"
-                                                    id="exampleFormControlFile1">
-                                            </div>
-                                            <button type="submit" class="btn btn-primary mt-3">Submit</button>
-                                        </form>
-                                    </div>
-
-                                    <hr>
-
-                                    <img src="" class="img-thumbnail mb-2" alt="...">
-                                    <div class="add-package-thumbnail">
-                                        <span style="font-weight: bold;" class="mt-1 mb-3">For Economy</span>
-                                        <form class="was-validated">
-                                            <div class="form-row">
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Tipe Paket</label>
-                                                    <input type="text" class="form-control is-invalid"
-                                                        placeholder="Required Tipe Paket" required>
-                                                    <div class="invalid-feedback"> Please enter a Tipe Paket </div>
-                                                </div>
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Judul</label>
-                                                    <input type="text" class="form-control is-invalid"
-                                                        placeholder="Required Judul" required>
-                                                    <div class="invalid-feedback"> Please enter a Judul </div>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="validationCustom02">Deskripsi</label>
-                                                <textarea class="form-control is-invalid"
-                                                    placeholder="Required deskripsi" required></textarea>
                                                 <div class="invalid-feedback"> Please enter a deskripsi </div>
                                             </div>
                                             <div class="form-row">
