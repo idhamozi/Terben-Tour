@@ -18,6 +18,16 @@ class M_Kategori extends CI_Model
     ->get('kategori')
     ->result();
   }
+
+  function getKategoriName($kategori_id){
+  return $this->db->select('nama_kategori')
+          ->from('kategori')
+          ->or_where_in('kategori_id',$kategori_id)
+            ->order_by('kategori_id')
+          ->get()
+          ->result();
+}
+
 }
 
 

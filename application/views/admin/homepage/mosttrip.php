@@ -10,6 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
+    <script src="<?= base_url('assets\frontend\libraries\jquery\jquery-3.4.1.min.js')  ?>"></script>
+    <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap.js')  ?>"></script>
+    <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap-select.js')  ?>"></script>
+    <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap.bundle.min.js')  ?>"></script>
 	<link href="<?= base_url('assets\frontend\libraries\font-awesome-5\css\fontawesome-all.min.css') ?>" rel="stylesheet" media="all">
 	<link href="<?= base_url('assets\backend\style\main.css')?>" rel="stylesheet">
 </head>
@@ -54,14 +58,14 @@
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Dashboards</li>
                             <li>
-                                <a href="<?= base_url('Administrator/Dashboard') ?>" class="mm-active">
+                                <a href="<?= base_url('Administrator/Dashboard') ?>">
                                     <i class="metismenu-icon pe-7s-rocket"></i>
                                     Dashboard
                                 </a>
                             </li>
                             <li class="app-sidebar__heading">Layouts</li>
                             <li>
-                                <a href="#">
+                                <a href="#"  class="mm-active">
                                     <i class="metismenu-icon pe-7s-home"></i>
                                         Home Page
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
@@ -157,16 +161,16 @@
 
                                     <hr>
 
-                                    <label for="img">
-                                    <img src="" class="img-thumbnail mb-2" alt="...">
+                                    <label for="image">
+                                    <img class="img-thumbnail mb-2" src="<?=(@$paket['img_paket'] != null)? base_url('/assets/frontend/images/admin/paket/'.$paket['img_paket']): "#";?>"  alt="...">
                                     </label>
                                     <div class="add-package-thumbnail">
                                         <span style="font-weight: bold;" class="mt-1 mb-3">Add Packages</span>
-                                        <form class="was-validated">
+                                        <form class="was-validated" method="post" enctype="multipart/form-data" action="<?= base_url('Administrator/Add_Paket')  ?>">
                                             <div class="form-row">
                                                 <div class="col mb-3">
                                                     <label for="validationCustom02">Tipe Paket</label>
-                                                    <select class="selectpicker form-control form-control" data-live-search="true" name="Kategori" id="Kategori">
+                                                    <select class="form-control" name="Kategori" id="Kategori">
                                                       <?php foreach ($kategori as $key => $value) { ?>
                                                         <option value="<?= $value->kategori_id ?>"
                                                         <?=(@$kategori[$key]->nama_kategori == $value->nama_kategori)?"selected":""?> >
@@ -184,7 +188,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="validationCustom02">Deskripsi</label>
-                                                <textarea name="deskripsi" id="deskripsi" rows="10" aria-describedby="deskripsi-help" class="form-control is-invalid"
+                                                <textarea name="Deskripsi" id="Deskripsi" rows="10" aria-describedby="deskripsi-help" class="form-control is-invalid"
                                                     placeholder="Required deskripsi" required></textarea>
                                                     <small id="deskripsi-help" class="form-text text-muted">*Max 500 character</small>
 
@@ -193,23 +197,43 @@
                                             <div class="form-row">
                                                 <div class="col mb-3">
                                                     <label for="validationCustom02">Day</label>
-                                                    <input type="text" class="form-control is-invalid"
+                                                    <input type="text" name="Durasi" id="Durasi" class="form-control is-invalid"
                                                         placeholder="Required Day" required>
                                                     <div class="invalid-feedback"> Please enter a Day </div>
                                                 </div>
                                                 <div class="col mb-3">
                                                     <label for="validationCustom02">Price</label>
-                                                    <input type="text" class="form-control is-invalid"
-                                                        placeholder="Required Price" required>
+                                                    <div class="input-group mb-2">
+                                                      <div class="input-group-prepend">
+                                                        <div class="input-group-text">Rp.</div>
+                                                      </div>
+                                                        <input type="text" name="inputHarga" id="inputHarga"  class="form-control" placeholder="Required Price" required>
+                                                    </div>
                                                     <div class="invalid-feedback"> Please enter a Price </div>
+                                                    <input type="number" name="Harga" id="Harga" class="form-control" hidden>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="exampleFormControlFile1">Img file input</label>
-                                                <input type="file" class="form-control-file"
-                                                    id="exampleFormControlFile1">
+                                            <div class="form-row">
+                                              <div class="col mb-3">
+                                                <label>Img file input</label>
+                                                <input type="file" class="form-control-file" name="image" id="image">
+                                              </div>
+
+                                                <div class="col mb-3">
+                                                    <label for="validationCustom02">Max Person</label>
+                                                    <select class="form-control" name="Max" id="Max">
+                                                        <option value="2">2 Person</option>
+                                                        <option value="4">4 Person</option>
+                                                        <option value="8">8 Person</option>
+                                                        <option value="16">16 Person</option>
+                                                        <option value="32">32 Person</option>
+                                                        <option value="64">64 Person</option>
+                                                    </select>
+                                                    <div class="invalid-feedback"> Please enter a Max Person </div>
+                                                </div>
                                             </div>
-                                            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                            <input type="text" name="submit" value="submit" hidden>
+                                            <button type="submit" id="submit" class="btn btn-primary mt-3">Submit</button>
                                         </form>
                                     </div>
 
@@ -219,94 +243,9 @@
                             </div>
                             <div class="main-card mb-3 card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Add Vacation Packages</h5>
+                                    <h5 class="card-title">List Vacation Packages</h5>
                                     <div class="add-package-content">
                                         <table class="table">
-                                            <!-- Button modal -->
-                                            <button type="button" class="btn mr-2 mb-2 btn-primary" data-toggle="modal"
-                                                data-target="#exampleModal">
-                                                Tambah
-                                            </button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Modal title
-                                                            </h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form class="was-validated">
-                                                                <div class="form-row">
-                                                                    <div class="col mb-3">
-                                                                        <label for="validationCustom02">Tipe
-                                                                            Paket</label>
-                                                                        <input type="text"
-                                                                            class="form-control is-invalid"
-                                                                            placeholder="Required Tipe Paket" required>
-                                                                        <div class="invalid-feedback"> Please enter a
-                                                                            Tipe Paket </div>
-                                                                    </div>
-                                                                    <div class="col mb-3">
-                                                                        <label for="validationCustom02">Judul</label>
-                                                                        <input type="text"
-                                                                            class="form-control is-invalid"
-                                                                            placeholder="Required Judul" required>
-                                                                        <div class="invalid-feedback"> Please enter a
-                                                                            Judul </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="validationCustom02">Deskripsi</label>
-                                                                    <textarea class="form-control is-invalid"
-                                                                        placeholder="Required deskripsi"
-                                                                        required></textarea>
-                                                                    <div class="invalid-feedback"> Please enter a
-                                                                        deskripsi </div>
-                                                                </div>
-                                                                <div class="form-row">
-                                                                    <div class="col mb-3">
-                                                                        <label for="validationCustom02">Day</label>
-                                                                        <input type="text"
-                                                                            class="form-control is-invalid"
-                                                                            placeholder="Required Day" required>
-                                                                        <div class="invalid-feedback"> Please enter a
-                                                                            Day </div>
-                                                                    </div>
-                                                                    <div class="col mb-3">
-                                                                        <label for="validationCustom02">Price</label>
-                                                                        <input type="text"
-                                                                            class="form-control is-invalid"
-                                                                            placeholder="Required Price" required>
-                                                                        <div class="invalid-feedback"> Please enter a
-                                                                            Price </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="exampleFormControlFile1">Img file
-                                                                        input</label>
-                                                                    <input type="file" class="form-control-file"
-                                                                        id="exampleFormControlFile1">
-                                                                </div>
-                                                                <button type="submit"
-                                                                    class="btn btn-primary mt-3">Submit</button>
-                                                            </form>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Close</button>
-                                                            <button type="button" class="btn btn-primary">Save
-                                                                changes</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- end modal -->
 
                                             <thead class="thead-light">
                                                 <tr>
@@ -320,23 +259,39 @@
                                                     <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
+                                            <?php $no = 1; foreach ($paket as $dataPaket) { ?>
                                             <tbody>
                                                 <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Executive</td>
-                                                    <td>Liburan ke Begudul</td>
-                                                    <td>Asik liburan ke begudul banyak bule cantik-cantik dan di jamin
-                                                        liburan anda akan menyenangkan dengan tempat penginapan yang
-                                                        strategi</td>
-                                                    <td>15</td>
-                                                    <td>25.000.000</td>
-                                                    <td>begudul.png</td>
+                                                    <th scope="row"><?= $no;  ?></th>
+                                                    <td><?php if ($dataPaket->kategori_id == 1) {
+                                                      echo "Exclusive";
+                                                    } elseif ($dataPaket->kategori_id == 2) {
+                                                      echo "Business";
+                                                    } else {
+                                                      echo "Economic";
+                                                    }
+                                                      ?></td>
+                                                    <td><?= $dataPaket->judul ?></td>
+                                                    <td><?= $dataPaket->deskripsi ?></td>
+                                                    <td><?= $dataPaket->durasi ?></td>
+                                                    <td>Rp. <?= number_format($dataPaket->harga, 2, ',', '.') ?></td>
+                                                    <td><?= $dataPaket->img_paket ?></td>
                                                     <td>
                                                         <button class="btn btn-warning">Edit</button>
-                                                        <button class="btn btn-danger">Hapus</button>
+                                                        <a href="#" onclick="delete_paket<?= $dataPaket->paket_id ?>()" class="btn btn-danger">Hapus</a>
+                                                        <script>
+                                                          function delete_paket<?= $dataPaket->paket_id ?>() {
+                                                            var txt;
+                                                            if (confirm("Anda yakin ingin mendelete data paket ini?")) {
+                                                              window.location = "<?= base_url() . 'Administrator/Delete_Paket/' . $dataPaket->paket_id ?>";
+                                                            }
+                                                          }
+                                                        </script>
                                                     </td>
                                                 </tr>
                                             </tbody>
+                                          <?php $no++; } ?>
+
                                         </table>
                                     </div>
                                 </div>
@@ -347,7 +302,38 @@
             </div>
         </div>
     </div>
+
+<script type="text/javascript">
+function display(input){
+if (input.files && input.files[0]) {
+  var reader = new FileReader();
+  reader.onload = function(e){
+    $('.img-thumbnail').attr('src',e.target.result);
+  }
+  reader.readAsDataURL(input.files[0]);
+}
+}
+
+$('#image').change(function(){
+display(this);
+});
+
+document.getElementById("inputHarga").onblur =function (){
+
+    //number-format the user input
+    this.value = parseFloat(this.value.replace(/,/g, ""))
+                    .toFixed(2)
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+    //set the numeric value to a number input
+    document.getElementById("Harga").value = this.value.replace(/,/g, "")
+
+}
+</script>
+
 <script>
+
   function logout_admin<?= $admin_data['username'] ?>() {
     var txt;
     if (confirm("Anda yakin ingin Logout ?")) {

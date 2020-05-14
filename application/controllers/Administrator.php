@@ -12,6 +12,7 @@ class Administrator extends CI_Controller
     $this->load->model('M_Login');
     $this->load->model('M_Admin');
     $this->load->model('M_Kategori');
+    $this->load->model('M_Paket');
 
   }
 
@@ -85,6 +86,7 @@ class Administrator extends CI_Controller
         redirect(base_url('Administrator'),'refresh');
     }
     $data['kategori'] = $this->M_Kategori->getKategori();
+    $data['paket'] = $this->M_Paket->getAllPaket();
     $this->load->view('admin/homepage/mosttrip', $data);
   }
 
@@ -99,12 +101,13 @@ class Administrator extends CI_Controller
 
   function Add_Paket()
   {
+    if($this->input->post('submit') != null){
     $user_data = $this->session->userdata('admin_data');
     $username = $user_data['username'];
 
     $data = array();
     $storyUUID = uniqid();
-    $config['upload_path'] = "./assets/image/cover/";
+    $config['upload_path'] = "./assets/frontend/images/admin/paket/";
     $config['allowed_types'] ='gif|jpg|jpeg|png|PNG';
     $config['file_name'] = $username."_".$storyUUID;
     $config['overwrite'] = true;
@@ -114,18 +117,32 @@ class Administrator extends CI_Controller
     $title = $this->input->post('Judul');
     $deskripsi = $this->input->post('Deskripsi');
     $kategori = $this->input->post('Kategori');
+    $durasi = $this->input->post('Durasi');
+    $max_person = $this->input->post('Max');
+    $harga = $this->input->post('Harga');
+
 
     $imageupload = $this->upload->do_upload('image');
     $image = ($imageupload)? $this->upload->data('file_name'):NULL;
 
-    $result = $this->storyModel->insertStory($storyUUID, $title, $deskripsi, $image, $kategori);
+    $result = $this->M_Paket->insertPaket($storyUUID, $kategori , $image, $title, $deskripsi, $max_person, $durasi,  $harga);
 
-    if($result){
-      redirect(base_url('Administrator/Dashboard'));
+    if(isset($result)){
+      redirect(base_url('Administrator/MostTrips'));
     }else{
-      //if insertStory Failed
+      //if Add_Paket Failed
       echo "insert Gagal";
+        }
+      }
     }
+
+    function Delete_Paket($paket_id)
+    {
+      $this->M_Paket->delete_paket($paket_id);
+
+      $this->session->set_flashdata('sukses', 'Data berhasil dihapus !!!');
+
+      redirect(base_url('Administrator/MostTrips'),'refresh');
     }
 
   function Add_admin()

@@ -57,14 +57,14 @@
 						<ul class="vertical-nav-menu">
 							<li class="app-sidebar__heading">Dashboards</li>
 							<li>
-								<a href="<?= base_url('Administrator/Dashboard') ?>" class="mm-active">
+								<a href="<?= base_url('Administrator/Dashboard') ?>">
 									<i class="metismenu-icon pe-7s-rocket"></i>
 									Dashboard
 								</a>
 							</li>
 							<li class="app-sidebar__heading">Layouts</li>
 							<li>
-								<a href="#">
+								<a href="#"  class="mm-active">
 									<i class="metismenu-icon pe-7s-home"></i>
 									Home Page
 									<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
