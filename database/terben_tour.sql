@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 28 Apr 2020 pada 17.35
+-- Generation Time: 14 Mei 2020 pada 13.22
 -- Versi Server: 10.1.16-MariaDB
 -- PHP Version: 5.5.38
 
@@ -29,8 +29,110 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `admin_id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `nama_admin` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `password_hint` varchar(255) NOT NULL
+  `password_hint` varchar(255) NOT NULL,
+  `is_active` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `username`, `email`, `nama_admin`, `password`, `password_hint`, `is_active`) VALUES
+(1, 'admin', 'admin@admin.com', 'Admin Terben Tour', '$2y$10$BBiqN0SR.PCIDl3gJPZ3v.YFty9uYBiR6PV6jMqQYGp583B3a44ei', 'admin', 1),
+(3, 'idham', 'idham@admin.com', 'Mohammad Idham', '$2y$10$XWyC4vgGe49biXFkqk71E.XWXldzwT7RC23HRgg84.ByeZdLnouC2', '5461213', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `checkout`
+--
+
+CREATE TABLE `checkout` (
+  `checkout_id` varchar(20) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `google_id` int(11) DEFAULT NULL,
+  `paket_id` varchar(20) NOT NULL,
+  `total_harga` int(15) NOT NULL,
+  `is_pay` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kategori`
+--
+
+CREATE TABLE `kategori` (
+  `kategori_id` int(11) NOT NULL,
+  `nama_kategori` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kategori`
+--
+
+INSERT INTO `kategori` (`kategori_id`, `nama_kategori`) VALUES
+(1, 'Exclusive'),
+(2, 'Business'),
+(3, 'Economic');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `paket`
+--
+
+CREATE TABLE `paket` (
+  `paket_id` varchar(20) NOT NULL,
+  `admin_id` int(11) NOT NULL,
+  `kategori_id` int(11) NOT NULL,
+  `img_paket` varchar(100) DEFAULT NULL,
+  `judul` varchar(50) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `max_person` int(10) NOT NULL,
+  `durasi` varchar(50) NOT NULL,
+  `harga` int(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `paket`
+--
+
+INSERT INTO `paket` (`paket_id`, `admin_id`, `kategori_id`, `img_paket`, `judul`, `deskripsi`, `max_person`, `durasi`, `harga`) VALUES
+('5ebcfb0caf205', 1, 1, 'admin_5ebcfb0caf205.jpeg', 'haloo 2', 'ini deskripsi 2', 4, '12 Hari', 4000000),
+('5ebd287db8c71', 1, 3, 'admin_5ebd287db8c71.JPEG', 'ini judul 1', '   deskripsi 1   ', 2, '10 hari', 200000);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `temp_transaksi`
+--
+
+CREATE TABLE `temp_transaksi` (
+  `temp_id` varchar(20) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `google_id` int(11) DEFAULT NULL,
+  `paket_id` varchar(20) NOT NULL,
+  `harga` int(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `testimoni`
+--
+
+CREATE TABLE `testimoni` (
+  `testimoni_id` varchar(20) NOT NULL,
+  `checkout_id` varchar(20) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `google_id` int(11) DEFAULT NULL,
+  `paket_id` varchar(20) NOT NULL,
+  `testimoni` text NOT NULL,
+  `rating` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -47,7 +149,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `password_hint` varchar(255) NOT NULL,
-  `image_profile` varchar(255) DEFAULT NULL,
+  `img_profile` varchar(255) DEFAULT NULL,
   `is_active` int(1) NOT NULL,
   `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -56,9 +158,8 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `username`, `email`, `password`, `password_hint`, `image_profile`, `is_active`, `date_created`) VALUES
-(13, 'Mohammad', 'Idham', 'idhamozi', 'muh_idham85@yahoo.com', '$2y$10$nVnjedU0QsHhzToZ/Ndiv.GN7T8oz9xR/sfj8fz.tT9Dqp7Lmnpwe', '123123', 'default.jpg', 1, 0),
-(14, 'Mohammad', 'Idham', 'idham', 'king.idham@gmail.com', '$2y$10$RImR2NoN9kV49FpBkyGGYOruTYWZ7jxAPMvPlt0y59gWICEA/lcDm', '54321', 'default.jpg', 0, 2020);
+INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `username`, `email`, `password`, `password_hint`, `img_profile`, `is_active`, `date_created`) VALUES
+(13, 'Mohammad', 'Idham', 'idhamozi', 'muh_idham85@yahoo.com', '$2y$10$S14AAl2Sv9XHyyOQErv7AOTg/lgh7UyBa3mkEn/6dADm/RvXe1mEu', '455412', 'profile_idhamozi.JPEG', 1, 2020);
 
 -- --------------------------------------------------------
 
@@ -73,13 +174,6 @@ CREATE TABLE `users_token` (
   `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `users_token`
---
-
-INSERT INTO `users_token` (`id`, `email`, `token`, `date_created`) VALUES
-(7, 'king.idham@gmail.com', 'Of/7XF1sImHyjX9ZLjdQVuniEgrjmkar9sJEdfFKrBM=', 1588063504);
-
 -- --------------------------------------------------------
 
 --
@@ -87,7 +181,7 @@ INSERT INTO `users_token` (`id`, `email`, `token`, `date_created`) VALUES
 --
 
 CREATE TABLE `user_google` (
-  `user_id` int(11) NOT NULL,
+  `google_id` int(11) NOT NULL,
   `login_oauth_uid` varchar(100) CHARACTER SET utf8 NOT NULL,
   `first_name` varchar(250) NOT NULL,
   `last_name` varchar(250) NOT NULL,
@@ -101,7 +195,7 @@ CREATE TABLE `user_google` (
 -- Dumping data untuk tabel `user_google`
 --
 
-INSERT INTO `user_google` (`user_id`, `login_oauth_uid`, `first_name`, `last_name`, `email`, `img_profile`, `created_at`, `updated_at`) VALUES
+INSERT INTO `user_google` (`google_id`, `login_oauth_uid`, `first_name`, `last_name`, `email`, `img_profile`, `created_at`, `updated_at`) VALUES
 (1, '114781404881733521580', 'Mohammad', 'Idham Fachrurrozi', 'king.idham@gmail.com', 'https://lh3.googleusercontent.com/a-/AOh14GjrH75sKbZS8ngA-FJCiKraCKa5UeF2YXfVPYlCcg', 2020, 2020);
 
 --
@@ -113,6 +207,48 @@ INSERT INTO `user_google` (`user_id`, `login_oauth_uid`, `first_name`, `last_nam
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Indexes for table `checkout`
+--
+ALTER TABLE `checkout`
+  ADD PRIMARY KEY (`checkout_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `google_id` (`google_id`),
+  ADD KEY `paket_id` (`paket_id`);
+
+--
+-- Indexes for table `kategori`
+--
+ALTER TABLE `kategori`
+  ADD PRIMARY KEY (`kategori_id`);
+
+--
+-- Indexes for table `paket`
+--
+ALTER TABLE `paket`
+  ADD PRIMARY KEY (`paket_id`),
+  ADD KEY `kategori_id` (`kategori_id`),
+  ADD KEY `admin_id` (`admin_id`);
+
+--
+-- Indexes for table `temp_transaksi`
+--
+ALTER TABLE `temp_transaksi`
+  ADD PRIMARY KEY (`temp_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `google_id` (`google_id`),
+  ADD KEY `paket_id` (`paket_id`);
+
+--
+-- Indexes for table `testimoni`
+--
+ALTER TABLE `testimoni`
+  ADD PRIMARY KEY (`testimoni_id`),
+  ADD KEY `checkout_id` (`checkout_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `google_id` (`google_id`),
+  ADD KEY `paket_id` (`paket_id`);
 
 --
 -- Indexes for table `users`
@@ -130,7 +266,7 @@ ALTER TABLE `users_token`
 -- Indexes for table `user_google`
 --
 ALTER TABLE `user_google`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`google_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -140,22 +276,63 @@ ALTER TABLE `user_google`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `kategori`
+--
+ALTER TABLE `kategori`
+  MODIFY `kategori_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `users_token`
 --
 ALTER TABLE `users_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user_google`
 --
 ALTER TABLE `user_google`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `google_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `checkout`
+--
+ALTER TABLE `checkout`
+  ADD CONSTRAINT `checkout_ibfk_1` FOREIGN KEY (`google_id`) REFERENCES `user_google` (`google_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `checkout_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `checkout_ibfk_3` FOREIGN KEY (`paket_id`) REFERENCES `paket` (`paket_id`) ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `paket`
+--
+ALTER TABLE `paket`
+  ADD CONSTRAINT `paket_ibfk_1` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`kategori_id`),
+  ADD CONSTRAINT `paket_ibfk_2` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`admin_id`) ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `temp_transaksi`
+--
+ALTER TABLE `temp_transaksi`
+  ADD CONSTRAINT `temp_transaksi_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `temp_transaksi_ibfk_2` FOREIGN KEY (`google_id`) REFERENCES `user_google` (`google_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `temp_transaksi_ibfk_3` FOREIGN KEY (`paket_id`) REFERENCES `paket` (`paket_id`) ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `testimoni`
+--
+ALTER TABLE `testimoni`
+  ADD CONSTRAINT `testimoni_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `testimoni_ibfk_3` FOREIGN KEY (`google_id`) REFERENCES `user_google` (`google_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `testimoni_ibfk_4` FOREIGN KEY (`paket_id`) REFERENCES `paket` (`paket_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `testimoni_ibfk_5` FOREIGN KEY (`checkout_id`) REFERENCES `checkout` (`checkout_id`) ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
