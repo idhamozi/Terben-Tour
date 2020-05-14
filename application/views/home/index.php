@@ -96,25 +96,12 @@
     </div>
     <!-- end -->
 
-    <header>
-        <div class=" container header">
-            <h1 class="row">
-                Travel Aman
-                <br>
-                Harga Nyaman
-            </h1>
-            <p class="row mt-3">
-                Pusing dengan kerjaan anda? Liburan Yukk!!
-            </p>
-            <div class="row search">
-                <!-- ------- -->
-            </div>
-        </div>
-    </header>
+    <?php require_once APPPATH."views/layout/layout.header.php" ?>
+
 
     <main>
 	<?php require_once APPPATH."views/section/section.paket.php" ?>
-		
+
 	<?php require_once APPPATH."views/section/section.testimonial.php" ?>
 	</main>
 

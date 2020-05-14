@@ -94,6 +94,9 @@
       </div>
       <!-- end -->
 
+      <?php require_once APPPATH."views/layout/layout.header.php" ?>
+      
+
 <div class="container">
 
 
