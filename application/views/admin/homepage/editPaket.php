@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Dashboard - Admin</title>
+    <title>Edit - Paket</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
@@ -160,13 +160,12 @@
                                     <h5 class="card-title">Add Thumbnail Vacation Packages</h5>
 
                                     <hr>
-
                                     <label for="image">
-                                    <img class="img-thumbnail mb-2" src="<?=(@$paket['img_paket'] != null)? base_url('/assets/frontend/images/admin/paket/'.$paket['img_paket']): "#";?>"  alt="...">
+                                    <img class="img-thumbnail mb-2" src="<?=(@$paket[0]->img_paket != null)? base_url('/assets/frontend/images/admin/paket/'.$paket[0]->img_paket): "#";?>"  alt="...">
                                     </label>
                                     <div class="add-package-thumbnail">
                                         <span style="font-weight: bold;" class="mt-1 mb-3">Add Packages</span>
-                                        <form class="was-validated" method="post" enctype="multipart/form-data" action="<?= base_url('Administrator/Add_Paket')  ?>">
+                                        <form class="was-validated" method="post" enctype="multipart/form-data" action="<?= base_url('Administrator/editProses/'.$paket[0]->paket_id)  ?>">
                                             <div class="form-row">
                                                 <div class="col mb-3">
                                                     <label for="validationCustom02">Tipe Paket</label>
@@ -181,15 +180,15 @@
                                                 </div>
                                                 <div class="col mb-3">
                                                     <label for="validationCustom02">Judul</label>
-                                                    <input type="text" name="Judul" id="Judul" class="form-control is-invalid"
-                                                        placeholder="Required Judul"  required>
+                                                    <input type="text" name="Judul" id="Judul" class="form-control is-valid"
+                                                        placeholder="Required Judul" value="<?= $paket[0]->judul ?>"  readonly>
                                                     <div class="invalid-feedback"> Please enter a Judul </div>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="validationCustom02">Deskripsi</label>
-                                                <textarea name="Deskripsi" id="Deskripsi" rows="10" aria-describedby="deskripsi-help" class="form-control is-invalid"
-                                                    placeholder="Required deskripsi" required></textarea>
+                                                <textarea name="Deskripsi" id="Deskripsi" rows="10" aria-describedby="deskripsi-help" class="form-control is-valid"
+                                                    placeholder="Required deskripsi" required> <?= $paket[0]->deskripsi ?> </textarea>
                                                     <small id="deskripsi-help" class="form-text text-muted">*Max 500 character</small>
 
                                                 <div class="invalid-feedback"> Please enter a deskripsi </div>
@@ -197,7 +196,7 @@
                                             <div class="form-row">
                                                 <div class="col mb-3">
                                                     <label for="validationCustom02">Day</label>
-                                                    <input type="text" name="Durasi" id="Durasi" class="form-control is-invalid"
+                                                    <input type="text" name="Durasi" id="Durasi" value="<?= $paket[0]->durasi ?>" class="form-control is-valid"
                                                         placeholder="Required Day" required>
                                                     <div class="invalid-feedback"> Please enter a Day </div>
                                                 </div>
@@ -207,10 +206,10 @@
                                                       <div class="input-group-prepend">
                                                         <div class="input-group-text">Rp.</div>
                                                       </div>
-                                                        <input type="text" name="inputHarga" id="inputHarga"  class="form-control" placeholder="Required Price" required>
+                                                        <input type="text" name="inputHarga" id="inputHarga"  class="form-control" placeholder="Required Price" value="<?= $paket[0]->harga  ?>" required>
                                                     </div>
                                                     <div class="invalid-feedback"> Please enter a Price </div>
-                                                    <input type="number" name="Harga" id="Harga" class="form-control" hidden>
+                                                    <input type="number" value="<?= $paket[0]->harga  ?>" name="Harga" id="Harga" class="form-control" hidden>
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -236,73 +235,12 @@
                                             <button type="submit" id="submit" class="btn btn-primary mt-3">Submit</button>
                                         </form>
                                     </div>
-
+                                <?php // } ?>
                                     <hr>
 
                                 </div>
                             </div>
-                            <div class="main-card mb-3 card">
-                                <div class="card-body">
-                                    <h5 class="card-title">List Vacation Packages</h5>
-                                    <div class="add-package-content">
-                                        <table class="table">
 
-                                            <thead class="thead-light">
-                                                <tr>
-                                                    <th scope="col">No.</th>
-                                                    <th scope="col">Tipe Paket</th>
-                                                    <th scope="col">Judul</th>
-                                                    <th scope="col">Deskripsi</th>
-                                                    <th scope="col">Day</th>
-                                                    <th scope="col">Price</th>
-                                                    <th scope="col">Image</th>
-                                                    <th scope="col">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <?php $no = 1; foreach ($paket as $dataPaket) { ?>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row"><?= $no;  ?></th>
-                                                    <td><?php if ($dataPaket->kategori_id == 1) {
-                                                      echo "Exclusive";
-                                                    } elseif ($dataPaket->kategori_id == 2) {
-                                                      echo "Business";
-                                                    } else {
-                                                      echo "Economic";
-                                                    }
-                                                      ?></td>
-                                                    <td><?= $dataPaket->judul ?></td>
-                                                    <td><?= $dataPaket->deskripsi ?></td>
-                                                    <td><?= $dataPaket->durasi ?></td>
-                                                    <td>Rp. <?= number_format($dataPaket->harga, 2, ',', '.') ?></td>
-                                                    <td><?= $dataPaket->img_paket ?></td>
-                                                    <td>
-                                                        <a href="#" onclick="editPaket<?= $dataPaket->paket_id ?>()" class="btn btn-warning">Edit</a>
-
-                                                        <a href="#" onclick="delete_paket<?= $dataPaket->paket_id ?>()" class="btn btn-danger">Hapus</a>
-                                                        <script>
-                                                          function delete_paket<?= $dataPaket->paket_id ?>() {
-                                                            var txt;
-                                                            if (confirm("Anda yakin ingin mendelete data paket ini?")) {
-                                                              window.location = "<?= base_url() . 'Administrator/Delete_Paket/' . $dataPaket->paket_id ?>";
-                                                            }
-                                                          }
-                                                          function editPaket<?= $dataPaket->paket_id ?>() {
-                                                            var txt;
-                                                            if (confirm("Anda yakin ingin mengubah data paket ini?")) {
-                                                              window.location = "<?= base_url() . 'Administrator/editPaket/' . $dataPaket->paket_id ?>";
-                                                            }
-                                                          }
-                                                        </script>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                          <?php $no++; } ?>
-
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -349,18 +287,5 @@ document.getElementById("inputHarga").onblur =function (){
   }
 </script>
 <script type="text/javascript" src="<?= base_url('assets\backend\script\main.js')?>"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<!-- SWEETALERT -->
-<?php if ($this->session->flashdata('sukses')) { ?>
-  <script>
-    swal("Berhasil", "<?php echo $this->session->flashdata('sukses'); ?>", "success")
-  </script>
-<?php } ?>
-
-<?php if ($this->session->flashdata('warning')) { ?>
-  <script>
-    swal("Oops...", "<?php echo $this->session->flashdata('warning'); ?>", "warning")
-  </script>
-<?php } ?>
 </body>
 </html>

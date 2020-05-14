@@ -127,12 +127,50 @@ class Administrator extends CI_Controller
 
     $result = $this->M_Paket->insertPaket($storyUUID, $kategori , $image, $title, $deskripsi, $max_person, $durasi,  $harga);
 
-    if(isset($result)){
-      redirect(base_url('Administrator/MostTrips'));
-    }else{
-      //if Add_Paket Failed
-      echo "insert Gagal";
-        }
+    $this->session->set_flashdata('sukses', 'Data berhasil ditambah !!!');
+
+    redirect(base_url('Administrator/MostTrips'),'refresh');
+
+      }
+    }
+
+    function editPaket($paket_id)
+    {
+      $data['paket'] = $this->M_Paket->getPaket($paket_id);
+      $data['kategori'] = $this->M_Kategori->getKategori();
+      $this->load->view('admin/homepage/editPaket',$data);
+    }
+
+    // Edit process for story
+    function editProses($paket_id){
+      if($this->input->post('submit') != null){
+        $user_data = $this->session->userdata('admin_data');
+        $username = $user_data['username'];
+        $data = array();
+        $config['upload_path'] = "./assets/frontend/images/admin/paket/";
+        $config['allowed_types'] ='gif|jpg|jpeg|png|PNG';
+        $config['file_name'] = $username."_".$paket_id;
+        $config['overwrite'] = true;
+
+        $this->load->library('upload',$config);
+
+        $title = $this->input->post('Judul');
+        $deskripsi = $this->input->post('Deskripsi');
+        $kategori = $this->input->post('Kategori');
+        $durasi = $this->input->post('Durasi');
+        $max_person = $this->input->post('Max');
+        $harga = $this->input->post('Harga');
+
+
+        $imageupload = $this->upload->do_upload('image');
+        $image = ($imageupload)? $this->upload->data('file_name'):NULL;
+
+        $result = $this->M_Paket->updatePaket($paket_id, $kategori , $image, $title, $deskripsi, $max_person, $durasi,  $harga);
+
+        $this->session->set_flashdata('sukses', 'Data berhasil diubah !!!');
+
+        redirect(base_url('Administrator/MostTrips'),'refresh');
+
       }
     }
 
