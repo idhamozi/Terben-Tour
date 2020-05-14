@@ -64,7 +64,9 @@ header p {
   font-weight: bold;
 }
 
-.section-text h3, .section-text h4, .section-text h5 {
+.section-text h3,
+.section-text h4,
+.section-text h5 {
   font-weight: bold;
   color: #023642;
 }
@@ -268,5 +270,137 @@ header p {
 .section-sign_up .card-sign_up .sign_up-form .sign_up:hover {
   background-color: #45a049;
   color: white;
+}
+
+.section-setting_user {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+          align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.setting-user {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.section-header-akun {
+  min-height: 310px;
+  background: #dfdada;
+  margin-top: -70px;
+}
+
+.section-content-akun {
+  margin-top: -180px;
+  min-height: 100vh;
+}
+
+.section-content-akun .card-sidebar .sidebar-header img {
+  border-radius: 100%;
+  border-style: none;
+  height: 100px;
+  width: 100px;
+}
+
+.section-content-akun .card-sidebar .active:hover {
+  background-color: grey;
+  color: white;
+}
+
+.section-content-akun .content-bar .card-profil-bar i {
+  height: 20px;
+}
+
+.section-details-breadcrumb .breadcrumb {
+  background-color: transparent;
+}
+
+.section-details-breadcrumb .breadcrumb .breadcrumb-item a {
+  color: #152C5B;
+  font-weight: 600;
+}
+
+.title-details h2 {
+  color: #152C5B;
+  font-weight: bold;
+}
+
+.section-header-details {
+  margin-top: 64px;
+}
+
+.section-header-details .img-thumbnail-details img {
+  width: 565px;
+  height: 400px;
+  border-radius: 15px;
+}
+
+.section-content-details {
+  margin-top: 50px;
+}
+
+.section-content-details .text-about h5 {
+  color: #152C5B;
+  font-weight: 600;
+}
+
+.section-content-details .text-about span {
+  margin-top: 15px;
+  color: #B0B0B0;
+}
+
+.section-content-details .card-booking {
+  border-radius: 10px;
+  border-color: #E5E5E5;
+}
+
+.section-content-details .card-booking .text-booking {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 64px;
+  margin-right: 64px;
+}
+
+.section-content-details .card-booking h5 {
+  color: #152C5B;
+  font-weight: 700;
+}
+
+.section-content-details .card-booking h3 {
+  margin-top: 20px;
+  font-weight: 600;
+  color: #152C5B;
+}
+
+.section-content-details .card-booking h3 span {
+  color: #9E9E9E;
+  font-weight: 500;
+}
+
+.section-content-details .card-booking p {
+  font-size: 16px;
+  margin-top: 20px;
+  font-weight: 600;
+  color: #152C5B;
+}
+
+.section-content-details .card-booking .pict-date {
+  margin-top: -10px;
+}
+
+.section-content-details .card-booking .btn-booking {
+  background-color: #2F2FD7;
+  color: white;
+  font-weight: 600;
+  margin-top: 20px;
+  height: 50px;
+  width: 320px;
 }
 /*# sourceMappingURL=main.css.map */

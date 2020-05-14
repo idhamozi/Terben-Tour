@@ -95,12 +95,13 @@
                 </form>
                 <!-- end -->
             </div>
-        </nav>
-    </div>
+		</nav>
+	</div>
+	<hr class="containe-fluid">
 	<!-- end -->
 	<main>
 		<section class="section-header-akun"></section>
-		<section class="section-content-akun">
+		<section class="section-content-akun mt-5">
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-lg-10">
@@ -122,12 +123,12 @@
 													}  ?>" alt="<?= $user_data['username']  ?>" class="img-thumbnail float-left mr-3">
 													</label>
 													<input type="file" name="img_profile" id="img_profile" hidden>
-													<h5><center><?= $user_data['first_name'].' '.$user_data['last_name']?></center></h5>
+													<h5 class="mt-3"><center><?= $user_data['first_name'].' '.$user_data['last_name']?></center></h5>
 													<span><center><?= $user_data['email'];  ?></center></span>
 												</div>
 												<li class="nav-item">
 													<a href="javascript:;" class="nav-link active" onclick="document.getElementById('editprofile').submit()">
-														<i class="fas fa-list-alt mr-3"></i>
+														<i class="fas fa-user-edit mr-3"></i>
 														<span>Change Image</span>
 													</a>
 												</li>
