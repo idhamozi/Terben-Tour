@@ -36,7 +36,7 @@
                           <a href="<?= base_url('')  ?>" class="nav-link">Home</a>
                       </li>
                       <li class="nav-item mx-md-2">
-                          <a href="#" class="nav-link">Paket Travel</a>
+                          <a href="<?= base_url('Paket') ?>" class="nav-link">Paket Travel</a>
                       </li>
                       <li class="nav-item mx-md-2">
                           <a href="#" class="nav-link">Testimonial</a>
@@ -95,7 +95,7 @@
       <!-- end -->
 
       <?php require_once APPPATH."views/layout/layout.header.php" ?>
-      
+
 
 <div class="container">
 
@@ -106,7 +106,7 @@
 
 <h2>Contact</h2>
 
-<p>Our contact person is in 0821-213-1234 if you want to get more info or just ask about the packet.</p>
+<p>Our contact person is in 0821-213-1234 if you want to get more info or just ask about the package.</p>
 
 <h2>Support Terben Tour & Travel</h2>
 

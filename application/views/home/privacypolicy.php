@@ -36,7 +36,7 @@
                           <a href="<?= base_url('')  ?>" class="nav-link">Home</a>
                       </li>
                       <li class="nav-item mx-md-2">
-                          <a href="#" class="nav-link">Paket Travel</a>
+                          <a href="<?= base_url('Paket') ?>" class="nav-link">Paket Travel</a>
                       </li>
                       <li class="nav-item mx-md-2">
                           <a href="#" class="nav-link">Testimonial</a>
@@ -95,7 +95,6 @@
       <!-- end -->
 
       <?php require_once APPPATH."views/layout/layout.header.php" ?>
-      
 
 <div class="container">
 

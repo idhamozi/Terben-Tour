@@ -19,10 +19,10 @@ class M_Kategori extends CI_Model
     ->result();
   }
 
-  function getKategoriName($kategori_ids){
+  function getKategoriName($kategoris){
   return $this->db->select('nama_kategori')
           ->from('kategori')
-          ->where('kategori_id',$kategori_ids)
+          ->where('kategori_id',$kategoris)
           ->get()
           ->result();
 }

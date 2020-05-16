@@ -93,6 +93,17 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="<?= base_url('')  ?>">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page"><a href="<?= base_url('Paket') ?>">Paket</a></li>
+                        <?php
+                        if (isset($paket[0]->kategori_id)) {
+                          if ($paket[0]->kategori_id == 1) { ?>
+                            <li class="breadcrumb-item active" aria-current="page">Exclusive</li>
+                          <?php } elseif ($paket[0]->kategori_id == 2) { ?>
+                            <li class="breadcrumb-item active" aria-current="page">Business</li>
+                          <?php } elseif ($paket[0]->kategori_id == 3) { ?>
+                            <li class="breadcrumb-item active" aria-current="page">Economic</li>
+                          <?php } ?>
+                        <?php } ?>
+
                     </ol>
                 </nav>
             </div>
@@ -107,7 +118,6 @@
                         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                             <div class="col pl-4 pt-4 d-flex flex-column position-static">
                                 <strong class="d-inline-block mb-2 text-primary">
-                                  <a href="<?= base_url('Paket/Kategori/'.$dataPaket->kategori_id)  ?>">
                                   <?php if ($dataPaket->kategori_id == 1) {
                                     echo "Exclusive";
                                   } elseif ($dataPaket->kategori_id == 2) {
@@ -116,7 +126,6 @@
                                     echo "Economic";
                                   } ?>
                                    Trip
-                                   </a>
                                  </strong>
                                 <h3 class="mb-0"><?= $dataPaket->judul  ?></h3>
                                 <div class="mb-1 text-muted"><?= $dataPaket->durasi  ?> Hari</div>

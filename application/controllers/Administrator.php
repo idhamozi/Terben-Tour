@@ -109,6 +109,7 @@ class Administrator extends CI_Controller
     $storyUUID = uniqid();
     $config['upload_path'] = "./assets/frontend/images/admin/paket/";
     $config['allowed_types'] ='gif|jpg|jpeg|png|PNG';
+    $config['max_size']      = '12000'; // KB
     $config['file_name'] = $username."_".$storyUUID;
     $config['overwrite'] = true;
 
@@ -120,12 +121,17 @@ class Administrator extends CI_Controller
     $durasi = $this->input->post('Durasi');
     $max_person = $this->input->post('Max');
     $harga = $this->input->post('Harga');
+    $bed = $this->input->post('Bedroom');
+    $bath = $this->input->post('Bathroom');
+    $tv = $this->input->post('Tv');
+    $inet = $this->input->post('Inet');
+
 
 
     $imageupload = $this->upload->do_upload('image');
     $image = ($imageupload)? $this->upload->data('file_name'):NULL;
 
-    $result = $this->M_Paket->insertPaket($storyUUID, $kategori , $image, $title, $deskripsi, $max_person, $durasi,  $harga);
+    $result = $this->M_Paket->insertPaket($storyUUID, $kategori , $image, $title, $deskripsi, $max_person, $durasi,  $harga, $bed, $bath, $tv, $inet);
 
     $this->session->set_flashdata('sukses', 'Data berhasil ditambah !!!');
 
@@ -136,9 +142,21 @@ class Administrator extends CI_Controller
 
     function editPaket($paket_id)
     {
+      $data = $this->getPaketData($paket_id);
+      $this->load->view('admin/homepage/editPaket',$data);
+    }
+
+    function getPaketData($paket_id)
+    {
       $data['paket'] = $this->M_Paket->getPaket($paket_id);
       $data['kategori'] = $this->M_Kategori->getKategori();
-      $this->load->view('admin/homepage/editPaket',$data);
+      $kategoris = $data['paket'][0]->kategori_id;
+      $kategori = $this->M_Kategori->getKategoriName($kategoris);
+      foreach ($kategori as $key => $value)
+      {
+        $data['kategori_paket'][$kategoris[$key]-1] = $value;
+      }
+      return $data;
     }
 
     // Edit process for story
@@ -149,6 +167,7 @@ class Administrator extends CI_Controller
         $data = array();
         $config['upload_path'] = "./assets/frontend/images/admin/paket/";
         $config['allowed_types'] ='gif|jpg|jpeg|png|PNG';
+        $config['max_size']      = '12000'; // KB
         $config['file_name'] = $username."_".$paket_id;
         $config['overwrite'] = true;
 
@@ -160,12 +179,16 @@ class Administrator extends CI_Controller
         $durasi = $this->input->post('Durasi');
         $max_person = $this->input->post('Max');
         $harga = $this->input->post('Harga');
+        $bed = $this->input->post('Bedroom');
+        $bath = $this->input->post('Bathroom');
+        $tv = $this->input->post('Tv');
+        $inet = $this->input->post('Inet');
 
 
         $imageupload = $this->upload->do_upload('image');
         $image = ($imageupload)? $this->upload->data('file_name'):NULL;
 
-        $result = $this->M_Paket->updatePaket($paket_id, $kategori , $image, $title, $deskripsi, $max_person, $durasi,  $harga);
+        $result = $this->M_Paket->updatePaket($paket_id, $kategori , $image, $title, $deskripsi, $max_person, $durasi,  $harga, $bed, $bath, $tv, $inet);
 
         $this->session->set_flashdata('sukses', 'Data berhasil diubah !!!');
 

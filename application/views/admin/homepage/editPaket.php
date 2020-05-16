@@ -172,7 +172,7 @@
                                                     <select class="form-control" name="Kategori" id="Kategori">
                                                       <?php foreach ($kategori as $key => $value) { ?>
                                                         <option value="<?= $value->kategori_id ?>"
-                                                        <?=(@$kategori[$key]->nama_kategori == $value->nama_kategori)?"selected":""?> >
+                                                        <?=(@$kategori_paket[$key]->nama_kategori == $value->nama_kategori)?"selected":""?> >
                                                           <?= $value->nama_kategori ?>
                                                         </option>
                                                       <?php } ?>
@@ -212,6 +212,22 @@
                                                     <input type="number" value="<?= $paket[0]->harga  ?>" name="Harga" id="Harga" class="form-control" hidden>
                                                 </div>
                                             </div>
+                                            <label>Facility</label>
+                                            <div class="form-row">
+                                              <div class="col mb-3">
+                                                <input class="form-control is-invalid" type="text" id="Bedroom" name="Bedroom" placeholder="Required Amount of Bed" value="<?= $paket[0]->fas_bedroom  ?>" required>
+                                                <div class="invalid-feedback"> Please enter a Facility, if you don't have fill with 0</div>
+                                              </div>
+                                              <div class="col mb-3">
+                                                <input class="form-control is-invalid" type="text" id="Bathroom" name="Bathroom" placeholder="Required Amount of Bath" value="<?= $paket[0]->fas_bathroom  ?>" required>
+                                              </div>
+                                              <div class="col mb-3">
+                                                <input class="form-control is-invalid" type="text" id="Tv" name="Tv" placeholder="Required Amount of TV" value="<?= $paket[0]->fas_tv  ?>" required>
+                                              </div>
+                                              <div class="col mb-3">
+                                                <input class="form-control is-invalid" type="text" id="Inet" name="Inet" placeholder="Required Speed Internet" value="<?= $paket[0]->fas_inet  ?>" required>
+                                              </div>
+                                            </div>
                                             <div class="form-row">
                                               <div class="col mb-3">
                                                 <label>Img file input</label>
@@ -233,6 +249,7 @@
                                             </div>
                                             <input type="text" name="submit" value="submit" hidden>
                                             <button type="submit" id="submit" class="btn btn-primary mt-3">Submit</button>
+                                            <button type="button" name="button" class="btn btn-danger mt-3" onclick="location.href='<?= base_url('Administrator/MostTrips') ?>'">Cancel</button>
                                         </form>
                                     </div>
                                 <?php // } ?>

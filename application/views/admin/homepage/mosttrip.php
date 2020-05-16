@@ -213,6 +213,22 @@
                                                     <input type="number" name="Harga" id="Harga" class="form-control" hidden>
                                                 </div>
                                             </div>
+                                            <label>Facility</label>
+                                            <div class="form-row">
+                                              <div class="col mb-3">
+                                                <input class="form-control is-invalid" type="text" id="Bedroom" name="Bedroom" placeholder="Required Amount of Bed" required>
+                                                <div class="invalid-feedback"> Please enter a Facility, if you don't have fill with 0</div>
+                                              </div>
+                                              <div class="col mb-3">
+                                                <input class="form-control is-invalid" type="text" id="Bathroom" name="Bathroom" placeholder="Required Amount of Bath" required>
+                                              </div>
+                                              <div class="col mb-3">
+                                                <input class="form-control is-invalid" type="text" id="Tv" name="Tv" placeholder="Required Amount of TV" required>
+                                              </div>
+                                              <div class="col mb-3">
+                                                <input class="form-control is-invalid" type="text" id="Inet" name="Inet" placeholder="Required Speed Internet" required>
+                                              </div>
+                                            </div>
                                             <div class="form-row">
                                               <div class="col mb-3">
                                                 <label>Img file input</label>
@@ -275,7 +291,7 @@
                                                     <td><?= $dataPaket->deskripsi ?></td>
                                                     <td><?= $dataPaket->durasi ?></td>
                                                     <td>Rp. <?= number_format($dataPaket->harga, 2, ',', '.') ?></td>
-                                                    <td><?= $dataPaket->img_paket ?></td>
+                                                    <td><img src="<?= base_url('/assets/frontend/images/admin/paket/'.$dataPaket->img_paket) ?>" style="width: 150px; height: 100px;"></td>
                                                     <td>
                                                         <a href="#" onclick="editPaket<?= $dataPaket->paket_id ?>()" class="btn btn-warning">Edit</a>
 

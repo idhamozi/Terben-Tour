@@ -24,7 +24,7 @@
     <!-- navbar -->
     <div class="container">
         <nav class="row navbar navbar-expand-lg navbar-light bg-white">
-            <a href="" class="navbar-brand">
+            <a href="<?= base_url('')  ?>" class="navbar-brand">
                 <img src="<?= base_url('assets\frontend\images\Terben.Tour@2x.png')  ?>" alt="Logo TerbenTour">
             </a>
 
@@ -38,7 +38,7 @@
                         <a href="<?= base_url('')  ?>" class="nav-link active">Home</a>
                     </li>
                     <li class="nav-item mx-md-2">
-                        <a href="#" class="nav-link">Paket Travel</a>
+                        <a href="<?= base_url('Paket') ?>" class="nav-link">Paket Travel</a>
                     </li>
                     <li class="nav-item mx-md-2">
                         <a href="#" class="nav-link">Testimonial</a>
