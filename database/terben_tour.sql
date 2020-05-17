@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 14 Mei 2020 pada 13.22
+-- Generation Time: 17 Mei 2020 pada 07.42
 -- Versi Server: 10.1.16-MariaDB
 -- PHP Version: 5.5.38
 
@@ -94,16 +94,21 @@ CREATE TABLE `paket` (
   `deskripsi` text NOT NULL,
   `max_person` int(10) NOT NULL,
   `durasi` varchar(50) NOT NULL,
-  `harga` int(15) NOT NULL
+  `harga` int(15) NOT NULL,
+  `fas_bedroom` int(15) NOT NULL,
+  `fas_bathroom` int(15) NOT NULL,
+  `fas_tv` int(15) NOT NULL,
+  `fas_inet` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `paket`
 --
 
-INSERT INTO `paket` (`paket_id`, `admin_id`, `kategori_id`, `img_paket`, `judul`, `deskripsi`, `max_person`, `durasi`, `harga`) VALUES
-('5ebcfb0caf205', 1, 1, 'admin_5ebcfb0caf205.jpeg', 'haloo 2', 'ini deskripsi 2', 4, '12 Hari', 4000000),
-('5ebd287db8c71', 1, 3, 'admin_5ebd287db8c71.JPEG', 'ini judul 1', '   deskripsi 1   ', 2, '10 hari', 200000);
+INSERT INTO `paket` (`paket_id`, `admin_id`, `kategori_id`, `img_paket`, `judul`, `deskripsi`, `max_person`, `durasi`, `harga`, `fas_bedroom`, `fas_bathroom`, `fas_tv`, `fas_inet`) VALUES
+('5ebfbeb0021b7', 1, 2, 'admin_5ebfbeb0021b7.jpg', 'Bali kuy !', 'Nikmati libur istimewa dengan orang yang paling istimewa di Bali. Sudah termasuk akomodasi Hotel bintang 4 dan transportasi berupa mobil honda Brio.', 2, '3', 500000, 1, 1, 1, 0),
+('5ebfcf7b83ab0', 1, 3, 'admin_5ebfcf7b83ab0.png', '3D 2N in Nusa Dua', ' Termasuk penginapan mewah dan mobil ', 2, '2', 750000, 1, 1, 1, 10),
+('5ebfd6979bbea', 1, 1, 'admin_5ebfd6979bbea.jpeg', '3D 2N in Bali', '  Sekilas pikiran menerawang dan sebuah lukisan elok pun muncul terbayang. Lautan lepas dengan pulau-pulau karang yang tersusun rapih menyambut beberapa ekor lumba-lumba yang berloncatan ceria. Langit yang biru berpadu dengan indahnya ombak menyisir setia   ', 4, '3', 1250000, 1, 1, 1, 10);
 
 -- --------------------------------------------------------
 
@@ -159,7 +164,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `username`, `email`, `password`, `password_hint`, `img_profile`, `is_active`, `date_created`) VALUES
-(13, 'Mohammad', 'Idham', 'idhamozi', 'muh_idham85@yahoo.com', '$2y$10$S14AAl2Sv9XHyyOQErv7AOTg/lgh7UyBa3mkEn/6dADm/RvXe1mEu', '455412', 'profile_idhamozi.JPEG', 1, 2020);
+(13, 'Mohammad', 'Idham', 'idhamozi', 'muh_idham85@yahoo.com', '$2y$10$coZXfZvpnepoB1dPGQs48u0LbAUaFYb8kgwRKhdJi0qvSzQ7eMx5W', '12345', 'profile_idhamozi.JPEG', 1, 2020);
 
 -- --------------------------------------------------------
 
