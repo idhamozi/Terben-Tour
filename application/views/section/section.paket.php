@@ -14,14 +14,14 @@
 								<h3 class="mt-1">Exclusive Trips</h3>
 								<h2 class="mt-5"><?= $eksklusif[0]->judul  ?></h2>
 								<p class="mt-5 mb-5 mr-5 mr-sm-3 text-justify">
-									<?= $eksklusif[0]->deskripsi  ?>
+									<?= character_limiter(strip_tags($eksklusif[0]->deskripsi),250)  ?>
 								</p>
 								<h5 class="mt-3 pl-3 border-left">Selama <?= $eksklusif[0]->durasi ?> Hari</h5>
 								<div class="price-and-cta float-left">
 									<h4 class="mt-3">Rp. <?= number_format($eksklusif[0]->harga, 2, ',', '.') ?></h4>
 								</div>
 								<div class="from-inline my-2 my-lg-0 float-right">
-									<button class="btn-check btn-right my-2 my-sm-0 px-4 mx-3" onclick="location.href='<?= base_url('Paket/Kategori/'.$eksklusif[0]->kategori_id); ?>'">
+									<button class="btn-check btn-right my-2 my-sm-0 px-4 mx-3" onclick="location.href='<?= base_url('Paket/'.$eksklusif[0]->kategori_id); ?>'">
 										Check <i class="fas fa-angle-right pl-2"></i>
 									</button>
 								</div>

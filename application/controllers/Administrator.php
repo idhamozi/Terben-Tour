@@ -99,6 +99,12 @@ class Administrator extends CI_Controller
     $this->load->view('admin/homepage/testimonial');
   }
 
+  function Paket($kategori_id)
+  {
+    $data['paket'] = $this->M_Paket->getPaketKategori($kategori_id);
+    $this->load->view('admin/travel/paket',$data);
+  }
+
   function Add_Paket()
   {
     if($this->input->post('submit') != null){

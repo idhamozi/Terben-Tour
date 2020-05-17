@@ -14,6 +14,7 @@
     <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap.js')  ?>"></script>
     <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap-select.js')  ?>"></script>
     <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap.bundle.min.js')  ?>"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 	<link href="<?= base_url('assets\frontend\libraries\font-awesome-5\css\fontawesome-all.min.css') ?>" rel="stylesheet" media="all">
 	<link href="<?= base_url('assets\backend\style\main.css')?>" rel="stylesheet">
 </head>
@@ -65,14 +66,14 @@
                             </li>
                             <li class="app-sidebar__heading">Layouts</li>
                             <li>
-                                <a href="#"  class="mm-active">
+                                <a href="#">
                                     <i class="metismenu-icon pe-7s-home"></i>
                                         Home Page
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="<?= base_url('Administrator/MostTrips')  ?>" class="mm-active"
+                                        <a href="<?= base_url('Administrator/MostTrips')  ?>">
                                             <i class="metismenu-icon"></i>
                                                 Most Trip
                                         </a>
@@ -92,7 +93,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="#" class="mm-active">
                                     <i class="metismenu-icon pe-7s-plane"></i>
                                         Travel
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
@@ -143,11 +144,16 @@
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="fas fa-suitcase"></i>
+                                    <i class="fas fa-plane-departure"></i>
                                 </div>
-                                <div>Add Vacation Packages for Travelers
-                                    <div class="page-title-subheading">Add vacation packages start from executive,
-                                        business, and economy!
+                                <div>List <?php if ($paket[0]->kategori_id == 1) {
+                                  echo "Exclusive";
+                                } elseif ($paket[0]->kategori_id == 2) {
+                                  echo "Business";
+                                } elseif ($paket[0]->kategori_id == 3) {
+                                  echo "Economic";
+                                }?> Packages for Travelers
+                                    <div class="page-title-subheading">List vacation packages start from executive, business, and economy!
                                     </div>
                                 </div>
                             </div>
@@ -157,109 +163,13 @@
                         <div class="col-lg-12">
                             <div class="main-card mb-3 card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Add Thumbnail Vacation Packages</h5>
-
-                                    <hr>
-
-                                    <label for="image">
-                                    <img class="img-thumbnail mb-2" src="<?=(@$paket['img_paket'] != null)? base_url('/assets/frontend/images/admin/paket/'.$paket['img_paket']): "#";?>"  alt="...">
-                                    </label>
-                                    <div class="add-package-thumbnail">
-                                        <span style="font-weight: bold;" class="mt-1 mb-3">Add Packages</span>
-                                        <form class="was-validated" method="post" enctype="multipart/form-data" action="<?= base_url('Administrator/Add_Paket')  ?>">
-                                            <div class="form-row">
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Tipe Paket</label>
-                                                    <select class="form-control" name="Kategori" id="Kategori">
-                                                      <?php foreach ($kategori as $key => $value) { ?>
-                                                        <option value="<?= $value->kategori_id ?>"
-                                                        <?=(@$kategori[$key]->nama_kategori == $value->nama_kategori)?"selected":""?> >
-                                                          <?= $value->nama_kategori ?>
-                                                        </option>
-                                                      <?php } ?>
-                                                    </select>
-                                                </div>
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Judul</label>
-                                                    <input type="text" name="Judul" id="Judul" class="form-control is-invalid"
-                                                        placeholder="Required Judul"  required>
-                                                    <div class="invalid-feedback"> Please enter a Judul </div>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="validationCustom02">Deskripsi</label>
-                                                <textarea name="Deskripsi" id="Deskripsi" rows="10" aria-describedby="deskripsi-help" class="form-control is-invalid"
-                                                    placeholder="Required deskripsi" required></textarea>
-                                                    <small id="deskripsi-help" class="form-text text-muted">*Max 500 character</small>
-
-                                                <div class="invalid-feedback"> Please enter a deskripsi </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Day</label>
-                                                    <input type="text" name="Durasi" id="Durasi" class="form-control is-invalid"
-                                                        placeholder="Required Day" required>
-                                                    <div class="invalid-feedback"> Please enter a Day </div>
-                                                </div>
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Price</label>
-                                                    <div class="input-group mb-2">
-                                                      <div class="input-group-prepend">
-                                                        <div class="input-group-text">Rp.</div>
-                                                      </div>
-                                                        <input type="text" name="inputHarga" id="inputHarga"  class="form-control" placeholder="Required Price" required>
-                                                    </div>
-                                                    <div class="invalid-feedback"> Please enter a Price </div>
-                                                    <input type="number" name="Harga" id="Harga" class="form-control" hidden>
-                                                </div>
-                                            </div>
-                                            <label>Facility</label>
-                                            <div class="form-row">
-                                              <div class="col mb-3">
-                                                <input class="form-control is-invalid" type="text" id="Bedroom" name="Bedroom" placeholder="Required Amount of Bed" required>
-                                                <div class="invalid-feedback"> Please enter a Facility, if you don't have fill with 0</div>
-                                              </div>
-                                              <div class="col mb-3">
-                                                <input class="form-control is-invalid" type="text" id="Bathroom" name="Bathroom" placeholder="Required Amount of Bath" required>
-                                              </div>
-                                              <div class="col mb-3">
-                                                <input class="form-control is-invalid" type="text" id="Tv" name="Tv" placeholder="Required Amount of TV" required>
-                                              </div>
-                                              <div class="col mb-3">
-                                                <input class="form-control is-invalid" type="text" id="Inet" name="Inet" placeholder="Required Speed Internet" required>
-                                              </div>
-                                            </div>
-                                            <div class="form-row">
-                                              <div class="col mb-3">
-                                                <label>Img file input</label>
-                                                <input type="file" class="form-control-file" name="image" id="image">
-                                              </div>
-
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Max Person</label>
-                                                    <select class="form-control" name="Max" id="Max">
-                                                        <option value="2">2 Person</option>
-                                                        <option value="4">4 Person</option>
-                                                        <option value="8">8 Person</option>
-                                                        <option value="16">16 Person</option>
-                                                        <option value="32">32 Person</option>
-                                                        <option value="64">64 Person</option>
-                                                    </select>
-                                                    <div class="invalid-feedback"> Please enter a Max Person </div>
-                                                </div>
-                                            </div>
-                                            <input type="text" name="submit" value="submit" hidden>
-                                            <button type="submit" id="submit" class="btn btn-primary mt-3">Submit</button>
-                                        </form>
-                                    </div>
-
-                                    <hr>
-
-                                </div>
-                            </div>
-                            <div class="main-card mb-3 card">
-                                <div class="card-body">
-                                    <h5 class="card-title">List Vacation Packages</h5>
+                                    <h5 class="card-title">List Vacation <?php if ($paket[0]->kategori_id == 1) {
+                                      echo "Exclusive";
+                                    } elseif ($paket[0]->kategori_id == 2) {
+                                      echo "Business";
+                                    } elseif ($paket[0]->kategori_id == 3) {
+                                      echo "Economic";
+                                    }?> Packages</h5>
                                     <div class="add-package-content">
                                         <table class="table">
 

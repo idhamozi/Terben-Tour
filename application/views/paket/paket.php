@@ -15,9 +15,9 @@
     <!-- navbar -->
     <div class="container">
         <nav class="row navbar navbar-expand-lg navbar-light bg-white">
-            <a href="" class="navbar-brand">
-                <img src="<?= base_url('assets\frontend\images\Terben.Tour@2x.png')  ?>" alt="Logo TerbenTour">
-            </a>
+          <a href="<?= base_url('')  ?>" class="navbar-brand">
+              <img src="<?= base_url('assets\frontend\images\Terben.Tour@2x.png')  ?>" alt="Logo TerbenTour">
+          </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navM">
                 <span class="navbar-toggler-icon clr"></span>
@@ -92,7 +92,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="<?= base_url('')  ?>">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><a href="<?= base_url('Paket') ?>">Paket</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Paket</li>
                     </ol>
                 </nav>
             </div>
@@ -107,7 +107,7 @@
                         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                             <div class="col pl-4 pt-4 d-flex flex-column position-static">
                                 <strong class="d-inline-block mb-2 text-primary">
-                                  <a href="<?= base_url('Paket/Kategori/'.$dataPaket->kategori_id)  ?>">
+                                  <a href="<?= base_url('Paket/'.$dataPaket->kategori_id)  ?>">
                                   <?php if ($dataPaket->kategori_id == 1) {
                                     echo "Exclusive";
                                   } elseif ($dataPaket->kategori_id == 2) {

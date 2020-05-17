@@ -39,7 +39,7 @@
 	<div class="container-fluid">
 		<div class="row border-top justify-content-center align-items-center pt-4">
 			<div class="col-auto text-gray-500-font-weight-light">
-				<p>&copy; <?php echo date('Y') ?>. Copyright By <a href="http://terben-tour.pmh.web.id" title="Terben Tour and Travel">Terben Tour and Travel IT Team</a></p>
+				<p>Copyright &copy; <?php echo date('Y') ?>  By <a href="http://terben-tour.pmh.web.id" title="Terben Tour and Travel">Terben Tour and Travel IT Team.</a> All Rights Reserved.</p>
 			</div>
 		</div>
 	</div>

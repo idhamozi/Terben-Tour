@@ -18,9 +18,9 @@
     <!-- navbar -->
     <div class="container">
         <nav class="row navbar navbar-expand-lg navbar-light bg-white">
-            <a href="" class="navbar-brand">
-                <img src="<?= base_url('assets\frontend\images\Terben.Tour@2x.png')  ?>" alt="Logo TerbenTour">
-            </a>
+          <a href="<?= base_url('')  ?>" class="navbar-brand">
+              <img src="<?= base_url('assets\frontend\images\Terben.Tour@2x.png')  ?>" alt="Logo TerbenTour">
+          </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navM">
                 <span class="navbar-toggler-icon clr"></span>
@@ -101,11 +101,11 @@
                         <?php
                         if (isset($paket[0]->kategori_id)) {
                           if ($paket[0]->kategori_id == 1) { ?>
-                            <li class="breadcrumb-item active" aria-current="page"><a href="<?= base_url('Paket/Kategori/'.$paket[0]->kategori_id)?>">Exclusive</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a href="<?= base_url('Paket/'.$paket[0]->kategori_id)?>">Exclusive</a></li>
                           <?php } elseif ($paket[0]->kategori_id == 2) { ?>
-                            <li class="breadcrumb-item active" aria-current="page"><a href="<?= base_url('Paket/Kategori/'.$paket[0]->kategori_id)?>">Business</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a href="<?= base_url('Paket/'.$paket[0]->kategori_id)?>">Business</a></li>
                           <?php } elseif ($paket[0]->kategori_id == 3) { ?>
-                            <li class="breadcrumb-item active" aria-current="page"><a href="<?= base_url('Paket/Kategori/'.$paket[0]->kategori_id)?>">Economic</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a href="<?= base_url('Paket/'.$paket[0]->kategori_id)?>">Economic</a></li>
                           <?php } ?>
                         <?php } ?>
                         <li class="breadcrumb-item active" aria-current="page">Details</li>
@@ -137,6 +137,10 @@
                             <div class="text-about text-justify">
                                 <h5>About this place</h5>
                                 <span><?= $paket[0]->deskripsi  ?></span>
+                            </div>
+
+                            <div class="">
+                              <h6 class="mt-3 pl-3 border-left"><span><?= $paket[0]->durasi  ?> Hari</span></h6>
                             </div>
 
                             <div class="features row mt-3">

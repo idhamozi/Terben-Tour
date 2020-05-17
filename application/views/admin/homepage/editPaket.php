@@ -72,7 +72,7 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="<?= base_url('Administrator/MostTrips')  ?>" class="mm-active"
+                                        <a href="<?= base_url('Administrator/MostTrips')  ?>">
                                             <i class="metismenu-icon"></i>
                                                 Most Trip
                                         </a>
@@ -92,30 +92,30 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="#" class="mm-active">
                                     <i class="metismenu-icon pe-7s-plane"></i>
                                         Travel
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="metismenu-icon"></i>
-                                                Exclusive Travel
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="metismenu-icon"></i>
-                                                Business Travel
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="metismenu-icon"></i>
-                                                Economic Travel
-                                        </a>
-                                    </li>
+                                  <li>
+                                      <a href="<?= base_url('Administrator/Paket/'."1")  ?>">
+                                          <i class="metismenu-icon"></i>
+                                              Exclusive Travel
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a href="<?= base_url('Administrator/Paket/'."2")  ?>">
+                                          <i class="metismenu-icon"></i>
+                                              Business Travel
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a href="<?= base_url('Administrator/Paket/'."3")  ?>">
+                                          <i class="metismenu-icon"></i>
+                                              Economic Travel
+                                      </a>
+                                  </li>
                                 </ul>
                             </li>
                             <li class="app-sidebar__heading">SETTING ADMIN</li>

@@ -70,7 +70,7 @@
                                     </a>
                                     <ul>
                                       <li>
-                                          <a href="<?= base_url('Administrator/MostTrips')  ?>" 
+                                          <a href="<?= base_url('Administrator/MostTrips')  ?>"
                                               <i class="metismenu-icon"></i>
                                                   Most Trip
                                           </a>
@@ -97,19 +97,19 @@
                                     </a>
                                     <ul>
                                       <li>
-                                          <a href="#">
+                                          <a href="<?= base_url('Administrator/Paket/'."1")  ?>">
                                               <i class="metismenu-icon"></i>
                                                   Exclusive Travel
                                           </a>
                                       </li>
                                       <li>
-                                          <a href="#">
+                                          <a href="<?= base_url('Administrator/Paket/'."2")  ?>">
                                               <i class="metismenu-icon"></i>
                                                   Business Travel
                                           </a>
                                       </li>
                                       <li>
-                                          <a href="#">
+                                          <a href="<?= base_url('Administrator/Paket/'."3")  ?>">
                                               <i class="metismenu-icon"></i>
                                                   Economic Travel
                                           </a>
