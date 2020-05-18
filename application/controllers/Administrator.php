@@ -246,7 +246,7 @@ class Administrator extends CI_Controller
       $this->email->subject('Tour E-Ticket');
       $this->email->message();
       $this->email->message('Hai, '.$email.' Congratulation !!! Your payment has succesfull validate and enjoy your trip wiith us ! Here is your E-Ticket :');
-      $this->email->attach(base_url('assets/frontend/images/templateEticket.png'));
+      $this->email->attach(base_url('assets/frontend/images/Eticket.png'));
 
 
       if ($this->email->send()) {
