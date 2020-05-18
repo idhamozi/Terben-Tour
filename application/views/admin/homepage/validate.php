@@ -66,7 +66,7 @@
                             </li>
                             <li class="app-sidebar__heading">Layouts</li>
                             <li>
-                                <a href="#">
+                                <a href="#" class="mm-active">
                                     <i class="metismenu-icon pe-7s-home"></i>
                                         Home Page
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
@@ -79,7 +79,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= base_url('Administrator/Validate')  ?>">
+                                        <a href="<?= base_url('Administrator/Validate')  ?>" class="mm-active">
                                             <i class="metismenu-icon"></i>
                                                 Validate Payment
                                         </a>
@@ -99,7 +99,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#" class="mm-active">
+                                <a href="#">
                                     <i class="metismenu-icon pe-7s-plane"></i>
                                         Travel
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
