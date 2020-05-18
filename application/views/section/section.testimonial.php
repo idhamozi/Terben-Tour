@@ -9,50 +9,50 @@
 				</ol>
 				<div class="carousel-inner">
 				<div class="carousel-item active">
-						<div class="row featurette section-text">
+						<div class="row featurette section-text mb-5">
 							<div class="col-lg-7 mt-5">
 							<h3>Testimonial</h3>
 							<h3 class="mt-5 mb-5">Rating</h3>
-								<h5 class="mt-5 mb-5 mr-5 mr-sm-3">
+								<h5 class="mt-5 mb-5 mr-5 mr-sm-3 text-justify">
 								"Seperti saya bilang tadi, berlibur ke Raja Ampat itu mahal, tapi anda tidak akan menyesal. Itu pun kalau anda mendapat referensi berlibur ke Raja Ampat yang baik dan benar,"
 								</h5>
 								<h4 class="mt-5 mb-3">Galgadot</h4>
 								<p>Liburan ke Raja Ampat, Indonesia</p>
 							</div>
 							<div class="col-lg-5">
-								<img class="img-pict-testimonial rounded bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5" width="500" height="500" src="<?= base_url('assets\frontend\images\pict-testi.png')  ?>" alt="gambar1">
+								<img class="img-pict-testimonial rounded bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5" style="width: 300px; height: 400px; border-radius: 15px;"  src="<?= base_url('assets\frontend\images\pict-testi.png')  ?>" alt="gambar1">
 							</div>
 						</div>
 					</div>
 					<div class="carousel-item">
-						<div class="row featurette section-text">
+						<div class="row featurette section-text mb-5">
 							<div class="col-lg-7 mt-5">
 							<h3>Testimonial</h3>
 							<h3 class="mt-5 mb-5">Rating</h3>
-								<h5 class="mt-5 mb-5 mr-5 mr-sm-3">
+								<h5 class="mt-5 mb-5 mr-5 mr-sm-3 text-justify">
 								"Seperti saya bilang tadi, berlibur ke Raja Ampat itu mahal, tapi anda tidak akan menyesal. Itu pun kalau anda mendapat referensi berlibur ke Raja Ampat yang baik dan benar,"
 								</h5>
 								<h4 class="mt-5 mb-3">Galgadot</h4>
 								<p>Liburan ke Raja Ampat, Indonesia</p>
 							</div>
 							<div class="col-lg-5">
-								<img class="img-pict-testimonial rounded bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5" width="500" height="500" src="<?= base_url('assets\frontend\images\pict-testi.png')  ?>" alt="gambar1">
+								<img class="img-pict-testimonial rounded bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5" style="width: 300px; height: 400px; border-radius: 15px;"  src="<?= base_url('assets\frontend\images\pict-testi.png')  ?>" alt="gambar1">
 							</div>
 						</div>
 					</div>
 					<div class="carousel-item">
-						<div class="row featurette section-text">
+						<div class="row featurette section-text mb-5">
 							<div class="col-lg-7 mt-5">
 							<h3>Testimonial</h3>
 							<h3 class="mt-5 mb-5">Rating</h3>
-								<h5 class="mt-5 mb-5 mr-5 mr-sm-3">
+								<h5 class="mt-5 mb-5 mr-5 mr-sm-3 text-justify">
 								"Seperti saya bilang tadi, berlibur ke Raja Ampat itu mahal, tapi anda tidak akan menyesal. Itu pun kalau anda mendapat referensi berlibur ke Raja Ampat yang baik dan benar,"
 								</h5>
 								<h4 class="mt-5 mb-3">Galgadot</h4>
 								<p>Liburan ke Raja Ampat, Indonesia</p>
 							</div>
 							<div class="col-lg-5">
-								<img class="img-pict-testimonial rounded bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5" width="500" height="500" src="<?= base_url('assets\frontend\images\pict-testi.png')  ?>" alt="gambar1">
+								<img class="img-pict-testimonial rounded bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5" style="width: 300px; height: 400px; border-radius: 15px;"  src="<?= base_url('assets\frontend\images\pict-testi.png')  ?>" alt="gambar1">
 							</div>
 						</div>
 					</div>

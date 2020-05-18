@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?= base_url('assets\frontend\libraries\bootstrap\css\bootstrap.css') ?>">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Testimonial</title>
+	<link rel="stylesheet" href="<?= base_url('assets\frontend\libraries\bootstrap\css\bootstrap.css') ?>">
 	<link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600,700,800|Playfair+Display:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="<?= base_url('assets\frontend\libraries\font-awesome-5\css\fontawesome-all.min.css') ?>" rel="stylesheet" media="all">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets\frontend\libraries\gjigo\css\gijgo.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets\frontend\styles\main.css') ?>">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    
-    <title>Paket</title>
 </head>
 <body>
 <?php $user_data = $this->session->userdata('user_data');  ?>
@@ -32,7 +31,7 @@
                         <a href="<?= base_url('')  ?>" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item mx-md-2">
-                        <a href="#" class="nav-link  active">Paket Travel</a>
+                        <a href="<?= base_url('Paket') ?>" class="nav-link">Paket Travel</a>
                     </li>
                     <li class="nav-item mx-md-2">
                         <a href="#" class="nav-link">Testimonial</a>
@@ -88,119 +87,63 @@
             </div>
         </nav>
     </div>
+	    <!-- breadcrumb -->
 	<hr>
     <section class="section-details-breadcrumb">
         <div class="container">
             <div class="row ">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= base_url('')  ?>">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Paket</li>
+                        <li class="breadcrumb-item">Home</li>
+                        <li class="breadcrumb-item active" aria-current="page">Testimonial</li>
                     </ol>
                 </nav>
             </div>
         </div>
     </section>
     <main>
-        <section class="section-content-paket">
+        <section class="section-content-testimonial">
             <div class="container">
-                <div class="row">
-                  <?php foreach ($paket as $dataPaket) { ?>
-                    <div class="col-lg-6 mb-3">
+                <div class="row justify-content-center">
+                    <div class="text-center mb-5">
+                        <h3>They Are Loving Us</h3>
+                        <span>Moment were giving them  the best experience</span>
+                    </div>
+                </div>
+                <div class="row  justify-content-center">
+                    <div class="col-lg-12 mb-5">
                         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                             <div class="col pl-4 pt-4 d-flex flex-column position-static">
-                                <strong class="d-inline-block mb-2 text-primary">
-                                  <a href="<?= base_url('Paket/'.$dataPaket->kategori_id)  ?>">
-                                  <?php if ($dataPaket->kategori_id == 1) {
-                                    echo "Exclusive";
-                                  } elseif ($dataPaket->kategori_id == 2) {
-                                    echo "Business";
-                                  } else {
-                                    echo "Economic";
-                                  } ?>
-                                   Trip
-                                   </a>
-                                 </strong>
-                                <h3 class="mb-0"><?= $dataPaket->judul  ?></h3>
-                                <div class="mb-1 text-muted"><?= $dataPaket->durasi  ?> Hari</div>
-                                <h5>Rp. <?= number_format($dataPaket->harga, 2, ',', '.')  ?></h5>
-                                <p class="card-text mb-auto text-muted text-justify"><?= character_limiter(strip_tags($dataPaket->deskripsi),100) ?></p>
+                                <strong class="d-inline-block mb-2 text-primary">Testimoni</strong>
+                                <div class="rating ">
+                                    <input type="radio " id="star10 " name="rating " value="10 " /><label for="star10 " title="Rocks! ">5 stars</label>
+                                    <input type="radio " id="star9 " name="rating " value="9 " /><label for="star9 " title="Rocks! ">4
+                                        stars</label>
+                                    <input type="radio " id="star8 " name="rating " value="8 " /><label for="star8 " title="Pretty good ">3 stars</label>
+                                    <input type="radio " id="star7 " name="rating " value="7 " /><label for="star7 " title="Pretty good ">2 stars</label>
+                                    <input type="radio " id="star6 " name="rating " value="6 " /><label for="star6 " title="Meh ">1
+                                        star</label>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-lg-10">
+                                        <h3 class="card-text mb-5">"Saya merekomendasikan liburan di Raja Ampat dengan aplikasi Terbe Tour ini, karena dengan biaya yang murah, saya dapat berlibur ke Raja Ampat dengan keluarga saya."</h3>
+                                        <h5>Rose Martin</h5>
+                                        <span class="mb-5">Liburan ke Raja Ampat Indonesia</span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-auto d-none d-lg-block p-4">
-                                <img src="<?= base_url('/assets/frontend/images/admin/paket/'.$dataPaket->img_paket) ?>" alt="<?= $dataPaket->img_paket  ?>" style="width: 250px; height: 200px;">
-                            </div>
-                            <div class="col-lg-12 pl-4 pb-4 pr-4">
-
-                                <div class="features row mt-3">
-                                    <div class="col-md-3">
-                                        <div class="description">
-                                            <i class="fas fa-bed"></i>
-                                            <p><?= $dataPaket->fas_bedroom ?> Bedroom</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 ">
-                                        <div class="description">
-                                            <i class="fas fa-bath"></i>
-                                            <p><?= $dataPaket->fas_bathroom ?> Bathroom</p>
-                                        </div>
-                                    </div>
-                                    <?php if ($dataPaket->fas_tv > 0) { ?>
-                                      <div class="col-md-3 ">
-                                          <div class="description">
-                                              <i class="fas fa-tv"></i>
-                                              <p><?= $dataPaket->fas_tv  ?> Television</p>
-                                          </div>
-                                      </div>
-                                    <?php } ?>
-                                    <?php if ($dataPaket->fas_inet > 0) { ?>
-                                      <div class="col-md-3 ">
-                                          <div class="description">
-                                              <i class="fas fa-wifi"></i>
-                                              <p><?= $dataPaket->fas_inet ?> mb/s</p>
-                                          </div>
-                                      </div>
-                                    <?php } ?>
-                                </div>
-                                <div class="features row mt-4">
-                                  <div class="col-md-8">
-                                    <button class="btn btn-success" onclick="location.href='<?= base_url('Paket/Detail/'.$dataPaket->paket_id); ?>'" type="button">
-                                        Continue Details
-                                    </button>
-                                  </div>
-                                  <div class="col-md-4 order-last">
-                                    <div class="description">
-                                      <i class="fas fa-users"></i> Max. <?= $dataPaket->max_person?> Person
-                                      <hr>
-                                    </div>
-                                  </div>
-                                </div>
+                                <img src="frontend\images\pict-testi.png" alt="" style="width: 300px; height: 400px; border-radius: 15px;">
                             </div>
                         </div>
                     </div>
-                  <?php } ?>
                 </div>
             </div>
         </section>
-	</main>
-	<?php require_once APPPATH."views/layout/layout.footer.php" ?>
-
-  <!-- SWEETALERT -->
-  <?php if ($this->session->flashdata('sukses')) { ?>
-    <script>
-      swal("Berhasil", "<?php echo $this->session->flashdata('sukses'); ?>", "success")
-    </script>
-  <?php } ?>
-
-  <?php if ($this->session->flashdata('warning')) { ?>
-    <script>
-      swal("Oops...", "<?php echo $this->session->flashdata('warning'); ?>", "warning")
-    </script>
-  <?php } ?>
-
+    </main>
 </body>
-
 <script src="<?= base_url('assets\frontend\libraries\jquery\jquery-3.4.1.min.js') ?>"></script>
 <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap.js') ?>"></script>
 <script src="<?= base_url('assets\frontend\libraries\retina\retina.min.js') ?>"></script>
-
 </html>

@@ -97,7 +97,7 @@
       <?php require_once APPPATH."views/layout/layout.header.php" ?>
 
 
-<div class="container">
+<div class="container mt-3">
 
 
     <h1>Information Terben Tour & Travel</h1>
