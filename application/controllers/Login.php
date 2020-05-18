@@ -67,6 +67,7 @@ class Login extends CI_Controller
         $user = $this->M_GoogleLogin->cek_google($email)->row();
 
         $user_data = array(
+          'google_id' => $user->google_id,
           'login_oauth_uid' => $data['id'],
           'first_name'      => $data['given_name'],
           'last_name'       => $data['family_name'],

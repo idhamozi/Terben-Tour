@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?= base_url('assets\frontend\libraries\gjigo\css\gijgo.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets\frontend\styles\main.css') ?>">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
     <title>Details</title>
 </head>
 
@@ -188,15 +191,23 @@
                     </div>
                     <div class="col-lg-5">
                         <div class="card card-booking">
-                            <div class="text-booking">
+                            <form class="text-booking" method="post" action="<?= base_url('Checkout/Booking')  ?>">
+                              <?php  if (isset($user_data['user_id'])) { ?>
+                                <input type="text" name="user_id" value="<?= $user_data['user_id'] ;  ?>" hidden>
+                              <?php  } else { ?>
+                                <input type="text" name="google_id" value="<?= $user_data['google_id'] ;  ?>" hidden>
+                              <?php  } ?>
                                 <h5>Start Booking</h5>
+                                <input type="text" name="paket_id" value="<?= $paket[0]->paket_id ?>" hidden>
                                 <h3><span>Start From </span>Rp. <?= number_format($paket[0]->harga, 2, ',', '.')  ?></h3>
+                                <input type="text" name="harga" value="<?= $paket[0]->harga  ?>" hidden>
                                 <p>Pick a date </p>
                                 <div class="pick-date input-group ">
-                                    <input type="text" class="form-control datepicker" id="PickDate" placeholder="Pick a date ">
+                                    <input type="text" class="form-control datepicker" name="PickDate" id="PickDate" size="30"  placeholder="mm/dd/yyyy">
                                 </div>
-                                <button class="btn btn-booking">Continue to Book</button>
-                            </div>
+                                <input type="text" name="submit" value="submit" hidden>
+                                <button type="submit" class="btn btn-booking">Continue to Book</button>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -22,9 +22,9 @@
       <!-- navbar -->
       <div class="container">
           <nav class="row navbar navbar-expand-lg navbar-light bg-white">
-              <a href="" class="navbar-brand">
-                  <img src="<?= base_url('assets\frontend\images\Terben.Tour@2x.png')  ?>" alt="Logo TerbenTour">
-              </a>
+            <a href="<?= base_url('')  ?>" class="navbar-brand">
+                <img src="<?= base_url('assets\frontend\images\Terben.Tour@2x.png')  ?>" alt="Logo TerbenTour">
+            </a>
 
               <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navM">
                   <span class="navbar-toggler-icon clr"></span>

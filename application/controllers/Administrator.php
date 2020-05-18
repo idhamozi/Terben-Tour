@@ -112,11 +112,11 @@ class Administrator extends CI_Controller
     $username = $user_data['username'];
 
     $data = array();
-    $storyUUID = uniqid();
+    $paketUUID = uniqid();
     $config['upload_path'] = "./assets/frontend/images/admin/paket/";
     $config['allowed_types'] ='gif|jpg|jpeg|png|PNG';
     $config['max_size']      = '12000'; // KB
-    $config['file_name'] = $username."_".$storyUUID;
+    $config['file_name'] = $username."_".$paketUUID;
     $config['overwrite'] = true;
 
     $this->load->library('upload',$config);
@@ -137,7 +137,7 @@ class Administrator extends CI_Controller
     $imageupload = $this->upload->do_upload('image');
     $image = ($imageupload)? $this->upload->data('file_name'):NULL;
 
-    $result = $this->M_Paket->insertPaket($storyUUID, $kategori , $image, $title, $deskripsi, $max_person, $durasi,  $harga, $bed, $bath, $tv, $inet);
+    $result = $this->M_Paket->insertPaket($paketUUID, $kategori , $image, $title, $deskripsi, $max_person, $durasi,  $harga, $bed, $bath, $tv, $inet);
 
     $this->session->set_flashdata('sukses', 'Data berhasil ditambah !!!');
 
@@ -202,6 +202,61 @@ class Administrator extends CI_Controller
 
       }
     }
+
+    function Validate()
+    {
+      $data['paket'] = $this->M_Paket->getAllPay();
+      $data['nama_paket'] = $this->M_Paket->getAllPaket();
+      $this->load->view('admin/homepage/validate', $data);
+    }
+
+    function isValid($checkout_id)
+    {
+      $this->M_Paket->isValid($checkout_id);
+
+      $data = $this->M_Paket->checkoutData($checkout_id);
+      $email = $data[0]->email;
+
+      $this->_sendEmail($email);
+
+      $this->session->set_flashdata('sukses', 'Pembayaran sudah di validasi !!!');
+
+      redirect(base_url('Administrator/Dashboard'),'refresh');
+    }
+
+    function _sendEmail($email)
+  {
+      $config = [
+          'protocol'  => 'smtp',
+          'smtp_host' => 'ssl://smtp.googlemail.com',
+          'smtp_user' => 'info.terbentour@gmail.com',
+          'smtp_pass' => 'Terbentour12345!',
+          'smtp_port' => 465,
+          'mailtype'  => 'html',
+          'charset'   => 'utf-8',
+          'newline'   => "\r\n"
+      ];
+
+      $this->email->initialize($config);
+
+      $this->email->from('info.terbentour@gmail.com', 'Terben Tour & Travel');
+
+      $this->email->to($email);
+
+      $this->email->subject('Tour E-Ticket');
+      $this->email->message('Hai, '$email);
+      $this->email->message('Congratulation !!! Your payment has succesfull validate and enjoy your trip wiith us !');
+      $this->email->message('Here is your E-Ticket : ');
+      $this->email->attach(base_url('assets/frontend/images/templateEticket.png'));
+
+
+      if ($this->email->send()) {
+          return true;
+      } else {
+          echo $this->email->print_debugger();
+          die;
+      }
+  }
 
     function Delete_Paket($paket_id)
     {

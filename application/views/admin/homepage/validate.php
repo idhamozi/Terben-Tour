@@ -14,6 +14,7 @@
     <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap.js')  ?>"></script>
     <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap-select.js')  ?>"></script>
     <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap.bundle.min.js')  ?>"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="<?= base_url('assets\frontend\libraries\font-awesome-5\css\fontawesome-all.min.css') ?>" rel="stylesheet" media="all">
 	<link href="<?= base_url('assets\backend\style\main.css')?>" rel="stylesheet">
 </head>
@@ -65,14 +66,14 @@
                             </li>
                             <li class="app-sidebar__heading">Layouts</li>
                             <li>
-                                <a href="#"  class="mm-active">
+                                <a href="#">
                                     <i class="metismenu-icon pe-7s-home"></i>
                                         Home Page
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="<?= base_url('Administrator/MostTrips')  ?>" class="mm-active"
+                                        <a href="<?= base_url('Administrator/MostTrips')  ?>">
                                             <i class="metismenu-icon"></i>
                                                 Most Trip
                                         </a>
@@ -98,7 +99,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="#" class="mm-active">
                                     <i class="metismenu-icon pe-7s-plane"></i>
                                         Travel
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
@@ -149,11 +150,10 @@
                         <div class="page-title-wrapper">
                             <div class="page-title-heading">
                                 <div class="page-title-icon">
-                                    <i class="fas fa-suitcase"></i>
+                                    <i class="fa fa-dollar"></i>
                                 </div>
-                                <div>Add Vacation Packages for Travelers
-                                    <div class="page-title-subheading">Add vacation packages start from executive,
-                                        business, and economy!
+                                <div>Validate Payment
+                                    <div class="page-title-subheading">List Validate Payment from user !
                                     </div>
                                 </div>
                             </div>
@@ -163,120 +163,17 @@
                         <div class="col-lg-12">
                             <div class="main-card mb-3 card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Add Thumbnail Vacation Packages</h5>
-
-                                    <hr>
-
-                                    <label for="image">
-                                    <img class="img-thumbnail mb-2" src="<?=(@$paket['img_paket'] != null)? base_url('/assets/frontend/images/admin/paket/'.$paket['img_paket']): "#";?>"  alt="...">
-                                    </label>
-                                    <div class="add-package-thumbnail">
-                                        <span style="font-weight: bold;" class="mt-1 mb-3">Add Packages</span>
-                                        <form class="was-validated" method="post" enctype="multipart/form-data" action="<?= base_url('Administrator/Add_Paket')  ?>">
-                                            <div class="form-row">
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Tipe Paket</label>
-                                                    <select class="form-control" name="Kategori" id="Kategori">
-                                                      <?php foreach ($kategori as $key => $value) { ?>
-                                                        <option value="<?= $value->kategori_id ?>"
-                                                        <?=(@$kategori[$key]->nama_kategori == $value->nama_kategori)?"selected":""?> >
-                                                          <?= $value->nama_kategori ?>
-                                                        </option>
-                                                      <?php } ?>
-                                                    </select>
-                                                </div>
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Judul</label>
-                                                    <input type="text" name="Judul" id="Judul" class="form-control is-invalid"
-                                                        placeholder="Required Judul"  required>
-                                                    <div class="invalid-feedback"> Please enter a Judul </div>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="validationCustom02">Deskripsi</label>
-                                                <textarea name="Deskripsi" id="Deskripsi" rows="10" aria-describedby="deskripsi-help" class="form-control is-invalid"
-                                                    placeholder="Required deskripsi" required></textarea>
-                                                    <small id="deskripsi-help" class="form-text text-muted">*Max 500 character</small>
-
-                                                <div class="invalid-feedback"> Please enter a deskripsi </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Day</label>
-                                                    <input type="text" name="Durasi" id="Durasi" class="form-control is-invalid"
-                                                        placeholder="Required Day" required>
-                                                    <div class="invalid-feedback"> Please enter a Day </div>
-                                                </div>
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Price</label>
-                                                    <div class="input-group mb-2">
-                                                      <div class="input-group-prepend">
-                                                        <div class="input-group-text">Rp.</div>
-                                                      </div>
-                                                        <input type="text" name="inputHarga" id="inputHarga"  class="form-control" placeholder="Required Price" required>
-                                                    </div>
-                                                    <div class="invalid-feedback"> Please enter a Price </div>
-                                                    <input type="number" name="Harga" id="Harga" class="form-control" hidden>
-                                                </div>
-                                            </div>
-                                            <label>Facility</label>
-                                            <div class="form-row">
-                                              <div class="col mb-3">
-                                                <input class="form-control is-invalid" type="text" id="Bedroom" name="Bedroom" placeholder="Required Amount of Bed" required>
-                                                <div class="invalid-feedback"> Please enter a Facility, if you don't have fill with 0</div>
-                                              </div>
-                                              <div class="col mb-3">
-                                                <input class="form-control is-invalid" type="text" id="Bathroom" name="Bathroom" placeholder="Required Amount of Bath" required>
-                                              </div>
-                                              <div class="col mb-3">
-                                                <input class="form-control is-invalid" type="text" id="Tv" name="Tv" placeholder="Required Amount of TV" required>
-                                              </div>
-                                              <div class="col mb-3">
-                                                <input class="form-control is-invalid" type="text" id="Inet" name="Inet" placeholder="Required Speed Internet" required>
-                                              </div>
-                                            </div>
-                                            <div class="form-row">
-                                              <div class="col mb-3">
-                                                <label>Img file input</label>
-                                                <input type="file" class="form-control-file" name="image" id="image">
-                                              </div>
-
-                                                <div class="col mb-3">
-                                                    <label for="validationCustom02">Max Person</label>
-                                                    <select class="form-control" name="Max" id="Max">
-                                                        <option value="2">2 Person</option>
-                                                        <option value="4">4 Person</option>
-                                                        <option value="8">8 Person</option>
-                                                        <option value="16">16 Person</option>
-                                                        <option value="32">32 Person</option>
-                                                        <option value="64">64 Person</option>
-                                                    </select>
-                                                    <div class="invalid-feedback"> Please enter a Max Person </div>
-                                                </div>
-                                            </div>
-                                            <input type="text" name="submit" value="submit" hidden>
-                                            <button type="submit" id="submit" class="btn btn-primary mt-3">Submit</button>
-                                        </form>
-                                    </div>
-
-                                    <hr>
-
-                                </div>
-                            </div>
-                            <div class="main-card mb-3 card">
-                                <div class="card-body">
-                                    <h5 class="card-title">List Vacation Packages</h5>
+                                    <h5 class="card-title">Validate Payment</h5>
                                     <div class="add-package-content">
                                         <table class="table">
 
                                             <thead class="thead-light">
                                                 <tr>
                                                     <th scope="col">No.</th>
-                                                    <th scope="col">Tipe Paket</th>
-                                                    <th scope="col">Judul</th>
-                                                    <th scope="col">Deskripsi</th>
-                                                    <th scope="col">Day</th>
-                                                    <th scope="col">Price</th>
+                                                    <th scope="col">Nama Paket</th>
+                                                    <th scope="col">Nama Pengirim</th>
+                                                    <th scope="col">Bank</th>
+                                                    <th scope="col">Total Harga</th>
                                                     <th scope="col">Image</th>
                                                     <th scope="col">Action</th>
                                                 </tr>
@@ -285,34 +182,28 @@
                                             <tbody>
                                                 <tr>
                                                     <th scope="row"><?= $no;  ?></th>
-                                                    <td><?php if ($dataPaket->kategori_id == 1) {
-                                                      echo "Exclusive";
-                                                    } elseif ($dataPaket->kategori_id == 2) {
-                                                      echo "Business";
-                                                    } else {
-                                                      echo "Economic";
-                                                    }
-                                                      ?></td>
-                                                    <td><?= $dataPaket->judul ?></td>
-                                                    <td><?= $dataPaket->deskripsi ?></td>
-                                                    <td><?= $dataPaket->durasi ?></td>
-                                                    <td>Rp. <?= number_format($dataPaket->harga, 2, ',', '.') ?></td>
-                                                    <td><img src="<?= base_url('/assets/frontend/images/admin/paket/'.$dataPaket->img_paket) ?>" style="width: 150px; height: 100px;"></td>
                                                     <td>
-                                                        <a href="#" onclick="editPaket<?= $dataPaket->paket_id ?>()" class="btn btn-warning">Edit</a>
-
-                                                        <a href="#" onclick="delete_paket<?= $dataPaket->paket_id ?>()" class="btn btn-danger">Hapus</a>
+                                                    <?php foreach ($nama_paket as $nama): ?>
+                                                       <?php if ($dataPaket->paket_id == $nama->paket_id) {
+                                                        echo $nama->judul;
+                                                      } ?>
+                                                    <?php endforeach; ?>
+                                                    </td>
+                                                    <td> <?= $dataPaket->nama_pengirim  ?> </td>
+                                                    <td> <?= $dataPaket->bank  ?> </td>
+                                                    <td>Rp. <?= number_format($dataPaket->total_harga, 2, ',', '.') ?></td>
+                                                    <td><img src="<?= base_url('/assets/frontend/images/users/transfer/'.$dataPaket->img_transfer) ?>" style="width: 200px; height: 180px;"></td>
+                                                    <td>
+                                                      <?php if ($dataPaket->is_pay == 0){ ?>
+                                                        <a href="#" onclick="isValid<?= $dataPaket->checkout_id ?>()" class="btn btn-primary">Validate</a>
+                                                      <?php } elseif ($dataPaket->is_pay == 1) { ?>
+                                                        <a href="#" class="btn btn-success">Is Validate</a>
+                                                      <?php } ?>
                                                         <script>
-                                                          function delete_paket<?= $dataPaket->paket_id ?>() {
+                                                          function isValid<?= $dataPaket->checkout_id ?>() {
                                                             var txt;
-                                                            if (confirm("Anda yakin ingin mendelete data paket ini?")) {
-                                                              window.location = "<?= base_url() . 'Administrator/Delete_Paket/' . $dataPaket->paket_id ?>";
-                                                            }
-                                                          }
-                                                          function editPaket<?= $dataPaket->paket_id ?>() {
-                                                            var txt;
-                                                            if (confirm("Anda yakin ingin mengubah data paket ini?")) {
-                                                              window.location = "<?= base_url() . 'Administrator/editPaket/' . $dataPaket->paket_id ?>";
+                                                            if (confirm("Anda yakin ingin melakukan validasi data ini?")) {
+                                                              window.location = "<?= base_url() . 'Administrator/isValid/' . $dataPaket->checkout_id ?>";
                                                             }
                                                           }
                                                         </script>

@@ -8,6 +8,8 @@
     <link href="<?= base_url('assets\frontend\libraries\font-awesome-5\css\fontawesome-all.min.css') ?>" rel="stylesheet" media="all">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?= base_url('assets\frontend\styles\main.css') ?>">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
     <title>Paket</title>
 </head>
 <body>
@@ -180,6 +182,19 @@
         </section>
 	</main>
 	<?php require_once APPPATH."views/layout/layout.footer.php" ?>
+
+  <!-- SWEETALERT -->
+  <?php if ($this->session->flashdata('sukses')) { ?>
+    <script>
+      swal("Berhasil", "<?php echo $this->session->flashdata('sukses'); ?>", "success")
+    </script>
+  <?php } ?>
+
+  <?php if ($this->session->flashdata('warning')) { ?>
+    <script>
+      swal("Oops...", "<?php echo $this->session->flashdata('warning'); ?>", "warning")
+    </script>
+  <?php } ?>
 
 </body>
 

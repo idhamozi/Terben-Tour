@@ -17,7 +17,7 @@
     <div class="container">
         <nav class="row navbar navbar-expand-lg navbar-light bg-white">
             <a href="" class="navbar-brand">
-                <img src="frontend\images\Terben.Tour@2x.png" alt="Logo TerbenTour">
+                <img src="<?= base_url('assets\frontend\images\Terben.Tour@2x.png') ?>" alt="Logo TerbenTour">
             </a>
         </nav>
     </div>
@@ -26,13 +26,13 @@
     <main>
         <div class="section-success d-flex align-items-center">
             <div class="col text-center">
-                <img src="" alt="">
-                <h1>Yeay! Success</h1>
+                <img src="<?= base_url('assets\frontend\images\email.png')  ?>" alt="Email">
+                <h1>Payment! Success</h1>
                 <p>
-                    We've sent you Message WhatsApp for trip instruction
-                    <br> please read it as well
+                    We will sent you Message in Email soon for trip instruction
+                    <br> after our team validate your payment !
                 </p>
-                <a href="" class="btn btn-home-page mt-3 px-5">
+                <a href="<?= base_url('')  ?>" class="btn btn-primary mt-3 px-5">
                     Home Page
                 </a>
             </div>

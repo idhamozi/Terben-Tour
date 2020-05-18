@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 17 Mei 2020 pada 07.42
+-- Generation Time: 18 Mei 2020 pada 10.35
 -- Versi Server: 10.1.16-MariaDB
 -- PHP Version: 5.5.38
 
@@ -55,9 +55,20 @@ CREATE TABLE `checkout` (
   `user_id` int(11) DEFAULT NULL,
   `google_id` int(11) DEFAULT NULL,
   `paket_id` varchar(20) NOT NULL,
+  `bank` varchar(50) NOT NULL,
+  `nama_pengirim` varchar(50) NOT NULL,
+  `img_transfer` varchar(50) NOT NULL,
   `total_harga` int(15) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `is_pay` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `checkout`
+--
+
+INSERT INTO `checkout` (`checkout_id`, `user_id`, `google_id`, `paket_id`, `bank`, `nama_pengirim`, `img_transfer`, `total_harga`, `email`, `is_pay`) VALUES
+('5ec24231e7eca', NULL, 1, '5ebfd6979bbea', 'BRI', 'Mohammad Idham Fachrurrozi', 'Mohammad_5ec24231e7eca.jpg', 1375388, 'king.idham@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -121,7 +132,9 @@ CREATE TABLE `temp_transaksi` (
   `user_id` int(11) DEFAULT NULL,
   `google_id` int(11) DEFAULT NULL,
   `paket_id` varchar(20) NOT NULL,
-  `harga` int(15) NOT NULL
+  `harga` int(15) NOT NULL,
+  `tgl_pesan` varchar(50) NOT NULL,
+  `tgl_berangkat` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

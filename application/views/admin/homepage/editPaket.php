@@ -80,6 +80,12 @@
                                     <li>
                                         <a href="<?= base_url('Administrator/Testimonial')  ?>">
                                             <i class="metismenu-icon"></i>
+                                                Validate Payment
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url('Administrator/Testimonial')  ?>">
+                                            <i class="metismenu-icon"></i>
                                                 Testimonials
                                         </a>
                                     </li>
