@@ -24,12 +24,12 @@ Dalam repositori ini terdapat Final Project Studi Kasus Agen Tour yang diberi na
 - [x] Logika Ubah Password
 - [x] Landing Dashboard Admin
 - [x] Landing Dashboard User
-- [ ] Landing Pilih Paket
-- [ ] Landing Detail Paket
-- [ ] Landing Checkout
-- [ ] Logika Pembayaran
-- [ ] Konfirmasi Pembayaran 
-- [ ] Notifikasi Email E-Tiket
+- [x] Landing Pilih Paket
+- [x] Landing Detail Paket
+- [x] Landing Checkout
+- [x] Logika Pembayaran
+- [x] Konfirmasi Pembayaran 
+- [x] Notifikasi Email E-Tiket
 - [ ] Landing Testimoni
 - [ ] Logika Testimoni
 
