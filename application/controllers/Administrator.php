@@ -11,9 +11,10 @@ class Administrator extends CI_Controller
     parent::__construct();
     $this->load->model('M_Login');
     $this->load->model('M_Admin');
+    $this->load->model('M_User');
     $this->load->model('M_Kategori');
     $this->load->model('M_Paket');
-
+    $this->load->model('M_Testimoni');
   }
 
   function index()
@@ -76,7 +77,13 @@ class Administrator extends CI_Controller
         $this->session->set_flashdata('warning', 'Anda belum login !!!');
         redirect(base_url('Administrator'),'refresh');
     }
-    $this->load->view('admin/dashboard');
+    $data['admin'] = $this->M_Admin->getAllAdmin();
+    $data['admin_on'] = $this->M_Admin->getAdminOn();
+    $data['paket'] = $this->M_Paket->getAllPaket();
+    $data['users'] = $this->M_User->getAllUser();
+    $data['users_google'] = $this->M_User->getAllUserGoogle();
+
+    $this->load->view('admin/dashboard', $data);
   }
 
   function MostTrips()
@@ -96,7 +103,18 @@ class Administrator extends CI_Controller
         $this->session->set_flashdata('warning', 'Anda belum login !!!');
         redirect(base_url('Administrator'),'refresh');
     }
-    $this->load->view('admin/homepage/testimonial');
+    $data['testimoni'] = $this->M_Testimoni->getAllTestimoni();
+    $data['users'] = $this->M_User->getAllUser();
+    $data['users_google'] = $this->M_User->getAllUserGoogle();
+    $data['paket'] = $this->M_Paket->getAllPaket();
+    $this->load->view('admin/homepage/testimonial', $data);
+  }
+
+  function Del_Testi($testimoni_id)
+  {
+    $this->M_Testimoni->DeleteTesti($testimoni_id);
+    $this->session->set_flashdata('sukses', 'Anda berhasil menghapus Testimoni !!!');
+    redirect(base_url('Administrator/Testimonial'),'refresh');
   }
 
   function Paket($kategori_id)
@@ -115,7 +133,7 @@ class Administrator extends CI_Controller
     $paketUUID = uniqid();
     $config['upload_path'] = "./assets/frontend/images/admin/paket/";
     $config['allowed_types'] ='gif|jpg|jpeg|png|PNG';
-    $config['max_size']      = '12000'; // KB
+    $config['max_size']      = 0; // KB
     $config['file_name'] = $username."_".$paketUUID;
     $config['overwrite'] = true;
 
@@ -173,7 +191,7 @@ class Administrator extends CI_Controller
         $data = array();
         $config['upload_path'] = "./assets/frontend/images/admin/paket/";
         $config['allowed_types'] ='gif|jpg|jpeg|png|PNG';
-        $config['max_size']      = '12000'; // KB
+        $config['max_size']      = 0; // KB
         $config['file_name'] = $username."_".$paket_id;
         $config['overwrite'] = true;
 
@@ -210,21 +228,37 @@ class Administrator extends CI_Controller
       $this->load->view('admin/homepage/validate', $data);
     }
 
+    function Reject($checkout_id)
+    {
+      $this->M_Paket->Reject($checkout_id);
+
+      $data = $this->M_Paket->checkoutData($checkout_id);
+
+      $email = $data[0]->email;
+
+      $this->_sendEmail($email,'reject');
+
+      $this->session->set_flashdata('sukses', 'Pembayaran gagal di validasi !!!');
+
+      redirect(base_url('Administrator/Dashboard'),'refresh');
+    }
+
     function isValid($checkout_id)
     {
       $this->M_Paket->isValid($checkout_id);
 
       $data = $this->M_Paket->checkoutData($checkout_id);
+
       $email = $data[0]->email;
 
-      $this->_sendEmail($email);
+      $this->_sendEmail($email,'valid');
 
       $this->session->set_flashdata('sukses', 'Pembayaran sudah di validasi !!!');
 
       redirect(base_url('Administrator/Dashboard'),'refresh');
     }
 
-    function _sendEmail($email)
+    function _sendEmail($email, $type)
   {
       $config = [
           'protocol'  => 'smtp',
@@ -243,11 +277,18 @@ class Administrator extends CI_Controller
 
       $this->email->to($email);
 
-      $this->email->subject('Tour E-Ticket');
-      $this->email->message();
-      $this->email->message('Hai, '.$email.' Congratulation !!! Your payment has succesfull validate and enjoy your trip wiith us ! Here is your E-Ticket :');
-      $this->email->attach(base_url('assets/frontend/images/Eticket.png'));
+      if ($type == 'valid') {
 
+        $this->email->subject('Tour E-Ticket');
+        $this->email->message("Hai, ".$email." \r\n Congratulation !!! Your payment has succesfull validate and enjoy your trip wiith us ! \r\n Here is your E-Ticket :");
+        $this->email->attach(base_url('assets/frontend/images/Eticket.png'));
+
+      } elseif ($type == 'reject') {
+
+        $this->email->subject('Your Validate is Rejected');
+        $this->email->message('Hai, '.$email."\r\n".'  We re Sorry !!! Your payment has failed validate, please contact our team in this email to confirm your payment !');
+
+      }
 
       if ($this->email->send()) {
           return true;

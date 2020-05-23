@@ -127,6 +127,13 @@ class M_Paket extends CI_Model
     $this->db->update('checkout', $data);
   }
 
+  function Reject($checkout_id)
+  {
+    $data = array('is_pay' => 2 );
+    $this->db->where('checkout_id', $checkout_id);
+    $this->db->update('checkout', $data);
+  }
+
   function checkoutData($checkout_id)
   {
     return $this->db->get_where('checkout',array('checkout_id'=>$checkout_id))->result();

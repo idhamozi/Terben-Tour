@@ -87,12 +87,6 @@
                                                   Testimonials
                                           </a>
                                       </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon"></i>
-                                                Post Instagram
-                                            </a>
-                                        </li>
                                     </ul>
                                 </li>
                                 <li>
@@ -173,8 +167,11 @@
                                               <?php echo "Offline"; } ?>
                                           </td>
                                           <td>
-
-                                            <a href="#" onclick="delete_admin<?= $row['admin_id'] ?>()" class="btn btn-danger badge">Delete</a>
+                                            <?php if ($row['admin_id'] == 1){ ?>
+                                              <a href="#" class="btn btn-secondary badge">Delete</a>
+                                            <?php } else { ?>
+                                              <a href="#" onclick="delete_admin<?= $row['admin_id'] ?>()" class="btn btn-danger badge">Delete</a>
+                                            <?php } ?>
                                             <script>
                                               function delete_admin<?= $row['admin_id'] ?>() {
                                                 var txt;

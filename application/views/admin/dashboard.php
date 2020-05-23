@@ -87,12 +87,6 @@
 												Testimonials
 										</a>
 									</li>
-									<li>
-										<a href="#">
-											<i class="metismenu-icon"></i>
-											Post Instagram
-										</a>
-									</li>
 								</ul>
 							</li>
 							<li>
@@ -149,21 +143,28 @@
 							<div class="card mb-3 widget-content">
 								<div class="widget-content-outer">
 									<div class="widget-content-wrapper">
+                    <?php
+                      $user_internal = count($users);
+                      $user_google = count($users_google);
+                      $total_users = $user_internal+$user_google;
+                      $p_user_in = $user_internal/$total_users * 100;
+                      $p_user_google = $user_google/$total_users * 100;
+                     ?>
 										<div class="widget-content-left">
 											<div class="widget-heading">User Internal</div>
 											<div class="widget-subheading">Total user with account TerbenTour</div>
 										</div>
 										<div class="widget-content-right">
-											<div class="widget-numbers text-success">10</div>
+											<div class="widget-numbers text-success"><?= $user_internal  ?></div>
 										</div>
 									</div>
 									<div class="widget-progress-wrapper">
 										<div class="progress-bar-xs progress">
-											<div class="progress-bar bg-primary" role="progressbar" aria-valuenow="0.16" aria-valuemin="0" aria-valuemax="100" style="width: 16%;"><!-- Total user google + TT  | 10/60x100=+-16%--></div>
+											<div class="progress-bar bg-primary" role="progressbar" aria-valuenow="0.16" aria-valuemin="0" aria-valuemax="100" style="width: <?= $p_user_in ?>%;"><!-- Total user google + TT  | 10/60x100=+-16%--></div>
 										</div>
 										<div class="progress-sub-label">
-											<div class="sub-label-left">Retention</div>
-											<div class="sub-label-right">16%</div>
+											<div class="sub-label-left">All User</div>
+											<div class="sub-label-right"><?= $total_users  ?></div>
 										</div>
 									</div>
 								</div>
@@ -178,16 +179,16 @@
 											<div class="widget-subheading">Total user with Google</div>
 										</div>
 										<div class="widget-content-right">
-											<div class="widget-numbers text-primary">50</div>
+											<div class="widget-numbers text-primary"><?= $user_google  ?></div>
 										</div>
 									</div>
 									<div class="widget-progress-wrapper">
 										<div class="progress-bar-lg progress-bar-animated progress">
-											<div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0.83" aria-valuemin="0" aria-valuemax="100" style="width: 84%;"><!-- Total user google + TT  | 50/60x100=+-84%--></div>
+											<div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0.83" aria-valuemin="0" aria-valuemax="100" style="width: <?= $p_user_google  ?>%;"><!-- Total user google + TT  | 50/60x100=+-84%--></div>
 										</div>
 										<div class="progress-sub-label">
-											<div class="sub-label-left">Retention</div>
-											<div class="sub-label-right">84%</div>
+											<div class="sub-label-left">All User</div>
+											<div class="sub-label-right"><?= $total_users  ?></div>
 										</div>
 									</div>
 								</div>
@@ -199,19 +200,23 @@
 									<div class="widget-content-wrapper">
 										<div class="widget-content-left">
 											<div class="widget-heading">Admin</div>
-											<div class="widget-subheading">Total admin in year</div>
+											<div class="widget-subheading">Online</div>
 										</div>
 										<div class="widget-content-right">
-											<div class="widget-numbers text-warning">3</div>
+                      <?php
+                      $admin_online = count($admin_on);
+                      $total_admin = $admin->num_rows();
+                      $p_admin = $admin_online/$total_admin * 100;?>
+											<div class="widget-numbers text-warning"><?= $admin_online ?></div>
 										</div>
 									</div>
 									<div class="widget-progress-wrapper">
 										<div class="progress-bar-xs progress-bar-animated-alt progress">
-											<div class="progress-bar bg-danger" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><!-- Admin Max 5 orang | 3/5x100=60%--></div>
+											<div class="progress-bar bg-danger" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $p_admin; ?>%;"><!-- Admin Max 5 orang | 3/5x100=60%--></div>
 										</div>
 										<div class="progress-sub-label">
-											<div class="sub-label-left">Max 5 Administrator</div>
-											<div class="sub-label-right">100%</div>
+											<div class="sub-label-left">Total Admin</div>
+											<div class="sub-label-right"><?= $total_admin  ?></div>
 										</div>
 									</div>
 								</div>
@@ -226,16 +231,19 @@
 											<div class="widget-subheading">Package Travel</div>
 										</div>
 										<div class="widget-content-right">
-											<div class="widget-numbers text-danger">20</div>
+                      <?php
+                      $paket_all = count($paket);
+                      $p_paket = $paket_all / 50 * 100;?>
+											<div class="widget-numbers text-danger"><?= count($paket)  ?></div>
 										</div>
 									</div>
 									<div class="widget-progress-wrapper">
 										<div class="progress-bar-sm progress-bar-animated-alt progress">
-											<div class="progress-bar bg-success" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"><!-- Max 50 paket  | 20/50x100=40%--></div>
+											<div class="progress-bar bg-success" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: <?= $p_paket  ?>%;"><!-- Max 50 paket  | 20/50x100=40%--></div>
 										</div>
 										<div class="progress-sub-label">
 											<div class="sub-label-left">Max 50 Package</div>
-											<div class="sub-label-right">100%</div>
+											<div class="sub-label-right"><?= $p_paket  ?>%</div>
 										</div>
 									</div>
 								</div>

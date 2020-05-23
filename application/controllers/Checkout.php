@@ -64,7 +64,7 @@ class Checkout extends CI_Controller
     $paketUUID = uniqid();
     $config['upload_path'] = "./assets/frontend/images/users/transfer/";
     $config['allowed_types'] ='gif|jpg|jpeg|png|PNG';
-    $config['max_size']      = '12000'; // KB
+    $config['max_size']      = 0; // KB
     $config['file_name'] = $username."_".$paketUUID;
     $config['overwrite'] = true;
 

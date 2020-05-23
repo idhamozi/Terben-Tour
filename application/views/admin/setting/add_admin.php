@@ -87,12 +87,6 @@
                                                   Validate Payment
                                           </a>
                                       </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="metismenu-icon"></i>
-                                                Post Instagram
-                                            </a>
-                                        </li>
                                     </ul>
                                 </li>
                                 <li>

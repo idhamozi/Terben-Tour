@@ -90,12 +90,6 @@
                                                 Testimonials
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="metismenu-icon"></i>
-                                            Post Instagram
-                                        </a>
-                                    </li>
                                 </ul>
                             </li>
                             <li>
@@ -192,18 +186,27 @@
                                                     <td> <?= $dataPaket->nama_pengirim  ?> </td>
                                                     <td> <?= $dataPaket->bank  ?> </td>
                                                     <td>Rp. <?= number_format($dataPaket->total_harga, 2, ',', '.') ?></td>
-                                                    <td><img src="<?= base_url('/assets/frontend/images/users/transfer/'.$dataPaket->img_transfer) ?>" style="width: 200px; height: 180px;"></td>
+                                                    <td><img class="image" src="<?= base_url('/assets/frontend/images/users/transfer/'.$dataPaket->img_transfer) ?>" style="width: 200px; height: 180px;"></td>
                                                     <td>
                                                       <?php if ($dataPaket->is_pay == 0){ ?>
                                                         <a href="#" onclick="isValid<?= $dataPaket->checkout_id ?>()" class="btn btn-primary">Validate</a>
+                                                        <a href="#" onclick="Reject<?= $dataPaket->checkout_id ?>()" class="btn btn-warning" style="color: white;">Reject</a>
                                                       <?php } elseif ($dataPaket->is_pay == 1) { ?>
                                                         <a href="#" class="btn btn-success">Is Validate</a>
+                                                      <?php } elseif ($dataPaket->is_pay == 2) { ?>
+                                                        <a href="#" class="btn btn-danger">Is Rejected</a>
                                                       <?php } ?>
                                                         <script>
                                                           function isValid<?= $dataPaket->checkout_id ?>() {
                                                             var txt;
                                                             if (confirm("Anda yakin ingin melakukan validasi data ini?")) {
                                                               window.location = "<?= base_url() . 'Administrator/isValid/' . $dataPaket->checkout_id ?>";
+                                                            }
+                                                          }
+                                                          function Reject<?= $dataPaket->checkout_id ?>() {
+                                                            var txt;
+                                                            if (confirm("Anda yakin ingin menolak data ini?")) {
+                                                              window.location = "<?= base_url() . 'Administrator/Reject/' . $dataPaket->checkout_id ?>";
                                                             }
                                                           }
                                                         </script>
@@ -251,8 +254,16 @@ document.getElementById("inputHarga").onblur =function (){
 
 }
 </script>
-
+<style>
+.zoomed {
+  transform: scale(1.5);
+}
+</style>
 <script>
+
+  $('.image').on('click', function(){
+    $(this).toggleClass('zoomed');
+  });
 
   function logout_admin<?= $admin_data['username'] ?>() {
     var txt;
@@ -260,6 +271,7 @@ document.getElementById("inputHarga").onblur =function (){
       window.location = "<?= base_url() . 'Administrator/logout/' . $admin_data['username'] ?>";
     }
   }
+
 </script>
 <script type="text/javascript" src="<?= base_url('assets\backend\script\main.js')?>"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

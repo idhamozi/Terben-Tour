@@ -94,7 +94,7 @@
             <div class="row ">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item">Home</li>
+												<li class="breadcrumb-item"><a href="<?= base_url('')  ?>">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Testimonial</li>
                     </ol>
                 </nav>
@@ -112,31 +112,95 @@
                 </div>
                 <div class="row  justify-content-center">
                     <div class="col-lg-12 mb-5">
+											<?php foreach ($testimoni as $dataTesti): ?>
+
                         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                             <div class="col pl-4 pt-4 d-flex flex-column position-static">
                                 <strong class="d-inline-block mb-2 text-primary">Testimoni</strong>
-                                <div class="rating ">
-                                    <input type="radio " id="star10 " name="rating " value="10 " /><label for="star10 " title="Rocks! ">5 stars</label>
-                                    <input type="radio " id="star9 " name="rating " value="9 " /><label for="star9 " title="Rocks! ">4
-                                        stars</label>
-                                    <input type="radio " id="star8 " name="rating " value="8 " /><label for="star8 " title="Pretty good ">3 stars</label>
-                                    <input type="radio " id="star7 " name="rating " value="7 " /><label for="star7 " title="Pretty good ">2 stars</label>
-                                    <input type="radio " id="star6 " name="rating " value="6 " /><label for="star6 " title="Meh ">1
-                                        star</label>
-                                </div>
+
+																<h3 class="star-rating">
+																		Rating &nbsp; &nbsp;
+																		<?php if ($dataTesti->rating == 1){ ?>
+																			<span class="fa fa-star" data-rating="1"></span>
+																			<span class="fa fa-star-o" data-rating="1"></span>
+																			<span class="fa fa-star-o" data-rating="1"></span>
+																			<span class="fa fa-star-o" data-rating="1"></span>
+																			<span class="fa fa-star-o" data-rating="1"> Worst ! </span>
+																		<?php } elseif ($dataTesti->rating == 2) { ?>
+																			<span class="fa fa-star" data-rating="2"></span>
+																			<span class="fa fa-star" data-rating="2"></span>
+																			<span class="fa fa-star-o" data-rating="2"></span>
+																			<span class="fa fa-star-o" data-rating="2"></span>
+																			<span class="fa fa-star-o" data-rating="2"> Bad ! </span>
+																		<?php } elseif ($dataTesti->rating == 3) { ?>
+																			<span class="fa fa-star" data-rating="3"></span>
+																			<span class="fa fa-star" data-rating="3"></span>
+																			<span class="fa fa-star" data-rating="3"></span>
+																			<span class="fa fa-star-o" data-rating="3"></span>
+																			<span class="fa fa-star-o" data-rating="3"> Cool ! </span>
+																		<?php } elseif ($dataTesti->rating == 4) { ?>
+																			<span class="fa fa-star" data-rating="4"></span>
+																			<span class="fa fa-star" data-rating="4"></span>
+																			<span class="fa fa-star" data-rating="4"></span>
+																			<span class="fa fa-star" data-rating="4"></span>
+																			<span class="fa fa-star-o" data-rating="4"> Fabulous ! </span>
+																		<?php } elseif ($dataTesti->rating == 5) {?>
+																			<span class="fa fa-star" data-rating="5"></span>
+																			<span class="fa fa-star" data-rating="5"></span>
+																			<span class="fa fa-star" data-rating="5"></span>
+																			<span class="fa fa-star" data-rating="5"></span>
+																			<span class="fa fa-star" data-rating="5"> Perfect ! </span>
+																		<?php }?>
+																</h3>
                                 <hr>
                                 <div class="row">
                                     <div class="col-lg-10">
-                                        <h3 class="card-text mb-5">"Saya merekomendasikan liburan di Raja Ampat dengan aplikasi Terbe Tour ini, karena dengan biaya yang murah, saya dapat berlibur ke Raja Ampat dengan keluarga saya."</h3>
-                                        <h5>Rose Martin</h5>
-                                        <span class="mb-5">Liburan ke Raja Ampat Indonesia</span>
+                                        <h3 class="card-text mb-5 text-justify">"<?= $dataTesti->testimoni  ?>"</h3>
+                                        <h5>
+																					<?php if (isset($dataTesti->user_id)) {
+																						foreach ($users as $user) {
+																							if ($user->user_id == $dataTesti->user_id) {
+																								echo $user->first_name." ".$user->last_name;
+																							}
+																						}
+																					} else {
+																						foreach ($users_google as $user_google) {
+																							if ($user_google->google_id == $dataTesti->google_id) {
+																								echo $user_google->first_name." ".$user_google->last_name;
+																							}
+																						}
+																					} ?>
+																				</h5>
+                                        <span class="mb-5">Paket
+																					<?php foreach ($paket as $dataPaket) {
+																						if ($dataPaket->paket_id == $dataTesti->paket_id) {
+																							echo $dataPaket->judul;
+																						}
+																					} ?>
+																				</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-auto d-none d-lg-block p-4">
-                                <img src="frontend\images\pict-testi.png" alt="" style="width: 300px; height: 400px; border-radius: 15px;">
+                                <img src="
+																<?php if (isset($dataTesti->user_id)) {
+																	foreach ($users as $user) {
+																		if ($user->user_id == $dataTesti->user_id) {
+																			echo base_url('/assets/frontend/images/users/profile/'.$user->img_profile);
+																		}
+																	}
+																} else {
+																	foreach ($users_google as $user_google) {
+																		if ($user_google->google_id == $dataTesti->google_id) {
+																			echo $user_google->img_profile;
+																		}
+																	}
+																} ?>
+																" alt="" style="width: 300px; height: 400px; border-radius: 15px;">
                             </div>
                         </div>
+											<?php endforeach; ?>
+
                     </div>
                 </div>
             </div>
@@ -146,4 +210,6 @@
 <script src="<?= base_url('assets\frontend\libraries\jquery\jquery-3.4.1.min.js') ?>"></script>
 <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap.js') ?>"></script>
 <script src="<?= base_url('assets\frontend\libraries\retina\retina.min.js') ?>"></script>
+
+
 </html>

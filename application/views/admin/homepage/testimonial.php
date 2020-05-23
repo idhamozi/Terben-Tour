@@ -88,40 +88,34 @@
 											Testimonials
 										</a>
 									</li>
-									<li>
-										<a href="#">
-											<i class="metismenu-icon"></i>
-											Post Instagram
-										</a>
-									</li>
 								</ul>
 							</li>
 							<li>
-								<a href="#">
-									<i class="metismenu-icon pe-7s-plane"></i>
-									Travel
-									<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-								</a>
-								<ul>
-									<li>
-										<a href="#">
-											<i class="metismenu-icon"></i>
-											Exclusive Travel
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="metismenu-icon"></i>
-											Business Travel
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="metismenu-icon"></i>
-											Economic Travel
-										</a>
-									</li>
-								</ul>
+									<a href="#">
+											<i class="metismenu-icon pe-7s-plane"></i>
+													Travel
+											<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+									</a>
+									<ul>
+											<li>
+													<a href="<?= base_url('Administrator/Paket/'."1")  ?>">
+															<i class="metismenu-icon"></i>
+																	Exclusive Travel
+													</a>
+											</li>
+											<li>
+													<a href="<?= base_url('Administrator/Paket/'."2")  ?>">
+															<i class="metismenu-icon"></i>
+																	Business Travel
+													</a>
+											</li>
+											<li>
+													<a href="<?= base_url('Administrator/Paket/'."3")  ?>">
+															<i class="metismenu-icon"></i>
+																	Economic Travel
+													</a>
+											</li>
+									</ul>
 							</li>
 							<li class="app-sidebar__heading">SETTING ADMIN</li>
 							<li>
@@ -147,96 +141,61 @@
 					<div class="row">
 						<div class="main-card mb-3 card">
 							<div class="card-body">
-								<h5 class="card-title">Add Testimonials</h5>
+								<h5 class="card-title">List Testimonials</h5>
 								<div class="add-package-content">
 									<table class="table">
-										<!-- Button modal -->
-										<button type="button" class="btn mr-2 mb-2 btn-primary" data-toggle="modal" data-target="#exampleModal">
-											Tambah
-										</button>
-										<!-- Modal -->
-										<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h5 class="modal-title" id="exampleModalLabel">Testimonials
-														</h5>
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-															<span aria-hidden="true">&times;</span>
-														</button>
-													</div>
-													<div class="modal-body">
-														<form class="was-validated">
-															<div class="form-row">
-																<div class="col mb-3">
-																	<label for="validationCustom02">Rating</label>
-																	<!-- <input type="text" class="form-control is-invalid" placeholder="Required Tipe Paket" required>
-																	<div class="invalid-feedback"> Please enter a
-																		Tipe Paket </div> -->
-																</div>
-															</div>
-															<div class="mb-3">
-																<label for="validationCustom02">Deskripsi</label>
-																<textarea class="form-control is-invalid" placeholder="Required deskripsi" required></textarea>
-																<div class="invalid-feedback"> Please enter a
-																	deskripsi </div>
-															</div>
-															<div class="form-row">
-																<div class="col mb-3">
-																	<label for="validationCustom02">Name Testimonials</label>
-																	<input type="text" class="form-control is-invalid" placeholder="Required Name Testimonials" required>
-																	<div class="invalid-feedback"> Please enter a Name Testimonials </div>
-																</div>
-																<div class="col mb-3">
-																	<label for="validationCustom02">Lokasi Travel</label>
-																	<input type="text" class="form-control is-invalid" placeholder="Required Lokasi Travel" required>
-																	<div class="invalid-feedback"> Please enter a
-																		Lokasi Travel </div>
-																</div>
-															</div>
-															<div class="form-group">
-																<label for="exampleFormControlFile1">Img file
-																	input</label>
-																<input type="file" class="form-control-file" id="exampleFormControlFile1">
-															</div>
-															<button type="submit" class="btn btn-primary mt-3">Submit</button>
-														</form>
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-														<button type="button" class="btn btn-primary">Save
-															changes</button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- end modal -->
 
 										<thead class="thead-light">
 											<tr>
 												<th scope="col">No.</th>
 												<th scope="col">Rating</th>
-												<th scope="col">Deskripsi</th>
-												<th scope="col">Name Testimonials</th>
-												<th scope="col">Lokasi Travel</th>
-												<th scope="col">Image</th>
+												<th scope="col">Testimoni</th>
+												<th scope="col">Nama</th>
+												<th scope="col">Paket Travel</th>
 												<th scope="col">Action</th>
 											</tr>
 										</thead>
+										<?php $no = 1; foreach ($testimoni as $dataTesti) { ?>
 										<tbody>
 											<tr>
-												<th scope="row">1</th>
-												<td>5star</td>
-												<td>"Seperti saya bilang tadi, berlibur ke Raja Ampat itu mahal, tapi anda tidak akan menyesal. Itu pun kalau anda mendapat referensi berlibur ke Raja Ampat yang baik dan benar,"</td>
-												<td>Mekel jeksen</td>
-												<td>Liburan ke Begudul, Bali</td>
-												<td>begudul.png</td>
+												<th scope="row"><?= $no;  ?></th>
+												<td><?= $dataTesti->rating ?> / 5</td>
+												<td>"<?= $dataTesti->testimoni  ?>"</td>
 												<td>
-													<button class="btn btn-warning">Edit</button>
-													<button class="btn btn-danger">Hapus</button>
+													<?php if (isset($dataTesti->user_id)) {
+														foreach ($users as $user) {
+															if ($user->user_id == $dataTesti->user_id) {
+																echo $user->first_name." ".$user->last_name;
+															}
+														}
+													} else {
+														foreach ($users_google as $user_google) {
+															if ($user_google->google_id == $dataTesti->google_id) {
+																echo $user_google->first_name." ".$user_google->last_name;
+															}
+														}
+													} ?>
+												</td>
+												<td><?php foreach ($paket as $dataPaket) {
+													if ($dataPaket->paket_id == $dataTesti->paket_id) {
+														echo $dataPaket->judul;
+													}
+												} ?></td>
+												<td>
+													<a href="#" onclick="DeleteTesti<?= $dataTesti->testimoni_id ?>()" class="btn btn-danger" style="color: white;">Delete</a>
+													<script>
+														function DeleteTesti<?= $dataTesti->testimoni_id ?>() {
+															var txt;
+															if (confirm("Anda yakin ingin menolak data ini?")) {
+																window.location = "<?= base_url() . 'Administrator/Del_Testi/' . $dataTesti->testimoni_id ?>";
+															}
+														}
+													</script>
 												</td>
 											</tr>
 										</tbody>
+										<?php $no++;	} ?>
+
 									</table>
 								</div>
 							</div>

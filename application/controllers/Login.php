@@ -209,12 +209,15 @@ class Login extends CI_Controller
           $user_token = $this->M_Login->user_token($token)->row_array();
 
           if ($user_token) {
+
               if (time() - $user_token['date_created'] < (60 * 60 * 24)) {
 
                   $this->M_Login->verify($email);
 
                   $this->session->set_flashdata('sukses', 'Akun dengan ' . $email . ' telah aktif !!!');
+
                   redirect('Login');
+
               } else {
 
                   $this->M_Login->verify_expired($email);
@@ -284,12 +287,15 @@ class Login extends CI_Controller
       $user = $this->M_Login->user_target($email)->row_array();
 
       if ($user) {
+        
           $user_token = $this->M_Login->user_token($token)->row_array();
 
           if ($user_token) {
+
               $this->session->set_userdata('reset_email', $email);
 
               $this->changePassword();
+
           } else {
 
               $this->session->set_flashdata('warning', 'Akun Gagal aktif, Token salah !!!');

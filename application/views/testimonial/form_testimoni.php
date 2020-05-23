@@ -104,12 +104,10 @@
                             <label for="input-21f">Berikan bintang</label>
                             <div class="rating ">
                                         <input type="radio " id="star10 " name="rating " value="10 " /><label for="star10 " title="Rocks! ">5 stars</label>
-                                        <input type="radio " id="star9 " name="rating " value="9 " /><label for="star9 " title="Rocks! ">4
-                                            stars</label>
+                                        <input type="radio " id="star9 " name="rating " value="9 " /><label for="star9 " title="Rocks! ">4 stars</label>
                                         <input type="radio " id="star8 " name="rating " value="8 " /><label for="star8 " title="Pretty good ">3 stars</label>
                                         <input type="radio " id="star7 " name="rating " value="7 " /><label for="star7 " title="Pretty good ">2 stars</label>
-                                        <input type="radio " id="star6 " name="rating " value="6 " /><label for="star6 " title="Meh ">1
-                                            star</label>
+                                        <input type="radio " id="star6 " name="rating " value="6 " /><label for="star6 " title="Meh ">1 star</label>
                                     </div>
                         </div>
                         <div class="form-group">

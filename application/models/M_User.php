@@ -26,5 +26,15 @@ class M_User extends CI_Model
   return $this->db->update('users',$data,"user_id = '$user_id'");
 }
 
+function getAllUser(){
+  return $this->db->get('users')->result();
+
+}
+
+function getAllUserGoogle(){
+  return $this->db->get('user_google')->result();
+
+}
+
 }
  ?>
