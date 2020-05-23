@@ -199,9 +199,9 @@ text-shadow: 0 0 5px #09f;
                             </form>
                           <div class="form-group">
                               <h5 for="FormDeskripsi">Testimoni</h5>
-                              <textarea class="form-control" id="FormDeskripsi" rows="10"></textarea>
+                              <textarea class="form-control" name="Testimoni" id="FormDeskripsi" rows="10"></textarea>
                           </div>
-                          <input type="number" name="ratingscore" id="ratingscore" class="form-control" hidden>
+                          <input type="number" name="Score" id="Score" class="form-control" hidden>
 
                         <button class="btn btn-success">Done</button>
                       </div>
