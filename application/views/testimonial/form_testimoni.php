@@ -164,7 +164,7 @@ text-shadow: 0 0 5px #09f;
                 <div class="col-lg-12">
                     <h3>Give us feedback from your experience with us?</h3>
                         <div class="form-group">
-                            <h5 >Select Rating</h5>
+                            <h5>Pick a Rating</h5>
                             <form class="rating">
                               <label>
                                 <input type="radio" name="stars" value="1" />
@@ -218,7 +218,7 @@ text-shadow: 0 0 5px #09f;
 $(':radio').change(function() {
 console.log('New star rating: ' + this.value);
 
-document.getElementById("ratingscore").value = this.value
+document.getElementById("Score").value = this.value
 
 });
 </script>

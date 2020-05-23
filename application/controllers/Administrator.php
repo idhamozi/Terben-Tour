@@ -236,7 +236,9 @@ class Administrator extends CI_Controller
 
       $email = $data[0]->email;
 
-      $this->_sendEmail($email,'reject');
+      $paket = $data[0]->paket_id;
+
+      $this->_sendEmail($checkout_id, $paket, $email,'reject');
 
       $this->session->set_flashdata('sukses', 'Pembayaran gagal di validasi !!!');
 
@@ -251,14 +253,16 @@ class Administrator extends CI_Controller
 
       $email = $data[0]->email;
 
-      $this->_sendEmail($email,'valid');
+      $paket = $data[0]->paket_id;
+
+      $this->_sendEmail($checkout_id, $paket, $email,'valid');
 
       $this->session->set_flashdata('sukses', 'Pembayaran sudah di validasi !!!');
 
       redirect(base_url('Administrator/Dashboard'),'refresh');
     }
 
-    function _sendEmail($email, $type)
+    function _sendEmail($checkout_id, $paket, $email, $type)
   {
       $config = [
           'protocol'  => 'smtp',
