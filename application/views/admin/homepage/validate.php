@@ -9,14 +9,20 @@
     <title>Dashboard - Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
-    <meta name="msapplication-tap-highlight" content="no">
-    <script src="<?= base_url('assets\frontend\libraries\jquery\jquery-3.4.1.min.js')  ?>"></script>
+	<meta name="msapplication-tap-highlight" content="no">
+	<script src="<?= base_url('assets\frontend\libraries\jquery\jquery-3.4.1.min.js')  ?>"></script>
     <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap.js')  ?>"></script>
     <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap-select.js')  ?>"></script>
-    <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap.bundle.min.js')  ?>"></script>
+	<script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap.bundle.min.js')  ?>"></script>
+	<script src="<?= base_url('assets\backend\libraries\xzoom\xzoom.min.js')?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets\backend\script\main.js')?>"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="<?= base_url('assets\frontend\libraries\font-awesome-5\css\fontawesome-all.min.css') ?>" rel="stylesheet" media="all">
+	<link href="<?= base_url('assets\frontend\libraries\bootstrap\css\bootstrap.css')  ?>"  rel="stylesheet">
+	<link href="<?= base_url('assets\backend\libraries\xzoom\xzoom.css')?>" rel="stylesheet">
 	<link href="<?= base_url('assets\backend\style\main.css')?>" rel="stylesheet">
+	<link href="<?= base_url('assets\frontend\styles\main.css')?>" rel="stylesheet">
 </head>
 <body>
   <?php $admin_data = $this->session->userdata('admin_data');  ?>
@@ -155,7 +161,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="main-card mb-3 card">
+                            <!-- <div class="main-card mb-3 card"> -->
                                 <div class="card-body">
                                     <h5 class="card-title">Validate Payment</h5>
                                     <div class="add-package-content">
@@ -217,40 +223,54 @@
 
                                         </table>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+	</div>
+	
 
-<script type="text/javascript">
-function display(input){
-if (input.files && input.files[0]) {
-  var reader = new FileReader();
-  reader.onload = function(e){
-    $('.img-thumbnail').attr('src',e.target.result);
-  }
-  reader.readAsDataURL(input.files[0]);
-}
-}
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
+    <!-- Xzoom -->
+	<script>
+		$(document).ready(function(){
+			$('.xzoom').xzoom({
+				zoomWidth: 200,
+                zoomHeight: 200,
+				title: false,
+				tint: '#333',
+				Xoffset: 15
+			});
+		});
+	</script>
+	
 
-$('#image').change(function(){
-display(this);
-});
+	<script type="text/javascript">
+	function display(input){
+	if (input.files && input.files[0]) {
+	var reader = new FileReader();
+	reader.onload = function(e){
+		$('.img-thumbnail').attr('src',e.target.result);
+	}
+	reader.readAsDataURL(input.files[0]);
+	}
+	}
 
-document.getElementById("inputHarga").onblur =function (){
+	$('#image').change(function(){
+	display(this);
+	});
 
-    //number-format the user input
-    this.value = parseFloat(this.value.replace(/,/g, ""))
-                    .toFixed(2)
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	document.getElementById("inputHarga").onblur =function (){
 
-    //set the numeric value to a number input
-    document.getElementById("Harga").value = this.value.replace(/,/g, "")
+		//number-format the user input
+		this.value = parseFloat(this.value.replace(/,/g, ""))
+						.toFixed(2)
+						.toString()
+						.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 }
 </script>
@@ -282,10 +302,26 @@ document.getElementById("inputHarga").onblur =function (){
   </script>
 <?php } ?>
 
-<?php if ($this->session->flashdata('warning')) { ?>
-  <script>
-    swal("Oops...", "<?php echo $this->session->flashdata('warning'); ?>", "warning")
-  </script>
-<?php } ?>
+	function logout_admin<?= $admin_data['username'] ?>() {
+		var txt;
+		if (confirm("Anda yakin ingin Logout ?")) {
+		window.location = "<?= base_url() . 'Administrator/logout/' . $admin_data['username'] ?>";
+		}
+	}
+	</script>
+
+
+	<!-- SWEETALERT -->
+	<?php if ($this->session->flashdata('sukses')) { ?>
+	<script>
+		swal("Berhasil", "<?php echo $this->session->flashdata('sukses'); ?>", "success")
+	</script>
+	<?php } ?>
+
+	<?php if ($this->session->flashdata('warning')) { ?>
+	<script>
+		swal("Oops...", "<?php echo $this->session->flashdata('warning'); ?>", "warning")
+	</script>
+	<?php } ?>
 </body>
 </html>
