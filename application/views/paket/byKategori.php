@@ -35,7 +35,7 @@
 						<a href="#" class="nav-link  active">Paket Travel</a>
 					</li>
 					<li class="nav-item mx-md-2">
-						<a href="#" class="nav-link">Testimonial</a>
+							<a href="<?= base_url('Testimoni/All') ?>" class="nav-link">Testimonial</a>
 					</li>
 				</ul>
 				<!-- Mobile Button -->

@@ -41,10 +41,10 @@
 						<a href="<?= base_url('')  ?>" class="nav-link active">Home</a>
 					</li>
 					<li class="nav-item mx-md-2">
-						<a href="#" class="nav-link">Paket Travel</a>
+							<a href="<?= base_url('Paket') ?>" class="nav-link">Paket Travel</a>
 					</li>
 					<li class="nav-item mx-md-2">
-						<a href="#" class="nav-link">Testimonial</a>
+							<a href="<?= base_url('Testimoni/All') ?>" class="nav-link">Testimonial</a>
 					</li>
 				</ul>
 				<!-- Mobile Button -->

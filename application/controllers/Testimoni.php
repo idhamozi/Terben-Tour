@@ -24,5 +24,10 @@ class Testimoni extends CI_Controller
     $this->load->view('testimonial/testimoni', $data);
   }
 
+  function inputTesti()
+  {
+    $this->load->view('testimonial/form_testimoni');
+  }
+
 }
  ?>
