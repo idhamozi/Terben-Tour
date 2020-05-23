@@ -3,18 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= base_url('assets\frontend\libraries\font-awesome-5\css\fontawesome-all.min.css') ?>" rel="stylesheet" media="all">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?= base_url('assets\frontend\libraries\bootstrap\css\bootstrap.css') ?>">
     <link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600,700,800|Playfair+Display:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 	  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-	  <link rel="stylesheet" href="<?= base_url('assets\frontend\libraries\css\star-rating.css')  ?>">
     <link rel="stylesheet" href="<?= base_url('assets\frontend\styles\main.css') ?>">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="<?= base_url('assets\frontend\libraries\jquery\jquery-3.4.1.min.js') ?>"></script>
+    <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap.js') ?>"></script>
 
 </head>
+<style media="screen">
+.rating {
+display: inline-block;
+position: relative;
+height: 50px;
+line-height: 50px;
+font-size: 50px;
+}
 
+.rating label {
+position: absolute;
+top: 0;
+left: 0;
+height: 100%;
+cursor: pointer;
+}
+
+.rating label:last-child {
+position: static;
+}
+
+.rating label:nth-child(1) {
+z-index: 5;
+}
+
+.rating label:nth-child(2) {
+z-index: 4;
+}
+
+.rating label:nth-child(3) {
+z-index: 3;
+}
+
+.rating label:nth-child(4) {
+z-index: 2;
+}
+
+.rating label:nth-child(5) {
+z-index: 1;
+}
+
+.rating label input {
+position: absolute;
+top: 0;
+left: 0;
+opacity: 0;
+}
+
+.rating label .icon {
+float: left;
+color: transparent;
+}
+
+.rating label:last-child .icon {
+color: #000;
+}
+
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+color: #09f;
+}
+
+.rating label input:focus:not(:checked) ~ .icon:last-child {
+color: #000;
+text-shadow: 0 0 5px #09f;
+}
+</style>
 <body>
 <?php $user_data = $this->session->userdata('user_data');  ?>
 	<!-- navbar -->
@@ -96,34 +162,50 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3>Apakah anda senang dengan liburan anda?</h3>
-                    <form>
+                    <h3>Give us feedback from your experience with us?</h3>
                         <div class="form-group">
-                            <label for="FormDeskripsi">Deskripsi</label>
-                            <textarea class="form-control" id="FormDeskripsi" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="input-21f">Berikan bintang</label>
-                            <div class="rating ">
-                                        <input type="radio " id="star10 " name="rating " value="10 " /><label for="star10 " title="Rocks! ">5 stars</label>
-                                        <input type="radio " id="star9 " name="rating " value="9 " /><label for="star9 " title="Rocks! ">4 stars</label>
-                                        <input type="radio " id="star8 " name="rating " value="8 " /><label for="star8 " title="Pretty good ">3 stars</label>
-                                        <input type="radio " id="star7 " name="rating " value="7 " /><label for="star7 " title="Pretty good ">2 stars</label>
-                                        <input type="radio " id="star6 " name="rating " value="6 " /><label for="star6 " title="Meh ">1 star</label>
-                                    </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="FormName">Nama Anda</label>
-                            <input type="text" class="form-control" id="FormName" placeholder="Nama anda">
-                            <!-- Terserah dham, enak e d disable opo nggk nama e -->
-                        </div>
-                        <div class="form-group">
-                            <label for="FormPlace">Tempat liburan</label>
-                            <input type="text" class="form-control" id="FormPlace" placeholder="Tempat liburan anda">
-                            <!-- Terserah dham, enak e d disable opo nggk nama e -->
-                        </div>
+                            <h5 >Select Rating</h5>
+                            <form class="rating">
+                              <label>
+                                <input type="radio" name="stars" value="1" />
+                                <span class="icon">★</span>
+                              </label>
+                              <label>
+                                <input type="radio" name="stars" value="2" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                              </label>
+                              <label>
+                                <input type="radio" name="stars" value="3" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                              </label>
+                              <label>
+                                <input type="radio" name="stars" value="4" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                              </label>
+                              <label>
+                                <input type="radio" name="stars" value="5" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                              </label>
+                            </form>
+                          <div class="form-group">
+                              <h5 for="FormDeskripsi">Testimoni</h5>
+                              <textarea class="form-control" id="FormDeskripsi" rows="10"></textarea>
+                          </div>
+                          <input type="number" name="ratingscore" id="ratingscore" class="form-control" hidden>
+
                         <button class="btn btn-success">Done</button>
-                    </form>
+                      </div>
+
                 </div>
             </div>
         </div>
@@ -132,53 +214,12 @@
 	<?php require_once APPPATH."views/layout/layout.footer.php" ?>
 </body>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="<?= base_url('assets\frontend\libraries\js\star-rating.js') ?>"></script>
-<script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap.js') ?>"></script>
-<script>
-    jQuery(document).ready(function() {
-        $("#input-21f").rating({
-            starCaptions: function(val) {
-                if (val < 3) {
-                    return val;
-                } else {
-                    return 'high';
-                }
-            },
-            starCaptionClasses: function(val) {
-                if (val < 3) {
-                    return 'label label-danger';
-                } else {
-                    return 'label label-success';
-                }
-            },
-            hoverOnClear: false
-        });
-        var $inp = $('#rating-input');
+<script type="text/javascript">
+$(':radio').change(function() {
+console.log('New star rating: ' + this.value);
 
-        $inp.rating({
-            min: 0,
-            max: 5,
-            step: 1,
-            size: 'lg',
-            showClear: false
-        });
+document.getElementById("ratingscore").value = this.value
 
-        $('.rb-rating').rating({
-            'showCaption': true,
-            'stars': '3',
-            'min': '0',
-            'max': '3',
-            'step': '1',
-            'size': 'xs',
-            'starCaptions': {
-                0: 'status:nix',
-                1: 'status:wackelt',
-                2: 'status:geht',
-                3: 'status:laeuft'
-            }
-        });
-    });
+});
 </script>
-
 </html>
