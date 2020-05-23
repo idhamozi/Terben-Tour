@@ -4,8 +4,10 @@
 			<div id="carousel-indicators-testimonials" class="carousel slide" data-ride="carousel">
 				<ol class="carousel-indicators">
 					<li data-target="#carousel-indicators-testimonials" data-slide-to="0" class="active"></li>
-					<li data-target="#carousel-indicators-testimonials" data-slide-to="1"></li>
-					<li data-target="#carousel-indicators-testimonials" data-slide-to="2"></li>
+					<?php $total_car = count($testimoni) ?>
+					<?php for ($i = 1; $i < $total_car; $i++) { ?>
+					  <li data-target="#carousel-indicators-testimonials" data-slide-to="<?= $i ?>"></li>
+					<?php if (++$i == 4) break; } ?>
 				</ol>
 				<div class="carousel-inner">
 				<div class="carousel-item active">
@@ -71,7 +73,7 @@
 									} ?></p>
 							</div>
 							<div class="col-lg-5">
-								<img class="img-pict-testimonial rounded bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5" style="width: 300px; height: 400px; border-radius: 15px;"
+								<img class="img-pict-testimonial rounded bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5 float-right" style="width: auto; height: 400px; border-radius: 15px;"
 								src="<?php if (isset($testimoni[0]->user_id)) {
 									foreach ($users as $user) {
 										if ($user->user_id == $testimoni[0]->user_id) {
@@ -155,7 +157,7 @@
 										} ?></p>
 								</div>
 								<div class="col-lg-5">
-									<img class="img-pict-testimonial rounded bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5" style="width: 300px; height: 400px; border-radius: 15px;"
+									<img class="img-pict-testimonial rounded bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto mt-5" style="width: auto; height: 400px; border-radius: 15px;"
 									src="<?php if (isset($dataTesti->user_id)) {
 										foreach ($users as $user) {
 											if ($user->user_id == $dataTesti->user_id) {
