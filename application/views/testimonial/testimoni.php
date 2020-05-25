@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?= base_url('assets\frontend\libraries\gjigo\css\gijgo.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets\frontend\styles\main.css') ?>">
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <?php $user_data = $this->session->userdata('user_data');  ?>
@@ -206,6 +207,19 @@
             </div>
         </section>
     </main>
+		<!-- SWEETALERT -->
+	  <?php if ($this->session->flashdata('sukses')) { ?>
+	    <script>
+	      swal("Berhasil", "<?php echo $this->session->flashdata('sukses'); ?>", "success")
+	    </script>
+	  <?php } ?>
+
+	  <?php if ($this->session->flashdata('warning')) { ?>
+	    <script>
+	      swal("Oops...", "<?php echo $this->session->flashdata('warning'); ?>", "warning")
+	    </script>
+	  <?php } ?>
+
 </body>
 <script src="<?= base_url('assets\frontend\libraries\jquery\jquery-3.4.1.min.js') ?>"></script>
 <script src="<?= base_url('assets\frontend\libraries\bootstrap\js\bootstrap.js') ?>"></script>

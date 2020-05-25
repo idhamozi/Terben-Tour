@@ -236,9 +236,7 @@ class Administrator extends CI_Controller
 
       $email = $data[0]->email;
 
-      $paket = $data[0]->paket_id;
-
-      $this->_sendEmail($checkout_id, $paket, $email,'reject');
+      $this->_sendEmail($checkout_id, $email, 'reject');
 
       $this->session->set_flashdata('sukses', 'Pembayaran gagal di validasi !!!');
 
@@ -253,22 +251,20 @@ class Administrator extends CI_Controller
 
       $email = $data[0]->email;
 
-      $paket = $data[0]->paket_id;
-
-      $this->_sendEmail($checkout_id, $paket, $email,'valid');
+      $this->_sendEmail($checkout_id, $email, 'valid');
 
       $this->session->set_flashdata('sukses', 'Pembayaran sudah di validasi !!!');
 
       redirect(base_url('Administrator/Dashboard'),'refresh');
     }
 
-    function _sendEmail($checkout_id, $paket, $email, $type)
+    function _sendEmail($checkout_id, $email, $type)
   {
       $config = [
           'protocol'  => 'smtp',
           'smtp_host' => 'ssl://smtp.googlemail.com',
           'smtp_user' => 'info.terbentour@gmail.com',
-          'smtp_pass' => 'Terbentour12345!',
+          'smtp_pass' => 'TerbentourFPFramework2331!',
           'smtp_port' => 465,
           'mailtype'  => 'html',
           'charset'   => 'utf-8',
@@ -284,7 +280,7 @@ class Administrator extends CI_Controller
       if ($type == 'valid') {
 
         $this->email->subject('Tour E-Ticket');
-        $this->email->message("Hai, ".$email." \r\n Congratulation !!! Your payment has succesfull validate and enjoy your trip wiith us ! \r\n Here is your E-Ticket :");
+        $this->email->message("Hai, ".$email." \r\n Congratulation !!! Your payment has succesfull validate and enjoy your trip with us ! \r\n".'Click this link to input testimoni : <a href="' . base_url() . 'Testimoni/inputTesti?checkout_id=' . $checkout_id .'">Testimoni Package</a>');
         $this->email->attach(base_url('assets/frontend/images/Eticket.png'));
 
       } elseif ($type == 'reject') {

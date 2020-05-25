@@ -165,7 +165,7 @@ class Login extends CI_Controller
           'protocol'  => 'smtp',
           'smtp_host' => 'ssl://smtp.googlemail.com',
           'smtp_user' => 'info.terbentour@gmail.com',
-          'smtp_pass' => 'Terbentour12345!',
+          'smtp_pass' => 'TerbentourFPFramework2331!',
           'smtp_port' => 465,
           'mailtype'  => 'html',
           'charset'   => 'utf-8',
@@ -287,7 +287,7 @@ class Login extends CI_Controller
       $user = $this->M_Login->user_target($email)->row_array();
 
       if ($user) {
-        
+
           $user_token = $this->M_Login->user_token($token)->row_array();
 
           if ($user_token) {

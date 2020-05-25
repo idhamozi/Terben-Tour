@@ -197,13 +197,26 @@ text-shadow: 0 0 5px #09f;
                                 <span class="icon">★</span>
                               </label>
                             </form>
+                        <form method="post" action="<?= base_url('Testimoni/uploadTesti')  ?>">
                           <div class="form-group">
-                              <h5 for="FormDeskripsi">Testimoni</h5>
-                              <textarea class="form-control" name="Testimoni" id="FormDeskripsi" rows="10"></textarea>
+                              <h5 for="Testimoni">Testimoni</h5>
+                              <textarea class="form-control" name="Testimoni" id="Testimoni" rows="10"></textarea>
                           </div>
-                          <input type="number" name="Score" id="Score" class="form-control" hidden>
+                          <input type="text" name="checkout_id" id="checkout_id" value="<?= $paket[0]->checkout_id ?>" class="form-control" hidden>
 
+                          <?php if (isset($paket[0]->user_id)) { ?>
+                            <input type="text" name="user_id" id="user_id" value="<?= $paket[0]->user_id ?>" class="form-control" hidden>
+                          <?php } else { ?>
+                            <input type="text" name="google_id" id="google_id" value="<?= $paket[0]->google_id ?>" class="form-control" hidden>
+                          <?php } ?>
+
+                          <input type="text" name="paket_id" id="paket_id" value="<?= $paket[0]->paket_id ?>" class="form-control" hidden>
+
+                          <input type="number" name="Score" id="Score" class="form-control" hidden>
+                          <input type="text" name="submit" value="submit" hidden>
                         <button class="btn btn-success">Done</button>
+                      </form>
+
                       </div>
 
                 </div>
