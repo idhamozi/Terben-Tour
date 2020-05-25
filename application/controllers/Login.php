@@ -165,7 +165,7 @@ class Login extends CI_Controller
           'protocol'  => 'smtp',
           'smtp_host' => 'ssl://smtp.googlemail.com',
           'smtp_user' => 'info.terbentour@gmail.com',
-          'smtp_pass' => 'TerbentourFPFramework2331!',
+          'smtp_pass' => '*****',
           'smtp_port' => 465,
           'mailtype'  => 'html',
           'charset'   => 'utf-8',
