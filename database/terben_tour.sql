@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18 Mei 2020 pada 10.35
+-- Generation Time: 25 Mei 2020 pada 22.10
 -- Versi Server: 10.1.16-MariaDB
 -- PHP Version: 5.5.38
 
@@ -152,6 +152,14 @@ CREATE TABLE `testimoni` (
   `testimoni` text NOT NULL,
   `rating` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `testimoni`
+--
+
+INSERT INTO `testimoni` (`testimoni_id`, `checkout_id`, `user_id`, `google_id`, `paket_id`, `testimoni`, `rating`) VALUES
+('5ecc1be1c1b48', '5ec24231e7eca', NULL, 1, '5ebfd6979bbea', 'akhirnya selesai woiii !!!!', 5),
+('dgsdftfg', '5ec24231e7eca', NULL, 1, '5ebfcf7b83ab0', 'wahhhh sangat recommended dengan harga segitu ', 4);
 
 -- --------------------------------------------------------
 
@@ -346,10 +354,10 @@ ALTER TABLE `temp_transaksi`
 -- Ketidakleluasaan untuk tabel `testimoni`
 --
 ALTER TABLE `testimoni`
-  ADD CONSTRAINT `testimoni_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `testimoni_ibfk_3` FOREIGN KEY (`google_id`) REFERENCES `user_google` (`google_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `testimoni_ibfk_4` FOREIGN KEY (`paket_id`) REFERENCES `paket` (`paket_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `testimoni_ibfk_5` FOREIGN KEY (`checkout_id`) REFERENCES `checkout` (`checkout_id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `testimoni_ibfk_5` FOREIGN KEY (`checkout_id`) REFERENCES `checkout` (`checkout_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `testimoni_ibfk_6` FOREIGN KEY (`google_id`) REFERENCES `user_google` (`google_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `testimoni_ibfk_7` FOREIGN KEY (`paket_id`) REFERENCES `paket` (`paket_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `testimoni_ibfk_8` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
