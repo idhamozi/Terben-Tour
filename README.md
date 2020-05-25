@@ -1,12 +1,15 @@
 # Terben-Tour
-Dalam repositori ini terdapat Final Project Studi Kasus Agen Tour yang diberi nama Terben Tour untuk menyelesaikan Mata Kuliah Pemrograman Framework dalam pengerjaanya menggunakan Framework Laravel. 
+Dalam repositori ini terdapat Final Project Studi Kasus Agen Tour yang diberi nama Terben Tour untuk menyelesaikan Mata Kuliah Pemrograman Framework dalam pengerjaanya menggunakan Framework Codeigniter 3. 
+
+### Noted :
+Branch Master bukan default, yg default dan paling terbaru adalah Finalisasi
 
 ### Collaborators
 
 1. Guruh Ihda Alfi            (17081010038) [Github Profile](https://github.com/guruhalfi)
 2. Mohammad Idham Fachrurrozi (17081010044) [Github Profile](github.com/idhamozi)
 3. Firdaus Andry Saputra      (17081010074) [Github Profile](https://github.com/andresaputra74)
-4. Kevin Maulana Adikara      (17081010108) [Github Profile](https://github.com/kevin____)
+4. Kevin Maulana Adikara      (17081010108) [Github Profile](-)
 
 ### To Do List
 
@@ -30,8 +33,8 @@ Dalam repositori ini terdapat Final Project Studi Kasus Agen Tour yang diberi na
 - [x] Logika Pembayaran
 - [x] Konfirmasi Pembayaran 
 - [x] Notifikasi Email E-Tiket
-- [ ] Landing Testimoni
-- [ ] Logika Testimoni
+- [x] Landing Testimoni
+- [x] Logika Testimoni
 
 ### Demo Website
 
