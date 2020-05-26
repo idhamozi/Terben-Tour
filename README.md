@@ -35,6 +35,7 @@ Branch Master bukan default, yg default dan paling terbaru adalah Finalisasi
 - [x] Notifikasi Email E-Tiket
 - [x] Landing Testimoni
 - [x] Logika Testimoni
+- [x] <b> DONE!! </b> 
 
 ### Demo Website
 
