@@ -97,7 +97,7 @@ class User extends CI_Controller
         $data = array('password' => $bcrypt,
                       'password_hint' => $this->input->post('password'));
 
-        $where = array('email' => $user_id );
+        $where = array('user_id' => $user_id );
 
         $this->M_User->update($where, $data, 'users');
 

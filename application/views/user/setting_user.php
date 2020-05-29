@@ -168,11 +168,11 @@
 												<form>
 													<div class="form-group">
 														<label for="InputPassword">New Password</label>
-														<input type="password" class="form-control" value="<?= set_value('password');  ?>" name="password">
+														<input type="password" class="form-control" name="password">
 													</div>
 													<div class="form-group">
 														<label for="InputPassword">Repeat Password</label>
-														<input type="password" class="form-control" value="<?= set_value('password_hint');  ?>" name="password_hint">
+														<input type="password" class="form-control" name="password_hint">
 														<span>*Note : Gunakan Password yang belum anda pakai</span>
 													</div>
 													<div class="action-button float-right mb-4">
